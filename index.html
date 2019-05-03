@@ -17,9 +17,11 @@
 <meta property="og:title" content="Suwen">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="Suwen">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="CHS">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Suwen">
+  
+    <link rel="alternative" href="https://github.com/EslSuwen" title="Suwen" type="application/atom+xml">
   
   
     <link rel="icon" href="./img/s.ico">
@@ -39,8 +41,9 @@
         <a href="/" title="Suwen" rel="home">Suwen</a>
       </h1>
       
-        <h2 class="site-description hitokoto"></h2>
-        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+        <h2 class="site-description">
+          <a href="/" id="subtitle">never settle</a>
+        </h2>
       
     </hgroup>
 
@@ -54,6 +57,8 @@
                 
                     <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
                 
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/shigure">Shigure</a></li>
+                
                 </ul>
             </div>
     </nav>
@@ -61,6 +66,48 @@
 
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
+  
+    <article id="post-test-asset" class="post-test-asset post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/05/03/test-asset/">test asset</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/test-asset/" data-id="cjv7px9xg000akkfmb9a6td2p" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/05/03/test-asset/">
+    <time datetime="2019-05-03T06:42:26.000Z" class="entry-date">
+        2019-05-03
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
   
     <article id="post-md图片处理" class="post-md图片处理 post type-post status-publish format-standard hentry">
     <!---->
@@ -77,7 +124,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/md图片处理/" data-id="cjv7fiqq30007u4fmzezu2oh5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/md图片处理/" data-id="cjv7px9x90007kkfme57snfhi" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -87,9 +134,9 @@
 <h1 id="1-单张居中显示"><a href="#1-单张居中显示" class="headerlink" title="1.单张居中显示"></a>1.单张居中显示</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;center&gt;</span><br><span class="line">    &lt;img src=&quot;http://dreamofbook.qiniudn.com/Zero.png&quot;&gt;</span><br><span class="line">&lt;/center&gt;</span><br><span class="line"></span><br><span class="line">OR</span><br><span class="line"></span><br><span class="line">&lt;figure&gt;</span><br><span class="line">    &lt;img src=&quot;http://xxx.jpg&quot;&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure>
 <h1 id="2-固定图片宽度-高度："><a href="#2-固定图片宽度-高度：" class="headerlink" title="2.固定图片宽度 / 高度："></a>2.固定图片宽度 / 高度：</h1><pre><code>&lt;img src=&quot;http://xxx.jpg&quot; title=&quot;Logo&quot; width=&quot;100&quot; /&gt;
 </code></pre><p>宽度是 Width，高度是 High。Title 为图片描述。</p>
-<h1 id="3-两张并排显示："><a href="#3-两张并排显示：" class="headerlink" title="3.两张并排显示："></a>3.两张并排显示：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;figure class=&quot;half&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://xxx.jpg&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://yyy.jpg&quot;&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="4-三张并排显示："><a href="#4-三张并排显示：" class="headerlink" title="4.三张并排显示："></a>4.三张并排显示：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;figure class=&quot;third&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://xxx.jpg&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://yyy.jpg&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://zzz.jpg&quot;&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure>
-<p>固定宽度，并排显示并居中<br>就是把上面的几个例子和起来，下面给出代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;center class=&quot;half&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://xxx.jpg&quot; width=&quot;300&quot;/&gt;</span><br><span class="line">    &lt;img src=&quot;http://yyy.jpg&quot; width=&quot;300&quot;/&gt;</span><br><span class="line">&lt;/center&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="3-两张并排显示："><a href="#3-两张并排显示：" class="headerlink" title="3.两张并排显示："></a>3.两张并排显示：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;figure class=&quot;half&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://xxx.jpg&quot;&gt;&lt;img src=&quot;http://yyy.jpg&quot;&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="4-三张并排显示："><a href="#4-三张并排显示：" class="headerlink" title="4.三张并排显示："></a>4.三张并排显示：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;figure class=&quot;third&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://xxx.jpg&quot;&gt;&lt;img src=&quot;http://yyy.jpg&quot;&gt;&lt;img src=&quot;http://zzz.jpg&quot;&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="5-固定宽度，并排显示并居中"><a href="#5-固定宽度，并排显示并居中" class="headerlink" title="5.固定宽度，并排显示并居中"></a>5.固定宽度，并排显示并居中</h1><p>就是把上面的几个例子和起来，下面给出代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;center class=&quot;half&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://xxx.jpg&quot; width=&quot;300&quot;/&gt;&lt;img src=&quot;http://yyy.jpg&quot; width=&quot;300&quot;/&gt;</span><br><span class="line">&lt;/center&gt;</span><br></pre></td></tr></table></figure></p>
 
       
     </div><!-- .entry-content -->
@@ -101,6 +148,11 @@
     </time>
 </a>
     
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/CODE/">CODE</a>
+  </div>
+
     
   <span class="article-delim">&#8226;</span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
@@ -129,7 +181,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/md常用语法/" data-id="cjv7fiqqk000hu4fmghrbyi5m" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/md常用语法/" data-id="cjv7px9z1000ykkfmb4bp6u5i" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -139,50 +191,50 @@
 <p>Markdown 是一种纯文本格式的标记语言。通过简单的标记语法，它可以使普通文本内容具有一定的格式。<br>现在的项目都使用了 git 仓库，再加上远程仓库 github 托管，那就难免要写一些 readme 等等的说明性文件，但是这样的文件一般都是.md 的文件，编写的语法自然跟其他格式的文件有所区别，至于为什么要用这种格式的文件，不要问我，我也不知道，但我们遵循最佳实践原则，跟着用就对了，本文也算是学习写 markdown 文件的一个笔记吧。</p>
 <h2 id="1-标题的几种写法"><a href="#1-标题的几种写法" class="headerlink" title="1.标题的几种写法"></a>1.标题的几种写法</h2><hr>
 <ol>
-<li>前面带 #号，后面带文字，分别表示 h1-h6, 上图可以看出，只到 h6，而且 h1 下面会有一条横线，注意，# 号后面有空格<br><img src="/images/md常用语法/1.png" alt="1"><br><img src="/images/md常用语法/2.png" alt="2"></li>
-<li>这种方式好像只能表示一级和二级标题，而且 = 和 - 的数量没有限制，只要大于一个就行<br><img src="/images/md常用语法/3.png" alt="3">! <a href="/images/md常用语法/4.png">4</a></li>
-<li>这里的标题支持 h1-h6，为了减少篇幅，我就偷个懒，只写前面二个，这个比较好理解，相当于标签闭合，注意，标题与 #号要有空格<br><img src="/images/md常用语法/5.png" alt="5"> <img src="/images/md常用语法/6.png" alt="6"><br>那既然 3 种都可以使用，可不可以混合使用呢？我试了一下，是可以的，但是为了让页面标签的统一性，不建议混合使用，推荐使用第一种，比较简洁，全面<br>为了搞清楚原理，我可以使用在线编写 markdown 的工具，发现实际上是把这些标签最后转化为 html 标签，如图：<br><img src="/images/md常用语法/7.png" alt="7"><br>在线地址请看这里： <a href="http://tool.oschina.net/markdown/" target="_blank" rel="noopener">markdown 在线编辑</a></li>
+<li>前面带 #号，后面带文字，分别表示 h1-h6, 上图可以看出，只到 h6，而且 h1 下面会有一条横线，注意，# 号后面有空格<br><img src="/2019/05/02/md常用语法/1.png" alt="1"><br><img src="/2019/05/02/md常用语法/2.png" alt="2"></li>
+<li>这种方式好像只能表示一级和二级标题，而且 = 和 - 的数量没有限制，只要大于一个就行<br><img src="/2019/05/02/md常用语法/3.png" alt="3">! <a href="/2019/05/02/md常用语法/4.png">4</a></li>
+<li>这里的标题支持 h1-h6，为了减少篇幅，我就偷个懒，只写前面二个，这个比较好理解，相当于标签闭合，注意，标题与 #号要有空格<br><img src="/2019/05/02/md常用语法/5.png" alt="5"> <img src="/2019/05/02/md常用语法/6.png" alt="6"><br>那既然 3 种都可以使用，可不可以混合使用呢？我试了一下，是可以的，但是为了让页面标签的统一性，不建议混合使用，推荐使用第一种，比较简洁，全面<br>为了搞清楚原理，我可以使用在线编写 markdown 的工具，发现实际上是把这些标签最后转化为 html 标签，如图：<br><img src="/2019/05/02/md常用语法/7.png" alt="7"><br>在线地址请看这里： <a href="http://tool.oschina.net/markdown/" target="_blank" rel="noopener">markdown 在线编辑</a></li>
 </ol>
 <h2 id="2-列表"><a href="#2-列表" class="headerlink" title="2.列表"></a>2.列表</h2><hr>
 <ol>
-<li><p>无序列表<br><figure class="half"><br> <img src="/images/md常用语法/8.png" width="280"> <img src="/images/md常用语法/9.png" width="280"><br></figure><br>可以看到，无序列表可以用 <em> ， + ， — 来创建，用在线编辑器看，实际上是转换成了 ul&gt;li ，所以使用哪个都可以，推荐使用 </em> 吧。</p>
+<li><p>无序列表<br><figure class="half"><br> <img src="/2019/05/02/md常用语法/8.png" width="280"> <img src="/2019/05/02/md常用语法/9.png" width="280"><br></figure><br>可以看到，无序列表可以用 <em> ， + ， — 来创建，用在线编辑器看，实际上是转换成了 ul&gt;li ，所以使用哪个都可以，推荐使用 </em> 吧。</p>
 </li>
-<li><p>有序列表<br><img src="/images/md常用语法/10.png" alt="10"> <img src="/images/md常用语法/11.png" alt="11"><br>有序列表就相对简单一点，只有这一种方式，注意，数字后面的点只能是英文的点，特别注意，有序列表的序号是根据第一行列表的数字顺序来的，比如说：<br><img src="/images/md常用语法/18.png" alt="18"> <img src="/images/md常用语法/19.png" alt="19"><br><img src="/images/md常用语法/20.png" alt="20"> <img src="/images/md常用语法/21.png" alt="21"><br>第一组本来是 3 2 1 倒序，但是现实 3 4 5 ，后面一组 序号是乱的， 但是还是显示 3 4 5 ，这点必须注意了。</p>
+<li><p>有序列表<br><img src="/2019/05/02/md常用语法/10.png" alt="10"> <img src="/2019/05/02/md常用语法/11.png" alt="11"><br>有序列表就相对简单一点，只有这一种方式，注意，数字后面的点只能是英文的点，特别注意，有序列表的序号是根据第一行列表的数字顺序来的，比如说：<br><img src="/2019/05/02/md常用语法/18.png" alt="18"> <img src="/2019/05/02/md常用语法/19.png" alt="19"><br><img src="/2019/05/02/md常用语法/20.png" alt="20"> <img src="/2019/05/02/md常用语法/21.png" alt="21"><br>第一组本来是 3 2 1 倒序，但是现实 3 4 5 ，后面一组 序号是乱的， 但是还是显示 3 4 5 ，这点必须注意了。</p>
 </li>
 </ol>
 <h2 id="3-区块引用"><a href="#3-区块引用" class="headerlink" title="3.区块引用"></a>3.区块引用</h2><hr>
-<p>比如说当你想对某个部分做的内容做一些说明或者引用某某的话等，可以用这个语句。<br><img src="/images/md常用语法/12.png" alt="12"> <img src="/images/md常用语法/13.png" alt="13"><br>无序列表下方的便是引用，可以有多种用途，看你的需求了，用法就是在语句前面加一个 &gt; ，注意是英文的那个右尖括号，注意空格，引用会终止于下一个换行符。<br>引用因为是一个区块，理论上是应该什么内容都可以放，比如说：标题，列表，引用等等，看看下图：<br><img src="/images/md常用语法/14.png" alt="14"> <img src="/images/md常用语法/15.png" alt="15"><br>将上面的代码稍微改一下，全部加上引用标签，就变成了一个大的引用，还有引用里面还有引用，那引用嵌套引用还没有别的写法呢？</p>
-<figure class="half"><br>    <img src="/images/md常用语法/16.png" width="280"> <img src="/images/md常用语法/17.png" width="280"><br></figure>
+<p>比如说当你想对某个部分做的内容做一些说明或者引用某某的话等，可以用这个语句。<br><img src="/2019/05/02/md常用语法/12.png" alt="12"> <img src="/2019/05/02/md常用语法/13.png" alt="13"><br>无序列表下方的便是引用，可以有多种用途，看你的需求了，用法就是在语句前面加一个 &gt; ，注意是英文的那个右尖括号，注意空格，引用会终止于下一个换行符。<br>引用因为是一个区块，理论上是应该什么内容都可以放，比如说：标题，列表，引用等等，看看下图：<br><img src="/2019/05/02/md常用语法/14.png" alt="14"> <img src="/2019/05/02/md常用语法/15.png" alt="15"><br>将上面的代码稍微改一下，全部加上引用标签，就变成了一个大的引用，还有引用里面还有引用，那引用嵌套引用还没有别的写法呢？</p>
+<figure class="half"><br>    <img src="/2019/05/02/md常用语法/16.png" width="280"> <img src="/2019/05/02/md常用语法/17.png" width="280"><br></figure>
 
 <p>上图可以看出，想要在上一次引用中嵌套一层引用，只需多加一个 &gt;，理论上可以无限嵌套，我就不整那么多了，注意：多层嵌套的 &gt; 是不需要连续在一起的，只要在一行就可以了，中间允许有空格，但是为了好看，还是把排版搞好吧.</p>
 <h2 id="4-分割线"><a href="#4-分割线" class="headerlink" title="4.分割线"></a>4.分割线</h2><hr>
 <p>分割线可以由 * - _（星号，减号，底线）这 3 个符号的至少 3 个符号表示，注意至少要 3 个，且不需要连续，有空格也可以。</p>
-<figure class="half"><br>    <img src="/images/md常用语法/22.png" width="280"> <img src="/images/md常用语法/23.png" width="280"><br></figure>
+<figure class="half"><br>    <img src="/2019/05/02/md常用语法/22.png" width="280"> <img src="/2019/05/02/md常用语法/23.png" width="280"><br></figure>
 
 <p>为了代码的排版好看可以自己定规则吧，前面有用到星号，建议用减号。</p>
 <h2 id="5-链接"><a href="#5-链接" class="headerlink" title="5.链接"></a>5.链接</h2><hr>
-<p>支持 2 种链接方式：行内式和参数式，不管是哪一种，链接文字都是用 [方括号] 来标记。<br><img src="/images/md常用语法/24.png" alt="24"> <img src="/images/md常用语法/25.png" alt="25"><br>上图可知，行内式的链接格式是：链接的文字放在 [] 中，链接地址放在随后的（）中，举一反三，经常出现的列表链接就应该这样写：<br><img src="/images/md常用语法/26.png" alt="26"> <img src="/images/md常用语法/27.png" alt="27"><br>链接还可以带 title 属性，好像也只能带 title，带不了其他属性，注意，是链接地址后面空一格，然后用引号引起来<br><img src="/images/md常用语法/28.png" alt="28"><br>这是行内式的写法，参数式的怎么写：<br><img src="/images/md常用语法/29.png" alt="29"> <img src="/images/md常用语法/30.png" alt="30"><br>这就好理解了，就是把链接当成参数，适合多出使用相同链接的场景，注意参数的对应关系，参数定义时，这 3 种写法都可以：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[foo]: http://example.com/ &quot;Optional Title Here&quot;</span><br><span class="line">[foo]: http://example.com/ &apos;Optional Title Here&apos;</span><br><span class="line">[foo]: http://example.com/ (Optional Title Here)</span><br><span class="line">#还支持这种写法，如果你不想混淆的话：</span><br><span class="line">[foo]: &lt;http://example.com/&gt; &quot;Optional Title Here&quot;</span><br></pre></td></tr></table></figure></p>
+<p>支持 2 种链接方式：行内式和参数式，不管是哪一种，链接文字都是用 [方括号] 来标记。<br><img src="/2019/05/02/md常用语法/24.png" alt="24"> <img src="/2019/05/02/md常用语法/25.png" alt="25"><br>上图可知，行内式的链接格式是：链接的文字放在 [] 中，链接地址放在随后的（）中，举一反三，经常出现的列表链接就应该这样写：<br><img src="/2019/05/02/md常用语法/26.png" alt="26"> <img src="/2019/05/02/md常用语法/27.png" alt="27"><br>链接还可以带 title 属性，好像也只能带 title，带不了其他属性，注意，是链接地址后面空一格，然后用引号引起来<br><img src="/2019/05/02/md常用语法/28.png" alt="28"><br>这是行内式的写法，参数式的怎么写：<br><img src="/2019/05/02/md常用语法/29.png" alt="29"> <img src="/2019/05/02/md常用语法/30.png" alt="30"><br>这就好理解了，就是把链接当成参数，适合多出使用相同链接的场景，注意参数的对应关系，参数定义时，这 3 种写法都可以：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[foo]: http://example.com/ &quot;Optional Title Here&quot;</span><br><span class="line">[foo]: http://example.com/ &apos;Optional Title Here&apos;</span><br><span class="line">[foo]: http://example.com/ (Optional Title Here)</span><br><span class="line">#还支持这种写法，如果你不想混淆的话：</span><br><span class="line">[foo]: &lt;http://example.com/&gt; &quot;Optional Title Here&quot;</span><br></pre></td></tr></table></figure></p>
 <p>其实还有一种隐式链接的写法，但是我觉得那种写法不直观，所以就不写了，经常用的一般就上面 2 种，如果你想了解隐式链接，可以看我文章最后放出的参考地址.</p>
 <h2 id="6-图片"><a href="#6-图片" class="headerlink" title="6.图片"></a>6.图片</h2><hr>
 <p>图片也有 2 种方式：行内式和参数式：<br>用法跟链接的基本一样，唯一的不同就是，图片前面要写一个 _！_</p>
-<h3 id="e-g"><a href="#e-g" class="headerlink" title="e.g."></a>e.g.</h3><p><img src="/images/md常用语法/45.png" alt="45"><br><img src="/images/s.ico" alt="e.g.1"></p>
-<p>这里是参数式图片：<img src="/images/s.ico" alt="e.g.2"></p>
+<h3 id="e-g"><a href="#e-g" class="headerlink" title="e.g."></a>e.g.</h3><p><img src="/2019/05/02/md常用语法/45.png" alt="45"><br><img src="/2019/05/02/s.ico" alt="e.g.1"></p>
+<p>这里是参数式图片：<img src="/2019/05/02/s.ico" alt="e.g.2"></p>
 <h2 id="7-代码区块"><a href="#7-代码区块" class="headerlink" title="7.代码区块"></a>7.代码区块</h2><hr>
 <p>要在 Markdown 中建立代码区块很简单，只要简单地缩进 4 个空格或是 1 个制表符就可以。<br>例如输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">这是一个普通段落：</span><br><span class="line"></span><br><span class="line">    这是一个代码区块。</span><br></pre></td></tr></table></figure></p>
 <p>Markdown 会转换成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;这是一个普通段落：&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;pre&gt;&lt;code&gt;这是一个代码区块。</span><br><span class="line">&lt;/code&gt;&lt;/pre&gt;</span><br></pre></td></tr></table></figure></p>
-<p>也可以使用反引号标记代码。<br>如果代码量比较少，只有单行的话，可以用单反引号包起来，如下：<br><img src="/images/md常用语法/33.png" alt="33"> <img src="/images/md常用语法/34.png" alt="34"><br>要是多行这个就不行了，多行可以用三对反引号：<br><img src="/images/md常用语法/35.png" alt="35"> <img src="/images/md常用语法/36.png" alt="36"><br>如果要写注释，可以在反引号后面写。</p>
+<p>也可以使用反引号标记代码。<br>如果代码量比较少，只有单行的话，可以用单反引号包起来，如下：<br><img src="/2019/05/02/md常用语法/33.png" alt="33"> <img src="/2019/05/02/md常用语法/34.png" alt="34"><br>要是多行这个就不行了，多行可以用三对反引号：<br><img src="/2019/05/02/md常用语法/35.png" alt="35"> <img src="/2019/05/02/md常用语法/36.png" alt="36"><br>如果要写注释，可以在反引号后面写。</p>
 <h2 id="8-表格"><a href="#8-表格" class="headerlink" title="8.表格"></a>8.表格</h2><hr>
-<figure class="half"><br>    <img src="/images/md常用语法/37.png" width="280"> <img src="/images/md常用语法/38.png" width="280"><br></figure>
+<figure class="half"><br>    <img src="/2019/05/02/md常用语法/37.png" width="280"> <img src="/2019/05/02/md常用语法/38.png" width="280"><br></figure>
 
 <p>从这 3 种不同写法看，表格的格式不一定要对的非常起，但是为了好看，对齐肯定是最好的，第一种的分割线后面的冒号表示对齐方式，写在左边表示左对齐，右边为右对齐，两边都写表示居中，还是有点意思的，不过现实出来的结果是，表格外面并没有线框包起来，不知道别人的怎么弄的。</p>
 <h2 id="9-强调"><a href="#9-强调" class="headerlink" title="9.强调"></a>9.强调</h2><hr>
 <p>一个星号或者是一个下划线包起来，会转换为 &lt;em> 倾斜，如果是 2 个，会转换为 &lt; strong &gt; 加粗。</p>
-<figure class="half"><br>    <img src="/images/md常用语法/39.png" width="280"> <img src="/images/md常用语法/40.png" width="280"><br></figure>
+<figure class="half"><br>    <img src="/2019/05/02/md常用语法/39.png" width="280"> <img src="/2019/05/02/md常用语法/40.png" width="280"><br></figure>
 
 <h2 id="10-转义"><a href="#10-转义" class="headerlink" title="10.转义"></a>10.转义</h2><hr>
-<p>使用反斜杠 “<em>\</em>“ 转义特殊字符。<br><img src="/images/md常用语法/41.png" alt="35"> <img src="/images/md常用语法/42.png" alt="36"></p>
+<p>使用反斜杠 “<em>\</em>“ 转义特殊字符。<br><img src="/2019/05/02/md常用语法/41.png" alt="35"> <img src="/2019/05/02/md常用语法/42.png" alt="36"></p>
 <h2 id="11-删除线"><a href="#11-删除线" class="headerlink" title="11.删除线"></a>11.删除线</h2><hr>
-<figure class="half"><br>    <img src="/images/md常用语法/43.png" width="280"> <img src="/images/md常用语法/44.png" width="280"><br></figure>
+<figure class="half"><br>    <img src="/2019/05/02/md常用语法/43.png" width="280"> <img src="/2019/05/02/md常用语法/44.png" width="280"><br></figure>
 
 <p>常用的基本上就这些了，如果还有一些常用的，会在后续更新。</p>
 <h2 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h2><hr>
@@ -198,6 +250,11 @@
     </time>
 </a>
     
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/CODE/">CODE</a>
+  </div>
+
     
   <span class="article-delim">&#8226;</span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
@@ -226,7 +283,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/git常用命令/" data-id="cjv7fiqpw0004u4fmn194qiwi" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/git常用命令/" data-id="cjv7px9x50005kkfmnaxydbzk" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -333,6 +390,11 @@
     </time>
 </a>
     
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/CODE/">CODE</a>
+  </div>
+
     
   <span class="article-delim">&#8226;</span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -361,7 +423,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/github远程仓库/" data-id="cjv7fiqpt0002u4fmvlbzgcma" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/github远程仓库/" data-id="cjv7px9ws0000kkfmtgpurqym" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -410,14 +472,14 @@
 <p>密码正确后你会看到下面这段话，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hi username! You&apos;ve successfully authenticated, but GitHub does not</span><br><span class="line">provide shell access.</span><br></pre></td></tr></table></figure></p>
 <p>如果用户名是正确的，你已经成功设置 SSH 密钥。如果你看到 “access denied” ，者表示拒绝访问，那么你就需要使用 https 去访问，而不是 SSH 。</p>
 <h2 id="2-远程仓库操作"><a href="#2-远程仓库操作" class="headerlink" title="2.远程仓库操作"></a>2.远程仓库操作</h2><hr>
-<h3 id="1-本地仓库推送到远程仓库"><a href="#1-本地仓库推送到远程仓库" class="headerlink" title="1.本地仓库推送到远程仓库"></a>1.本地仓库推送到远程仓库</h3><p>现在的情景是：我们已经在本地创建了一个 Git 仓库后，又想在 github 创建一个 Git 仓库，并且希望这两个仓库进行远程同步，这样 github 的仓库可以作为备份，又可以其他人通过该仓库来协作。<br><img src="/images/github远程仓库/1.png" alt="1"><br>首先，登录 github 上，然后在右上角找到 “create a new repo” 创建一个新的仓库。<br>在 Repository name 填入 testgit，其他保持默认设置，点击 “Create repository” 按钮，就成功地创建了一个新的 Git 仓库：<br><img src="/images/github远程仓库/2.png" alt="2"><br>目前，在 GitHub 上的这个 testgit 仓库还是空的，GitHub 告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到 GitHub 仓库。<br>现在，我们根据 GitHub 的提示，在本地的 testgit 仓库下运行命令：<br><code>$ git remote add origin https://github.com/username/testgit.git</code><br>把本地库的内容推送到远程，使用命令:<br><code>$ git push -u origin master</code><br>如果本地仓库没有过 commit,那么此时就会报错:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br><span class="line">error: src refspec master does not match any.</span><br><span class="line">error: failed to push some refs to &apos;git@github.com:username/testgit.git&apos;</span><br></pre></td></tr></table></figure></p>
+<h3 id="1-本地仓库推送到远程仓库"><a href="#1-本地仓库推送到远程仓库" class="headerlink" title="1.本地仓库推送到远程仓库"></a>1.本地仓库推送到远程仓库</h3><p>现在的情景是：我们已经在本地创建了一个 Git 仓库后，又想在 github 创建一个 Git 仓库，并且希望这两个仓库进行远程同步，这样 github 的仓库可以作为备份，又可以其他人通过该仓库来协作。<br><img src="/2019/05/02/github远程仓库/1.png"><br>首先，登录 github 上，然后在右上角找到 “create a new repo” 创建一个新的仓库。<br>在 Repository name 填入 testgit，其他保持默认设置，点击 “Create repository” 按钮，就成功地创建了一个新的 Git 仓库：<br><img src="/2019/05/02/github远程仓库/2.png"><br>目前，在 GitHub 上的这个 testgit 仓库还是空的，GitHub 告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到 GitHub 仓库。<br>现在，我们根据 GitHub 的提示，在本地的 testgit 仓库下运行命令：<br><code>$ git remote add origin https://github.com/username/testgit.git</code><br>把本地库的内容推送到远程，使用命令:<br><code>$ git push -u origin master</code><br>如果本地仓库没有过 commit,那么此时就会报错:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br><span class="line">error: src refspec master does not match any.</span><br><span class="line">error: failed to push some refs to &apos;git@github.com:username/testgit.git&apos;</span><br></pre></td></tr></table></figure></p>
 <p>原因：<br>本地仓库为空<br>解决方法：</p>
 <ol>
 <li>使用命令 <em>git add</em> 添加文件。</li>
 <li>使用命令 <em>git commit</em> 提交修改。</li>
 </ol>
 <p><em>git push</em> 命令实际上是把当前分支 master 推送到远程。由于远程库是空的，我们第一次推送 master 分支时，加上了 –u 参数，Git 不但会把本地的 master 分支内容推送的远程新的 master 分支，还会把本地的 master 分支和远程的 master 分支关联起来，在以后的推送或者拉取时就可以简化命令。<br>推送成功后，可以立刻在 github 页面中看到远程库的内容已经和本地一模一样了。<br>从现在起，只要本地作了提交，就可以通过如下命令：<br><code>$ git push origin master</code><br>把本地 master 分支的最新修改推送到 github 上了，现在你就拥有了真正的分布式版本库了。</p>
-<h3 id="2-远程仓库克隆到本地仓库"><a href="#2-远程仓库克隆到本地仓库" class="headerlink" title="2.远程仓库克隆到本地仓库"></a>2.远程仓库克隆到本地仓库</h3><p>上面我们了解了先有本地库，后有远程库时候，如何关联远程库。<br>现在我们想，假如远程库有新的内容了，我想克隆到本地来 如何克隆呢？<br>首先，登录 github，创建一个新的仓库，名字叫 testgit2. 如下：<br><img src="/images/github远程仓库/3.png" alt="3"><br>现在，远程库已经准备好了，下一步是使用命令 <em>git clone</em> 克隆一个本地库了。如下所示：<br><code>$ git clone git@github.com:username/testgit2.git</code><br>接着在我本地目录下 生成 testgit2 目录了，如下所示：<br><img src="/images/github远程仓库/4.png" alt="4"><br>接下来在本地上对 testgit2 的修改就可以通过命令 <em>git push</em> 推送到远程仓库。</p>
+<h3 id="2-远程仓库克隆到本地仓库"><a href="#2-远程仓库克隆到本地仓库" class="headerlink" title="2.远程仓库克隆到本地仓库"></a>2.远程仓库克隆到本地仓库</h3><p>上面我们了解了先有本地库，后有远程库时候，如何关联远程库。<br>现在我们想，假如远程库有新的内容了，我想克隆到本地来 如何克隆呢？<br>首先，登录 github，创建一个新的仓库，名字叫 testgit2. 如下：<br><img src="/2019/05/02/github远程仓库/3.png"><br>现在，远程库已经准备好了，下一步是使用命令 <em>git clone</em> 克隆一个本地库了。如下所示：<br><code>$ git clone git@github.com:username/testgit2.git</code><br>接着在我本地目录下 生成 testgit2 目录了，如下所示：<br><img src="/2019/05/02/github远程仓库/4.png"><br>接下来在本地上对 testgit2 的修改就可以通过命令 <em>git push</em> 推送到远程仓库。</p>
 
       
     </div><!-- .entry-content -->
@@ -429,6 +491,11 @@
     </time>
 </a>
     
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/TOOL/">TOOL</a>
+  </div>
+
     
   <span class="article-delim">&#8226;</span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
@@ -442,260 +509,46 @@
 
 
   
-    <article id="post-Visual-Studio-Code-配置-C-C-环境" class="post-Visual-Studio-Code-配置-C-C-环境 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
   
-    <h1 class="entry-title">
-      <a class="article-title" href="/2019/05/01/Visual-Studio-Code-配置-C-C-环境/">Visual Studio Code 配置 C/C++ 环境</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/Visual-Studio-Code-配置-C-C-环境/" data-id="cjv7fiqqh000gu4fm30kqr07e" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h2><p>VS Code 是微软发布一款跨平台的源代码编辑器，其拥有强大的功能和丰富的扩展，使之能适合编写许多语言。</p>
-<p>本文面向初学者（但不是纯小白），分享一点我配置 C/C++ 的经验。</p>
-<p>本文所有内容均可从 VS Code 的官方文档：<a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">C++ programming with Visual Studio Code</a> 以及各个扩展的文档中获得，并且他们还会进行更新。</p>
-<p>我的环境：64 位 Windows 10。VS Code 的配置文件在 Linux 下应该也是通用的，但需要修改路径等部位配置。</p>
-<h2 id="1-环境的准备"><a href="#1-环境的准备" class="headerlink" title="1. 环境的准备"></a>1. 环境的准备</h2><p>VS Code 的官网和下载、安装最新的版本。VS Code 只是一个<strong>编辑器</strong>，并不是 IDE（集成开发环境）。不含<strong>编译器</strong>（和许多其它功能），所以编译器要自己安装好。如果想用其他工具链或单纯用官方扩展。</p>
-<p>然后下载安装 MinGW-w64，其实 MinGW 和 MinGW-w64 只是名字像，它们是两个不同的项目。为了方便，本文中的 MinGW 指的其实都是 MinGW-w64。MinGW 本身已经很久没有更新了，故<strong>不推荐</strong>。下载以下两个程序（都要）：</p>
-<p><a href="http://releases.llvm.org/download.html" target="_blank" rel="noopener">LLVM Download Page</a> 在此页面下载 Clang。选 Pre-Built Binaries 中的 Clang for Windows (64-bit)， <strong>不需要下.sig 文件</strong><br><a href="https://sourceforge.net/projects/mingw-w64/files/" target="_blank" rel="noopener">MinGW-w64 - for 32 and 64 bit Windows</a> 往下稍微翻一下，选最新版本中的 x86_64-posix-sjlj 。最好不要用 Download Latest Version，这个是在线安装包，有可能因为国内的 “网络环境” 下载失败。如果浏览器还是下载失败就换迅雷下，还失败，那就使用能访问 Google 的那种方法下。选 Add LLVM to the system PATH for all users（即第二项，不过第三项也差不多）。Clang 的安装路径（Destination folder）我推荐填 C:\Program Files\LLVM，不装那里也行，下面的配置里路径就自己改。安装完了以后可能会弹出 cmd 说 MSVC integration install failed。这个是因为 Clang 默认使用的是 msvc 的工具链，而我们选择的工具链是 MinGW，所以就不用管这个提示。</p>
-<p>MinGW 随便装哪，Architecture 选 x86_64，装好以后把东西全部复制到 Clang 的文件夹里去，他们会无冲突合并。同样，不做这一步也行，下面的配置里路径就自己改，还要手动把 MinGW 的 bin 文件夹加到 path 中，因为 MinGW 不会自己加。至于为什么既要装 Clang 又要装 MinGW，是因为 Clang 没有头文件。然后就可以把 MinGW 删了（Uninstall.exe）。不建议安装多个 MinGW，如果你安装了其他 IDE 需要注意把其他的 MinGW 从环境变量中去掉；也可以自己把他们的编译器设为 Clang。因为几乎所有的轻量级 IDE 用的都是 MinGW 或 TDM-GCC，它们不制造编译器，只是打包了一个。而且它们用在 VSC 里也会有奇怪的错误。</p>
-<p>运行 cmd，输 clang，应该会提示 no input files 而不是 “不是内部命令或外部命令” 或者 “无法将 “clang” 项识别为 cmdlet、函数、脚本文件或可运行程序的名称”。输 clang -v 或 gcc -v 可以显示出各自的版本。如果是 “不是内部命令或外部命令”，说明 clang.exe 在的文件夹（我的是 C:\Program Files\LLVM\bin）没有在环境变量中，要加到 path 里才行。</p>
-<p>配置环境变量</p>
-<p>下面我们来配置系统环境<br>在我的电脑上右键点击属性，然后依次点击下面图片的操作，将 MinGW 中的 bin 文件夹路径添加进去（我的路径为 D:\Program Files\MinGW\bin）<br>之后一直点击确定即可<br><strong>注：设置完系统环境变量之后需要重启 vs code</strong></p>
-<p><img src="/css/images/vscodec++/1.png" alt><br><img src="/css/images/vscodec++/2.png" alt></p>
-<h3 id="安装扩展-extension"><a href="#安装扩展-extension" class="headerlink" title="安装扩展 (extension)"></a>安装扩展 (extension)</h3><h4 id="必装："><a href="#必装：" class="headerlink" title="必装："></a>必装：</h4><ul>
-<li>C/C++：又名 cpptools，提供 Debug 和 Format 功能</li>
-<li>C/C++ Clang Command * Adapter：提供静态检测（Lint）功能</li>
-<li>Code Runner：右键即可编译运行单文件，很方便；但无法 Dubug</li>
-</ul>
-<h4 id="其他可选扩展："><a href="#其他可选扩展：" class="headerlink" title="其他可选扩展："></a>其他可选扩展：</h4><ul>
-<li>Bracket Pair Colorizer：彩虹花括号</li>
-<li>Include Autocomplete：提供头文件名字的补全，不过用处不大；而且其实现在 cpptools 已经自带这个功能了，但本文不使用它的补全</li>
-<li>C/C++ Snippets：Snippets 即重用代码块，效果自己百度；这个扩展安装量虽高，不过个人感觉用处实在不大，你也可以选择其他的 Snippets 扩展甚至自己定义</li>
-<li>One Dark Pro：大概是 VS Code 安装量最高的主题</li>
-<li>vscode-clangd：这个和 Adapter 二选一，出得比 Adapter 晚，下载量也低，但却是 llvm 官方出的。出现问题时可以换着试试 Clang-Format：只有想自定义代码风格时才装，比如大括号不换行。</li>
-</ul>
-<h4 id="需要另外学习如何使用不建议-不需要装的扩展："><a href="#需要另外学习如何使用不建议-不需要装的扩展：" class="headerlink" title="需要另外学习如何使用不建议 / 不需要装的扩展："></a>需要另外学习如何使用不建议 / 不需要装的扩展：</h4><ul>
-<li>GBKtoUTF8：把 GBK 编码的文档转换成 UTF8 编码的。此扩展可能有严重的 bug。</li>
-<li>C++ Intellisense：用的是 gtags，本文第一个版本的选择。效果非常非常一般。</li>
-</ul>
-<h2 id="2-配置四个-json-文件"><a href="#2-配置四个-json-文件" class="headerlink" title="2. 配置四个.json 文件"></a>2. 配置四个.json 文件</h2><p>先创建一个你打算存放代码的文件夹（称作工作区），路径不能含有中文和空格和引号。c 语言和 c++ 需要建立不同的工作区（除非你懂得下面 json 文件的某些选项，则可以做到一个工作区使用不同的 build task）。</p>
-<p>打开 VS Code，选打开文件夹（不要选 “添加工作区文件夹”，理由见上一句），选择刚才那个文件夹，点 VS Code 上的新建文件夹，名称为.vscode（这样做的原因是 Windows 的 Explorer 不允许创建的文件夹第一个字符是点），然后创建 launch.json，tasks.json，settings.json，c_cpp_properties.json 放到.vscode 文件夹下，效果图：</p>
-<p><img src="/css/images/vscodec++/3.png" alt></p>
-<h3 id="launch-json-代码："><a href="#launch-json-代码：" class="headerlink" title="launch.json 代码："></a>launch.json 代码：</h3><p>stopAtEntry 可根据自己喜好修改；cwd 可以控制程序运行时的相对路径，如有需要可以改为 ${fileDirname}。其他无需更改，除非你不用 windows，则可以用 lldb 调试（需要自己装）。type 和 request 不变色是正常现象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// https://github.com/Microsoft/vscode-cpptools/blob/master/launch.md</span><br><span class="line">&#123;</span><br><span class="line">    &quot;version&quot;: &quot;0.2.0&quot;,</span><br><span class="line">    &quot;configurations&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;(gdb) Launch&quot;, // 配置名称，将会在启动配置的下拉菜单中显示</span><br><span class="line">            &quot;type&quot;: &quot;cppdbg&quot;, // 配置类型，这里只能为cppdbg</span><br><span class="line">            &quot;request&quot;: &quot;launch&quot;, // 请求配置类型，可以为launch（启动）或attach（附加）</span><br><span class="line">            &quot;program&quot;: &quot;$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.exe&quot;, // 将要进行调试的程序的路径</span><br><span class="line">            &quot;args&quot;: [], // 程序调试时传递给程序的命令行参数，一般设为空即可</span><br><span class="line">            &quot;stopAtEntry&quot;: false, // 设为true时程序将暂停在程序入口处，相当于在main上打断点</span><br><span class="line">            &quot;cwd&quot;: &quot;$&#123;workspaceFolder&#125;&quot;, // 调试程序时的工作目录，此为工作区文件夹；改成$&#123;fileDirname&#125;可变为文件所在目录</span><br><span class="line">            &quot;environment&quot;: [], // 环境变量</span><br><span class="line">            &quot;externalConsole&quot;: true, // 为true时使用单独的cmd窗口，与其它IDE一致；18年10月后设为false可调用VSC内置终端</span><br><span class="line">            &quot;internalConsoleOptions&quot;: &quot;neverOpen&quot;, // 如果不设为neverOpen，调试时会跳到“调试控制台”选项卡，你应该不需要对gdb手动输命令吧？</span><br><span class="line">            &quot;MIMode&quot;: &quot;gdb&quot;, // 指定连接的调试器，可以为gdb或lldb。但我没试过lldb</span><br><span class="line">            &quot;miDebuggerPath&quot;: &quot;gdb.exe&quot;, // 调试器路径，Windows下后缀不能省略，Linux下则不要</span><br><span class="line">            &quot;setupCommands&quot;: [ // 用处未知，模板如此</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;,</span><br><span class="line">                    &quot;text&quot;: &quot;-enable-pretty-printing&quot;,</span><br><span class="line">                    &quot;ignoreFailures&quot;: false</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            &quot;preLaunchTask&quot;: &quot;Compile&quot; // 调试会话开始前执行的任务，一般为编译程序。与tasks.json的label相对应</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="tasks-json-代码："><a href="#tasks-json-代码：" class="headerlink" title="tasks.json 代码："></a>tasks.json 代码：</h3><p>reveal 可根据自己喜好修改，即使设为 never，也只是编译时不跳转到 “终端” 而已，手动点进去还是可以看到，我个人设为 never。<br>命令行参数方面，-std 根据自己的需要修改。如果使用 Clang 编写 C 语言，把 command 的值改成 clang。<br>如果使用 MinGW，编译 C 用 gcc，编译 c++ 用 g++，并把 - target 和 - fcolor 那两条删去。如果不想要额外警告，把 - Wall 那一条删去。<br>参数的作用我加了注释，还看不懂，百度 gcc 使用教程。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">// https://code.visualstudio.com/docs/editor/tasks</span><br><span class="line">&#123;</span><br><span class="line">    &quot;version&quot;: &quot;2.0.0&quot;,</span><br><span class="line">    &quot;tasks&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;label&quot;: &quot;Compile&quot;, // 任务名称，与launch.json的preLaunchTask相对应</span><br><span class="line">            &quot;command&quot;: &quot;clang&quot;, // 要使用的编译器，C++用clang++</span><br><span class="line">            &quot;args&quot;: [</span><br><span class="line">                &quot;$&#123;file&#125;&quot;,</span><br><span class="line">                &quot;-o&quot;, // 指定输出文件名，不加该参数则默认输出a.exe，Linux下默认a.out</span><br><span class="line">                &quot;$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.exe&quot;,</span><br><span class="line">                &quot;-g&quot;, // 生成和调试有关的信息</span><br><span class="line">                &quot;-Wall&quot;, // 开启额外警告</span><br><span class="line">                &quot;-static-libgcc&quot;, // 静态链接libgcc</span><br><span class="line">                &quot;--target=x86_64-w64-mingw&quot;, // clang的默认target为msvc，不加这一条就会找不到头文件；Linux下去掉这一条</span><br><span class="line">                &quot;-std=c11&quot; // C++最新标准为c++17，或根据自己的需要进行修改</span><br><span class="line">            ], // 编译命令参数</span><br><span class="line">            &quot;type&quot;: &quot;shell&quot;, // 可以为shell或process，前者相当于先打开shell再输入命令，后者是直接运行命令</span><br><span class="line">            &quot;group&quot;: &#123;</span><br><span class="line">                &quot;kind&quot;: &quot;build&quot;,</span><br><span class="line">                &quot;isDefault&quot;: true // 设为false可做到一个tasks.json配置多个编译指令，需要自己修改本文件，我这里不多提</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;presentation&quot;: &#123;</span><br><span class="line">                &quot;echo&quot;: true,</span><br><span class="line">                &quot;reveal&quot;: &quot;always&quot;, // 在“终端”中显示编译信息的策略，可以为always，silent，never。具体参见VSC的文档</span><br><span class="line">                &quot;focus&quot;: false, // 设为true后可以使执行task时焦点聚集在终端，但对编译c和c++来说，设为true没有意义</span><br><span class="line">                &quot;panel&quot;: &quot;shared&quot; // 不同的文件的编译信息共享一个终端面板</span><br><span class="line">            &#125;</span><br><span class="line">            // &quot;problemMatcher&quot;:&quot;$gcc&quot; // 如果你不使用clang，去掉前面的注释符，并在上一条之后加个逗号。照着我的教程做的不需要改（也可以把这行删去)</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="settings-json-代码："><a href="#settings-json-代码：" class="headerlink" title="settings.json 代码："></a>settings.json 代码：</h3><p>把这个文件里的东西放到 “用户设置” 里也可以覆盖全局设置，自己进行选择。</p>
-<p>Code Runner 的命令行和某些选项可以根据自己的需要在此处修改，用法还是参见此扩展的文档和百度 gcc 使用教程。</p>
-<p>如果你要使用其他地方的头文件和库文件，可能要往 clang.cflags 和 clang.cxxflags 里加 - I 和 - L，用法百度 gcc 使用教程。</p>
-<p>clang 的补全，在我过去的测试过程中会让 VSC 非常卡，但是现在好像没有这个问题了。</p>
-<p>如果你卡，就把 clang 的补全关掉，用 cpptools 的。</p>
-<p>Linux 下去掉 code runner 和 flags 的 –target 那一条，共四个。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;files.defaultLanguage&quot;: &quot;cpp&quot;, // ctrl+N新建文件后默认的语言</span><br><span class="line">    &quot;editor.formatOnType&quot;: true, // 输入时就进行格式化，默认触发字符较少，分号可以触发</span><br><span class="line">    &quot;editor.snippetSuggestions&quot;: &quot;top&quot;, // snippets代码优先显示补全</span><br><span class="line"></span><br><span class="line">    &quot;code-runner.runInTerminal&quot;: true, // 设置成false会在“输出”中输出，无法输入</span><br><span class="line">    &quot;code-runner.executorMap&quot;: &#123;</span><br><span class="line">        &quot;c&quot;: &quot;cd $dir &amp;&amp; clang $fileName -o $fileNameWithoutExt.exe -Wall -g -Og -static-libgcc -fcolor-diagnostics --target=x86_64-w64-mingw -std=c11 &amp;&amp; $dir$fileNameWithoutExt&quot;,</span><br><span class="line">        &quot;cpp&quot;: &quot;cd $dir &amp;&amp; clang++ $fileName -o $fileNameWithoutExt.exe -Wall -g -Og -static-libgcc -fcolor-diagnostics --target=x86_64-w64-mingw -std=c++17 &amp;&amp; $dir$fileNameWithoutExt&quot;</span><br><span class="line">    &#125;, // 设置code runner的命令行</span><br><span class="line">    &quot;code-runner.saveFileBeforeRun&quot;: true, // run code前保存</span><br><span class="line">    &quot;code-runner.preserveFocus&quot;: true, // 若为false，run code后光标会聚焦到终端上。如果需要频繁输入数据可设为false</span><br><span class="line">    &quot;code-runner.clearPreviousOutput&quot;: false, // 每次run code前清空属于code runner的终端消息</span><br><span class="line"></span><br><span class="line">    &quot;C_Cpp.clang_format_sortIncludes&quot;: true, // 格式化时调整include的顺序（按字母排序）</span><br><span class="line">    &quot;C_Cpp.intelliSenseEngine&quot;: &quot;Default&quot;, // 可以为Default或Tag Parser，后者较老，功能较简单。具体差别参考cpptools扩展文档</span><br><span class="line">    &quot;C_Cpp.errorSquiggles&quot;: &quot;Disabled&quot;, // 因为有clang的lint，所以关掉</span><br><span class="line">    &quot;C_Cpp.autocomplete&quot;: &quot;Disabled&quot;, // 因为有clang的补全，所以关掉</span><br><span class="line"></span><br><span class="line">    &quot;clang.cflags&quot;: [ // 控制c语言静态检测的参数</span><br><span class="line">        &quot;--target=x86_64-w64-mingw&quot;,</span><br><span class="line">        &quot;-std=c11&quot;,</span><br><span class="line">        &quot;-Wall&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;clang.cxxflags&quot;: [ // 控制c++静态检测时的参数</span><br><span class="line">        &quot;--target=x86_64-w64-mingw&quot;,</span><br><span class="line">        &quot;-std=c++17&quot;,</span><br><span class="line">        &quot;-Wall&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;clang.completion.enable&quot;:true // 效果效果比cpptools要好</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="c-cpp-properties-json-代码："><a href="#c-cpp-properties-json-代码：" class="headerlink" title="c_cpp_properties.json 代码："></a>c_cpp_properties.json 代码：</h3><p>此文件内容来自于 Microsoft/vscode-cpptools；这个 json 不允许有注释（其实按照标准本来就不能有）。</p>
-<p>如果你没有合并 Clang 和 MinGW，则该文件中的 compilerPath 必需修改成 MinGW 的完整路径，精确到 gcc.exe，否则会提示找不到头文件；Linux 下应该是 /usr/bin/gcc。</p>
-<p>如果你自己编写了头文件又不在 workspaceFolder 下，路径也要加到 includePath 和 browse 里。这些路径是否递归有效暂时未知，我的测试是有效的。</p>
-<p>Windows 下的路径为反斜杠，原本应使用两个反斜杠来转义，但直接用斜杠在 VS Code 中也接受。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;configurations&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;MinGW&quot;,</span><br><span class="line">            &quot;intelliSenseMode&quot;: &quot;clang-x64&quot;,</span><br><span class="line">            &quot;compilerPath&quot;: &quot;C:/Program Files/LLVM/bin/gcc.exe&quot;,</span><br><span class="line">            &quot;includePath&quot;: [</span><br><span class="line">                &quot;$&#123;workspaceFolder&#125;&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;defines&quot;: [],</span><br><span class="line">            &quot;browse&quot;: &#123;</span><br><span class="line">                &quot;path&quot;: [</span><br><span class="line">                    &quot;$&#123;workspaceFolder&#125;&quot;</span><br><span class="line">                ],</span><br><span class="line">                &quot;limitSymbolsToIncludedHeaders&quot;: true,</span><br><span class="line">                &quot;databaseFilename&quot;: &quot;&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;cStandard&quot;: &quot;c11&quot;,</span><br><span class="line">            &quot;cppStandard&quot;: &quot;c++17&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;version&quot;: 4</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>为什么要往 json 里写这么多的东西？因为 VSC 本身并没有对 C 语言特别优待，对其他许多语言也是这样。另外稍微提一下，以 $ 开头的是 VSC 预定义的变量，具体参见：Variables Reference。</p>
-<p>关于 VS Code 输出会出现乱码，很多人都遇到过。这是因为 VS Code 内部用的是 utf-8 编码，cmd/powershell 是 gbk 编码。直接编译，会把 “你好” 输出成 “浣犲ソ”。<br>其实可以点右下角 选 Reopen with Encoding 选 Chinese GBK 就可以正常输入中文了，而且输出也是正常的<br>还可以在设置里搜索 encode，把 files.encoding 改成 gbk，而且最好把 files.autoGuessEncoding 也改成 true</p>
-<blockquote>
-<p><em>本文主要在作者：<a href="https://www.zhihu.com/question/30315894/answer/154979413" target="_blank" rel="noopener">谭九鼎</a>的基础上简化。</em></p>
-</blockquote>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2019/05/01/Visual-Studio-Code-配置-C-C-环境/">
-    <time datetime="2019-05-01T13:13:46.000Z" class="entry-date">
-        2019-05-01
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/">vscode</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-this-is-a-new-article" class="post-this-is-a-new-article post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2019/05/01/this-is-a-new-article/">this is a new article</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/this-is-a-new-article/" data-id="cjv7fiqq60008u4fmp6pfyfre" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2019/05/01/this-is-a-new-article/">
-    <time datetime="2019-05-01T12:16:21.000Z" class="entry-date">
-        2019-05-01
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-firts" class="post-firts post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2019/05/01/firts/">first</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/firts/" data-id="cjv7fiqpl0000u4fmbj8506a5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h3 id="this-is-a-first-artcle"><a href="#this-is-a-first-artcle" class="headerlink" title="this is a first artcle"></a>this is a first artcle</h3><p><strong>using test some grammars</strong>\<br><img src="/css/images/body.jpg" alt></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2019/05/01/firts/">
-    <time datetime="2019-05-01T08:58:24.000Z" class="entry-date">
-        2019-05-01
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="post-hello-world post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2019/05/01/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/hello-world/" data-id="cjv7fiqq00006u4fma5zna99l" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2019/05/01/hello-world/">
-    <time datetime="2019-05-01T08:47:26.050Z" class="entry-date">
-        2019-05-01
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
+    <nav id="pagination">
+      <nav id="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      </nav>
+    </nav>
   
 
 </div></div>
         <div id="secondary" class="widget-area" role="complementary">
   
-    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
-    <div>
-        <input type="text" value name="s" id="s">
-        <input type="submit" id="searchsubmit" value="搜索">
-    </div>
-</form></aside>
+    <aside class="widget">
+  <h3 class="widget-title">ABOUT ME</h3>
+  <div class="widget-content">
+    <p>EMAIL：esllovesn@gmail.com</p>
+    <p>QQ：577014284</p>
+    <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=577014284&website=www.oicqzone.com" target="_blank"><img src="http://q.qlogo.cn/headimg_dl?bs=qq&dst_uin=577014284&src_uin=www.feifeiboke.com&fid=blog&spec=100" alt="hfl"></a>
+    <p><strong>#全栈工程师</strong></p>
+    <p>“精通 C++/Java/HTML/CSS/JS 等单词的拼写。”</p>
+  </div>
+</aside>
   
     
-  
-    
+<aside class="widget">
+  <h3 class="widget-title">Music</h3>
+  <div class="widget-content">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=101092&auto=0&height=66"></iframe>
+  </div>
+</aside>
+
   
     
   <aside class="widget">
     <h3 class="widget-title">Recents</h3>
     <div class="widget-content">
       <ul>
+        
+          <li>
+            <a href="/2019/05/03/test-asset/">test asset</a>
+          </li>
         
           <li>
             <a href="/2019/05/03/md图片处理/">Markdown 图片的简单处理</a>
@@ -713,11 +566,16 @@
             <a href="/2019/05/02/github远程仓库/">git 连接 github 远程仓库</a>
           </li>
         
-          <li>
-            <a href="/2019/05/01/Visual-Studio-Code-配置-C-C-环境/">Visual Studio Code 配置 C/C++ 环境</a>
-          </li>
-        
       </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CODE/">CODE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TEST/">TEST</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -726,7 +584,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -735,10 +593,75 @@
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/markdown/" style="font-size: 20px;">markdown</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
+      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/markdown/" style="font-size: 15px;">markdown</a> <a href="/tags/test/" style="font-size: 20px;">test</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
     </div>
   </aside>
 
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget-content">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">9</span></li></ul>
+    </div>
+  </aside>
+
+  
+    <script>
+    // sub title
+    var subtitleList = [
+        "『卑鄙是卑鄙者的通行证，高尚是高尚者的墓志铭。』——北岛",
+        "『所有模型都是错的，但其中一些是有用的。』",
+        "『程序员的双手是魔术师的双手，他们把枯燥无味的代码变成了丰富多彩的软件。』——《疯狂的程序员》",
+        "『质疑计算机能不能思考，就相当于质疑潜艇能不能游泳。』——Edsger Dijkstra",
+        "人们认为计算机科学是天才的艺术，但是实际情况相反，只是许多人在其它人基础上做一些东西，就像一面由石子垒成的墙。』——高德纳",
+        "『Stay young. Stay simple. Always naive!』",
+        "『你们媒体千万要记着，不要「见得风，是得雨」。接到消息，你们媒体本身也要判断。』——长者",
+        "『假设这些完全无中生有的东西，你再帮他说一遍，你等于......你也有责任吧？』——长者",
+        "『刚才你问我啊，我可以回答你一句「无可奉告」。』——长者",
+        "『我告诉你们我是身经百战了，见得多了！』——长者",
+        "『美国的华莱士，比你们不知要高到哪里去了，我跟他谈笑风生。』——长者",
+        "『我有这个必要告诉你们一点，人生的经验。』——长者",
+        "『我没有说要钦定，没有任何这个意思。』——长者",
+        "『你们啊，不要想喜欢弄个大新闻，说现在已经钦定了，就把我批判一番。』——长者",
+        "『一个人的命运啊，当然要靠自我奋斗，但是也要考虑历史的进程。』——长者",
+        "『我说另请高明吧，我实在也不是谦虚。』——长者",
+        "『苟利国家生死以，岂因祸福避趋之。』——林则徐",
+        "『敢同恶鬼争高下，不向霸王让寸分。』——毛泽东",
+        "『我生不为逐鹿来，都门懒筑黄金台。状元百官都如狗，总是刀下觳觫材。』——张献忠",
+        "『我自成佛自度我，佛度凡尘我度佛。』",
+        "『龙吟九天，一曲焚尘；苍山听雪，归时余几人。』",
+        "『人最大的痛苦就是说一些自己都不相信的话。』",
+        "『燃琴为薪，铸银矢以射白羽；斑音成竹，裁短笛而驭青龙。』",
+        "『我们在人生的每个阶段，能影响多少人，就影响多少人，哪怕只能影响一个人，也好过不影响。』——罗永浩",
+        "『每个人心中都有一个死小孩。』——《龙族II》",
+        "『前面是山，我们就爬山；前面是海，我们就渡海；前面是皇宫，我们就开炮！』——《龙族前传》",
+        "『不要习惯了黑暗就为黑暗辩护；不要为自己的苟且而得意；不要嘲讽那些比自己更勇敢热情的人们。我们可以卑微如尘土，不可扭曲如蛆虫。』——季业",
+    ];
+
+    document.addEventListener('DOMContentLoaded', evt => {
+        var i = Math.floor(Math.random() * subtitleList.length);
+        document.querySelector('#subtitle').innerText = subtitleList[i];
+    });
+
+    //Kill XP and IE8
+    (function(){
+        var ua = navigator.userAgent;
+        var res = /Windows NT (\d+\.\d+)/.exec(ua);
+        var xpOrLower = res && JSON.parse(res[1]) < 6;
+        res = /MSIE (\d+\.\d+)/.exec(ua);
+        var ie8OrLower = res && JSON.parse(res[1]) < 9;
+        if(xpOrLower || ie8OrLower) {
+            alert('请不要用XP及之前的Windows系统，和IE8及之前的IE浏览器访问本站！');
+            location.href = "about:blank";
+        }
+        var fromBaiduSE = /^https?:\/\/www.baidu.com/.test(document.referrer);
+        if(fromBaiduSE) {
+            alert('检测到你还在使用百度搜索，作为一个程序员，这是一种自暴自弃！\n\n做不作恶的程序员，从不用百度开始！');
+            location.href = "about:blank";
+        }
+    })();
+</script>
   
 </div>
       </div>

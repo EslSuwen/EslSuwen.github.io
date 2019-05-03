@@ -4,10 +4,6 @@
   <meta charset="utf-8">
   
   
-  <meta name="description" content="0. 前言VS Code 是微软发布一款跨平台的源代码编辑器，其拥有强大的功能和丰富的扩展，使之能适合编写许多语言。
-本文面向初学者（但不是纯小白），分享一点我配置 C/C++ 的经验。
-本文所有内容均可从 VS Code 的官方文档：C++ programming with Visual Stud">
-  
 
   
   
@@ -15,24 +11,17 @@
   
   
   
-  <title>Visual Studio Code 配置 C/C++ 环境 | Suwen</title>
+  <title>Suwen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="0. 前言VS Code 是微软发布一款跨平台的源代码编辑器，其拥有强大的功能和丰富的扩展，使之能适合编写许多语言。 本文面向初学者（但不是纯小白），分享一点我配置 C/C++ 的经验。 本文所有内容均可从 VS Code 的官方文档：C++ programming with Visual Studio Code 以及各个扩展的文档中获得，并且他们还会进行更新。 我的环境：64 位 Windows">
-<meta name="keywords" content="vscode,c++">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Visual Studio Code 配置 C&#x2F;C++ 环境">
-<meta property="og:url" content="http://yoursite.com/2019/05/01/Visual-Studio-Code-配置-C-C-环境/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Suwen">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Suwen">
-<meta property="og:description" content="0. 前言VS Code 是微软发布一款跨平台的源代码编辑器，其拥有强大的功能和丰富的扩展，使之能适合编写许多语言。 本文面向初学者（但不是纯小白），分享一点我配置 C/C++ 的经验。 本文所有内容均可从 VS Code 的官方文档：C++ programming with Visual Studio Code 以及各个扩展的文档中获得，并且他们还会进行更新。 我的环境：64 位 Windows">
-<meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/css/images/vscodec++/1.png">
-<meta property="og:image" content="http://yoursite.com/css/images/vscodec++/2.png">
-<meta property="og:image" content="http://yoursite.com/css/images/vscodec++/3.png">
-<meta property="og:updated_time" content="2019-05-01T13:58:56.126Z">
+<meta property="og:locale" content="CHS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Visual Studio Code 配置 C&#x2F;C++ 环境">
-<meta name="twitter:description" content="0. 前言VS Code 是微软发布一款跨平台的源代码编辑器，其拥有强大的功能和丰富的扩展，使之能适合编写许多语言。 本文面向初学者（但不是纯小白），分享一点我配置 C/C++ 的经验。 本文所有内容均可从 VS Code 的官方文档：C++ programming with Visual Studio Code 以及各个扩展的文档中获得，并且他们还会进行更新。 我的环境：64 位 Windows">
-<meta name="twitter:image" content="http://yoursite.com/css/images/vscodec++/1.png">
+<meta name="twitter:title" content="Suwen">
+  
+    <link rel="alternative" href="https://github.com/EslSuwen" title="Suwen" type="application/atom+xml">
   
   
     <link rel="icon" href="./img/s.ico">
@@ -52,8 +41,9 @@
         <a href="/" title="Suwen" rel="home">Suwen</a>
       </h1>
       
-        <h2 class="site-description hitokoto"></h2>
-        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+        <h2 class="site-description">
+          <a href="/" id="subtitle">never settle</a>
+        </h2>
       
     </hgroup>
 
@@ -67,28 +57,32 @@
                 
                     <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
                 
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/shigure">Shigure</a></li>
+                
                 </ul>
             </div>
     </nav>
 </header>
 
       <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-Visual-Studio-Code-配置-C-C-环境" class="post-Visual-Studio-Code-配置-C-C-环境 post type-post status-publish format-standard hentry">
+        <div id="primary" class="site-content"><div id="content" role="main">
+  
+    <article id="post-vscode-c++" class="post-vscode-c++ post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
         
         
   
-    <h1 class="entry-title article-title">
-      Visual Studio Code 配置 C/C++ 环境
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/05/01/vscode-c++/">Visual Studio Code 配置 C/C++ 环境</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/Visual-Studio-Code-配置-C-C-环境/" data-id="cjv7fiqqh000gu4fm30kqr07e" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/vscode-c++/" data-id="cjv7r38j00000hsfm99ae63bm" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -105,7 +99,7 @@
 <p>运行 cmd，输 clang，应该会提示 no input files 而不是 “不是内部命令或外部命令” 或者 “无法将 “clang” 项识别为 cmdlet、函数、脚本文件或可运行程序的名称”。输 clang -v 或 gcc -v 可以显示出各自的版本。如果是 “不是内部命令或外部命令”，说明 clang.exe 在的文件夹（我的是 C:\Program Files\LLVM\bin）没有在环境变量中，要加到 path 里才行。</p>
 <p>配置环境变量</p>
 <p>下面我们来配置系统环境<br>在我的电脑上右键点击属性，然后依次点击下面图片的操作，将 MinGW 中的 bin 文件夹路径添加进去（我的路径为 D:\Program Files\MinGW\bin）<br>之后一直点击确定即可<br><strong>注：设置完系统环境变量之后需要重启 vs code</strong></p>
-<p><img src="/css/images/vscodec++/1.png" alt><br><img src="/css/images/vscodec++/2.png" alt></p>
+<p><img src="/2019/05/01/vscode-c++/1.png" alt><br><img src="/2019/05/01/vscode-c++/2.png" alt></p>
 <h3 id="安装扩展-extension"><a href="#安装扩展-extension" class="headerlink" title="安装扩展 (extension)"></a>安装扩展 (extension)</h3><h4 id="必装："><a href="#必装：" class="headerlink" title="必装："></a>必装：</h4><ul>
 <li>C/C++：又名 cpptools，提供 Debug 和 Format 功能</li>
 <li>C/C++ Clang Command * Adapter：提供静态检测（Lint）功能</li>
@@ -124,7 +118,7 @@
 </ul>
 <h2 id="2-配置四个-json-文件"><a href="#2-配置四个-json-文件" class="headerlink" title="2. 配置四个.json 文件"></a>2. 配置四个.json 文件</h2><p>先创建一个你打算存放代码的文件夹（称作工作区），路径不能含有中文和空格和引号。c 语言和 c++ 需要建立不同的工作区（除非你懂得下面 json 文件的某些选项，则可以做到一个工作区使用不同的 build task）。</p>
 <p>打开 VS Code，选打开文件夹（不要选 “添加工作区文件夹”，理由见上一句），选择刚才那个文件夹，点 VS Code 上的新建文件夹，名称为.vscode（这样做的原因是 Windows 的 Explorer 不允许创建的文件夹第一个字符是点），然后创建 launch.json，tasks.json，settings.json，c_cpp_properties.json 放到.vscode 文件夹下，效果图：</p>
-<p><img src="/css/images/vscodec++/3.png" alt></p>
+<p><img src="/2019/05/01/vscode-c++/3.png" alt></p>
 <h3 id="launch-json-代码："><a href="#launch-json-代码：" class="headerlink" title="launch.json 代码："></a>launch.json 代码：</h3><p>stopAtEntry 可根据自己喜好修改；cwd 可以控制程序运行时的相对路径，如有需要可以改为 ${fileDirname}。其他无需更改，除非你不用 windows，则可以用 lldb 调试（需要自己装）。type 和 request 不变色是正常现象。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// https://github.com/Microsoft/vscode-cpptools/blob/master/launch.md</span><br><span class="line">&#123;</span><br><span class="line">    &quot;version&quot;: &quot;0.2.0&quot;,</span><br><span class="line">    &quot;configurations&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;(gdb) Launch&quot;, // 配置名称，将会在启动配置的下拉菜单中显示</span><br><span class="line">            &quot;type&quot;: &quot;cppdbg&quot;, // 配置类型，这里只能为cppdbg</span><br><span class="line">            &quot;request&quot;: &quot;launch&quot;, // 请求配置类型，可以为launch（启动）或attach（附加）</span><br><span class="line">            &quot;program&quot;: &quot;$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.exe&quot;, // 将要进行调试的程序的路径</span><br><span class="line">            &quot;args&quot;: [], // 程序调试时传递给程序的命令行参数，一般设为空即可</span><br><span class="line">            &quot;stopAtEntry&quot;: false, // 设为true时程序将暂停在程序入口处，相当于在main上打断点</span><br><span class="line">            &quot;cwd&quot;: &quot;$&#123;workspaceFolder&#125;&quot;, // 调试程序时的工作目录，此为工作区文件夹；改成$&#123;fileDirname&#125;可变为文件所在目录</span><br><span class="line">            &quot;environment&quot;: [], // 环境变量</span><br><span class="line">            &quot;externalConsole&quot;: true, // 为true时使用单独的cmd窗口，与其它IDE一致；18年10月后设为false可调用VSC内置终端</span><br><span class="line">            &quot;internalConsoleOptions&quot;: &quot;neverOpen&quot;, // 如果不设为neverOpen，调试时会跳到“调试控制台”选项卡，你应该不需要对gdb手动输命令吧？</span><br><span class="line">            &quot;MIMode&quot;: &quot;gdb&quot;, // 指定连接的调试器，可以为gdb或lldb。但我没试过lldb</span><br><span class="line">            &quot;miDebuggerPath&quot;: &quot;gdb.exe&quot;, // 调试器路径，Windows下后缀不能省略，Linux下则不要</span><br><span class="line">            &quot;setupCommands&quot;: [ // 用处未知，模板如此</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;,</span><br><span class="line">                    &quot;text&quot;: &quot;-enable-pretty-printing&quot;,</span><br><span class="line">                    &quot;ignoreFailures&quot;: false</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            &quot;preLaunchTask&quot;: &quot;Compile&quot; // 调试会话开始前执行的任务，一般为编译程序。与tasks.json的label相对应</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="tasks-json-代码："><a href="#tasks-json-代码：" class="headerlink" title="tasks.json 代码："></a>tasks.json 代码：</h3><p>reveal 可根据自己喜好修改，即使设为 never，也只是编译时不跳转到 “终端” 而已，手动点进去还是可以看到，我个人设为 never。<br>命令行参数方面，-std 根据自己的需要修改。如果使用 Clang 编写 C 语言，把 command 的值改成 clang。<br>如果使用 MinGW，编译 C 用 gcc，编译 c++ 用 g++，并把 - target 和 - fcolor 那两条删去。如果不想要额外警告，把 - Wall 那一条删去。<br>参数的作用我加了注释，还看不懂，百度 gcc 使用教程。</p>
@@ -151,12 +145,17 @@
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2019/05/01/Visual-Studio-Code-配置-C-C-环境/">
+    <a href="/2019/05/01/vscode-c++/">
     <time datetime="2019-05-01T13:13:46.000Z" class="entry-date">
         2019-05-01
     </time>
 </a>
     
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/Tool/">Tool</a>
+  </div>
+
     
   <span class="article-delim">&#8226;</span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/">vscode</a></li></ul>
@@ -165,42 +164,211 @@
 </article>
 
 
+
+
+
+
+  
+    <article id="post-this-is-a-new-article" class="post-this-is-a-new-article post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/05/01/this-is-a-new-article/">this is a new article</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/this-is-a-new-article/" data-id="cjv7px9xm000bkkfmp2wlcfp1" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/05/01/this-is-a-new-article/">
+    <time datetime="2019-05-01T12:16:21.000Z" class="entry-date">
+        2019-05-01
+    </time>
+</a>
     
-<nav class="nav-single">
-    <h3 class="assistive-text">文章导航</h3>
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/TEST/">TEST</a>
+  </div>
+
     
-        <span class="nav-previous"><a href="/2019/05/02/github远程仓库/" rel="prev"><span class="meta-nav">←</span> git 连接 github 远程仓库</a></span>
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-firts" class="post-firts post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/05/01/firts/">first</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/firts/" data-id="cjv7px9wz0002kkfmy0v8jmr4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h3 id="this-is-a-first-artcle"><a href="#this-is-a-first-artcle" class="headerlink" title="this is a first artcle"></a>this is a first artcle</h3><p><strong>using test some grammars</strong>\<br><img src="/css/images/body.jpg" alt></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/05/01/firts/">
+    <time datetime="2019-05-01T08:58:24.000Z" class="entry-date">
+        2019-05-01
+    </time>
+</a>
     
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/TEST/">TEST</a>
+  </div>
+
     
-        <span class="nav-next"><a href="/2019/05/01/this-is-a-new-article/" rel="next">this is a new article <span class="meta-nav">→</span></a></span>
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-hello-world" class="post-hello-world post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/05/01/hello-world/">Hello World</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/hello-world/" data-id="cjv7px9x70006kkfmjt8z72cy" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/05/01/hello-world/">
+    <time datetime="2019-05-01T08:58:24.000Z" class="entry-date">
+        2019-05-01
+    </time>
+</a>
     
-</nav><!-- .nav-single -->
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/TEST/">TEST</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+
+    </footer>
+</article>
 
 
 
 
 
 
+  
+  
+    <nav id="pagination">
+      <nav id="page-nav">
+        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      </nav>
+    </nav>
+  
 
 </div></div>
         <div id="secondary" class="widget-area" role="complementary">
   
-    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
-    <div>
-        <input type="text" value name="s" id="s">
-        <input type="submit" id="searchsubmit" value="搜索">
-    </div>
-</form></aside>
+    <aside class="widget">
+  <h3 class="widget-title">ABOUT ME</h3>
+  <div class="widget-content">
+    <p>EMAIL：esllovesn@gmail.com</p>
+    <p>QQ：577014284</p>
+    <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=577014284&website=www.oicqzone.com" target="_blank"><img src="http://q.qlogo.cn/headimg_dl?bs=qq&dst_uin=577014284&src_uin=www.feifeiboke.com&fid=blog&spec=100" alt="hfl"></a>
+    <p><strong>#全栈工程师</strong></p>
+    <p>“精通 C++/Java/HTML/CSS/JS 等单词的拼写。”</p>
+  </div>
+</aside>
   
     
-  
-    
+<aside class="widget">
+  <h3 class="widget-title">Music</h3>
+  <div class="widget-content">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=101092&auto=0&height=66"></iframe>
+  </div>
+</aside>
+
   
     
   <aside class="widget">
     <h3 class="widget-title">Recents</h3>
     <div class="widget-content">
       <ul>
+        
+          <li>
+            <a href="/2019/05/03/test-asset/">test asset</a>
+          </li>
         
           <li>
             <a href="/2019/05/03/md图片处理/">Markdown 图片的简单处理</a>
@@ -218,11 +386,16 @@
             <a href="/2019/05/02/github远程仓库/">git 连接 github 远程仓库</a>
           </li>
         
-          <li>
-            <a href="/2019/05/01/Visual-Studio-Code-配置-C-C-环境/">Visual Studio Code 配置 C/C++ 环境</a>
-          </li>
-        
       </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CODE/">CODE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TEST/">TEST</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -231,7 +404,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -240,10 +413,75 @@
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/markdown/" style="font-size: 20px;">markdown</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
+      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/markdown/" style="font-size: 15px;">markdown</a> <a href="/tags/test/" style="font-size: 20px;">test</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
     </div>
   </aside>
 
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget-content">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">9</span></li></ul>
+    </div>
+  </aside>
+
+  
+    <script>
+    // sub title
+    var subtitleList = [
+        "『卑鄙是卑鄙者的通行证，高尚是高尚者的墓志铭。』——北岛",
+        "『所有模型都是错的，但其中一些是有用的。』",
+        "『程序员的双手是魔术师的双手，他们把枯燥无味的代码变成了丰富多彩的软件。』——《疯狂的程序员》",
+        "『质疑计算机能不能思考，就相当于质疑潜艇能不能游泳。』——Edsger Dijkstra",
+        "人们认为计算机科学是天才的艺术，但是实际情况相反，只是许多人在其它人基础上做一些东西，就像一面由石子垒成的墙。』——高德纳",
+        "『Stay young. Stay simple. Always naive!』",
+        "『你们媒体千万要记着，不要「见得风，是得雨」。接到消息，你们媒体本身也要判断。』——长者",
+        "『假设这些完全无中生有的东西，你再帮他说一遍，你等于......你也有责任吧？』——长者",
+        "『刚才你问我啊，我可以回答你一句「无可奉告」。』——长者",
+        "『我告诉你们我是身经百战了，见得多了！』——长者",
+        "『美国的华莱士，比你们不知要高到哪里去了，我跟他谈笑风生。』——长者",
+        "『我有这个必要告诉你们一点，人生的经验。』——长者",
+        "『我没有说要钦定，没有任何这个意思。』——长者",
+        "『你们啊，不要想喜欢弄个大新闻，说现在已经钦定了，就把我批判一番。』——长者",
+        "『一个人的命运啊，当然要靠自我奋斗，但是也要考虑历史的进程。』——长者",
+        "『我说另请高明吧，我实在也不是谦虚。』——长者",
+        "『苟利国家生死以，岂因祸福避趋之。』——林则徐",
+        "『敢同恶鬼争高下，不向霸王让寸分。』——毛泽东",
+        "『我生不为逐鹿来，都门懒筑黄金台。状元百官都如狗，总是刀下觳觫材。』——张献忠",
+        "『我自成佛自度我，佛度凡尘我度佛。』",
+        "『龙吟九天，一曲焚尘；苍山听雪，归时余几人。』",
+        "『人最大的痛苦就是说一些自己都不相信的话。』",
+        "『燃琴为薪，铸银矢以射白羽；斑音成竹，裁短笛而驭青龙。』",
+        "『我们在人生的每个阶段，能影响多少人，就影响多少人，哪怕只能影响一个人，也好过不影响。』——罗永浩",
+        "『每个人心中都有一个死小孩。』——《龙族II》",
+        "『前面是山，我们就爬山；前面是海，我们就渡海；前面是皇宫，我们就开炮！』——《龙族前传》",
+        "『不要习惯了黑暗就为黑暗辩护；不要为自己的苟且而得意；不要嘲讽那些比自己更勇敢热情的人们。我们可以卑微如尘土，不可扭曲如蛆虫。』——季业",
+    ];
+
+    document.addEventListener('DOMContentLoaded', evt => {
+        var i = Math.floor(Math.random() * subtitleList.length);
+        document.querySelector('#subtitle').innerText = subtitleList[i];
+    });
+
+    //Kill XP and IE8
+    (function(){
+        var ua = navigator.userAgent;
+        var res = /Windows NT (\d+\.\d+)/.exec(ua);
+        var xpOrLower = res && JSON.parse(res[1]) < 6;
+        res = /MSIE (\d+\.\d+)/.exec(ua);
+        var ie8OrLower = res && JSON.parse(res[1]) < 9;
+        if(xpOrLower || ie8OrLower) {
+            alert('请不要用XP及之前的Windows系统，和IE8及之前的IE浏览器访问本站！');
+            location.href = "about:blank";
+        }
+        var fromBaiduSE = /^https?:\/\/www.baidu.com/.test(document.referrer);
+        if(fromBaiduSE) {
+            alert('检测到你还在使用百度搜索，作为一个程序员，这是一种自暴自弃！\n\n做不作恶的程序员，从不用百度开始！');
+            location.href = "about:blank";
+        }
+    })();
+</script>
   
 </div>
       </div>

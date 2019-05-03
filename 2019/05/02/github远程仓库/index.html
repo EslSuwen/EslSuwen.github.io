@@ -23,16 +23,18 @@ github 设置添加 SSH很多朋友在用 github 管理项目的时候，都是�
 <meta property="og:url" content="http://yoursite.com/2019/05/02/github远程仓库/index.html">
 <meta property="og:site_name" content="Suwen">
 <meta property="og:description" content="0.前言 github 设置添加 SSH很多朋友在用 github 管理项目的时候，都是直接使用 https url 克隆到本地，当然也有些人使用 SSH url 克隆到本地。然而，为什么绝大多数人会使用 https url 克隆呢？这是因为，使用 https url 克隆对初学者来说会比较方便，复制 https url 然后到 git Bash 里面直接用 clone 命令克隆到本地就好了。而使">
-<meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/github远程仓库/1.png">
-<meta property="og:image" content="http://yoursite.com/images/github远程仓库/2.png">
-<meta property="og:image" content="http://yoursite.com/images/github远程仓库/3.png">
-<meta property="og:image" content="http://yoursite.com/images/github远程仓库/4.png">
-<meta property="og:updated_time" content="2019-05-02T06:39:22.280Z">
+<meta property="og:locale" content="CHS">
+<meta property="og:image" content="http://yoursite.com/2019/05/02/github远程仓库/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/02/github远程仓库/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/02/github远程仓库/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/02/github远程仓库/4.png">
+<meta property="og:updated_time" content="2019-05-03T07:06:03.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 连接 github 远程仓库">
 <meta name="twitter:description" content="0.前言 github 设置添加 SSH很多朋友在用 github 管理项目的时候，都是直接使用 https url 克隆到本地，当然也有些人使用 SSH url 克隆到本地。然而，为什么绝大多数人会使用 https url 克隆呢？这是因为，使用 https url 克隆对初学者来说会比较方便，复制 https url 然后到 git Bash 里面直接用 clone 命令克隆到本地就好了。而使">
-<meta name="twitter:image" content="http://yoursite.com/images/github远程仓库/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/02/github远程仓库/1.png">
+  
+    <link rel="alternative" href="https://github.com/EslSuwen" title="Suwen" type="application/atom+xml">
   
   
     <link rel="icon" href="./img/s.ico">
@@ -52,8 +54,9 @@ github 设置添加 SSH很多朋友在用 github 管理项目的时候，都是�
         <a href="/" title="Suwen" rel="home">Suwen</a>
       </h1>
       
-        <h2 class="site-description hitokoto"></h2>
-        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+        <h2 class="site-description">
+          <a href="/" id="subtitle">never settle</a>
+        </h2>
       
     </hgroup>
 
@@ -66,6 +69,8 @@ github 设置添加 SSH很多朋友在用 github 管理项目的时候，都是�
                     <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
                 
                     <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/shigure">Shigure</a></li>
                 
                 </ul>
             </div>
@@ -88,7 +93,7 @@ github 设置添加 SSH很多朋友在用 github 管理项目的时候，都是�
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/github远程仓库/" data-id="cjv7fiqpt0002u4fmvlbzgcma" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/github远程仓库/" data-id="cjv7px9ws0000kkfmtgpurqym" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -137,14 +142,14 @@ github 设置添加 SSH很多朋友在用 github 管理项目的时候，都是�
 <p>密码正确后你会看到下面这段话，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hi username! You&apos;ve successfully authenticated, but GitHub does not</span><br><span class="line">provide shell access.</span><br></pre></td></tr></table></figure></p>
 <p>如果用户名是正确的，你已经成功设置 SSH 密钥。如果你看到 “access denied” ，者表示拒绝访问，那么你就需要使用 https 去访问，而不是 SSH 。</p>
 <h2 id="2-远程仓库操作"><a href="#2-远程仓库操作" class="headerlink" title="2.远程仓库操作"></a>2.远程仓库操作</h2><hr>
-<h3 id="1-本地仓库推送到远程仓库"><a href="#1-本地仓库推送到远程仓库" class="headerlink" title="1.本地仓库推送到远程仓库"></a>1.本地仓库推送到远程仓库</h3><p>现在的情景是：我们已经在本地创建了一个 Git 仓库后，又想在 github 创建一个 Git 仓库，并且希望这两个仓库进行远程同步，这样 github 的仓库可以作为备份，又可以其他人通过该仓库来协作。<br><img src="/images/github远程仓库/1.png" alt="1"><br>首先，登录 github 上，然后在右上角找到 “create a new repo” 创建一个新的仓库。<br>在 Repository name 填入 testgit，其他保持默认设置，点击 “Create repository” 按钮，就成功地创建了一个新的 Git 仓库：<br><img src="/images/github远程仓库/2.png" alt="2"><br>目前，在 GitHub 上的这个 testgit 仓库还是空的，GitHub 告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到 GitHub 仓库。<br>现在，我们根据 GitHub 的提示，在本地的 testgit 仓库下运行命令：<br><code>$ git remote add origin https://github.com/username/testgit.git</code><br>把本地库的内容推送到远程，使用命令:<br><code>$ git push -u origin master</code><br>如果本地仓库没有过 commit,那么此时就会报错:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br><span class="line">error: src refspec master does not match any.</span><br><span class="line">error: failed to push some refs to &apos;git@github.com:username/testgit.git&apos;</span><br></pre></td></tr></table></figure></p>
+<h3 id="1-本地仓库推送到远程仓库"><a href="#1-本地仓库推送到远程仓库" class="headerlink" title="1.本地仓库推送到远程仓库"></a>1.本地仓库推送到远程仓库</h3><p>现在的情景是：我们已经在本地创建了一个 Git 仓库后，又想在 github 创建一个 Git 仓库，并且希望这两个仓库进行远程同步，这样 github 的仓库可以作为备份，又可以其他人通过该仓库来协作。<br><img src="/2019/05/02/github远程仓库/1.png"><br>首先，登录 github 上，然后在右上角找到 “create a new repo” 创建一个新的仓库。<br>在 Repository name 填入 testgit，其他保持默认设置，点击 “Create repository” 按钮，就成功地创建了一个新的 Git 仓库：<br><img src="/2019/05/02/github远程仓库/2.png"><br>目前，在 GitHub 上的这个 testgit 仓库还是空的，GitHub 告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到 GitHub 仓库。<br>现在，我们根据 GitHub 的提示，在本地的 testgit 仓库下运行命令：<br><code>$ git remote add origin https://github.com/username/testgit.git</code><br>把本地库的内容推送到远程，使用命令:<br><code>$ git push -u origin master</code><br>如果本地仓库没有过 commit,那么此时就会报错:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br><span class="line">error: src refspec master does not match any.</span><br><span class="line">error: failed to push some refs to &apos;git@github.com:username/testgit.git&apos;</span><br></pre></td></tr></table></figure></p>
 <p>原因：<br>本地仓库为空<br>解决方法：</p>
 <ol>
 <li>使用命令 <em>git add</em> 添加文件。</li>
 <li>使用命令 <em>git commit</em> 提交修改。</li>
 </ol>
 <p><em>git push</em> 命令实际上是把当前分支 master 推送到远程。由于远程库是空的，我们第一次推送 master 分支时，加上了 –u 参数，Git 不但会把本地的 master 分支内容推送的远程新的 master 分支，还会把本地的 master 分支和远程的 master 分支关联起来，在以后的推送或者拉取时就可以简化命令。<br>推送成功后，可以立刻在 github 页面中看到远程库的内容已经和本地一模一样了。<br>从现在起，只要本地作了提交，就可以通过如下命令：<br><code>$ git push origin master</code><br>把本地 master 分支的最新修改推送到 github 上了，现在你就拥有了真正的分布式版本库了。</p>
-<h3 id="2-远程仓库克隆到本地仓库"><a href="#2-远程仓库克隆到本地仓库" class="headerlink" title="2.远程仓库克隆到本地仓库"></a>2.远程仓库克隆到本地仓库</h3><p>上面我们了解了先有本地库，后有远程库时候，如何关联远程库。<br>现在我们想，假如远程库有新的内容了，我想克隆到本地来 如何克隆呢？<br>首先，登录 github，创建一个新的仓库，名字叫 testgit2. 如下：<br><img src="/images/github远程仓库/3.png" alt="3"><br>现在，远程库已经准备好了，下一步是使用命令 <em>git clone</em> 克隆一个本地库了。如下所示：<br><code>$ git clone git@github.com:username/testgit2.git</code><br>接着在我本地目录下 生成 testgit2 目录了，如下所示：<br><img src="/images/github远程仓库/4.png" alt="4"><br>接下来在本地上对 testgit2 的修改就可以通过命令 <em>git push</em> 推送到远程仓库。</p>
+<h3 id="2-远程仓库克隆到本地仓库"><a href="#2-远程仓库克隆到本地仓库" class="headerlink" title="2.远程仓库克隆到本地仓库"></a>2.远程仓库克隆到本地仓库</h3><p>上面我们了解了先有本地库，后有远程库时候，如何关联远程库。<br>现在我们想，假如远程库有新的内容了，我想克隆到本地来 如何克隆呢？<br>首先，登录 github，创建一个新的仓库，名字叫 testgit2. 如下：<br><img src="/2019/05/02/github远程仓库/3.png"><br>现在，远程库已经准备好了，下一步是使用命令 <em>git clone</em> 克隆一个本地库了。如下所示：<br><code>$ git clone git@github.com:username/testgit2.git</code><br>接着在我本地目录下 生成 testgit2 目录了，如下所示：<br><img src="/2019/05/02/github远程仓库/4.png"><br>接下来在本地上对 testgit2 的修改就可以通过命令 <em>git push</em> 推送到远程仓库。</p>
 
       
     </div><!-- .entry-content -->
@@ -156,6 +161,11 @@ github 设置添加 SSH很多朋友在用 github 管理项目的时候，都是�
     </time>
 </a>
     
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/TOOL/">TOOL</a>
+  </div>
+
     
   <span class="article-delim">&#8226;</span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
@@ -171,7 +181,7 @@ github 设置添加 SSH很多朋友在用 github 管理项目的时候，都是�
         <span class="nav-previous"><a href="/2019/05/02/git常用命令/" rel="prev"><span class="meta-nav">←</span> 常用 Git 命令清单</a></span>
     
     
-        <span class="nav-next"><a href="/2019/05/01/Visual-Studio-Code-配置-C-C-环境/" rel="next">Visual Studio Code 配置 C/C++ 环境 <span class="meta-nav">→</span></a></span>
+        <span class="nav-next"><a href="/2019/05/01/vscode-c++/" rel="next">Visual Studio Code 配置 C/C++ 环境 <span class="meta-nav">→</span></a></span>
     
 </nav><!-- .nav-single -->
 
@@ -184,22 +194,35 @@ github 设置添加 SSH很多朋友在用 github 管理项目的时候，都是�
 </div></div>
         <div id="secondary" class="widget-area" role="complementary">
   
-    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
-    <div>
-        <input type="text" value name="s" id="s">
-        <input type="submit" id="searchsubmit" value="搜索">
-    </div>
-</form></aside>
+    <aside class="widget">
+  <h3 class="widget-title">ABOUT ME</h3>
+  <div class="widget-content">
+    <p>EMAIL：esllovesn@gmail.com</p>
+    <p>QQ：577014284</p>
+    <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=577014284&website=www.oicqzone.com" target="_blank"><img src="http://q.qlogo.cn/headimg_dl?bs=qq&dst_uin=577014284&src_uin=www.feifeiboke.com&fid=blog&spec=100" alt="hfl"></a>
+    <p><strong>#全栈工程师</strong></p>
+    <p>“精通 C++/Java/HTML/CSS/JS 等单词的拼写。”</p>
+  </div>
+</aside>
   
     
-  
-    
+<aside class="widget">
+  <h3 class="widget-title">Music</h3>
+  <div class="widget-content">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=101092&auto=0&height=66"></iframe>
+  </div>
+</aside>
+
   
     
   <aside class="widget">
     <h3 class="widget-title">Recents</h3>
     <div class="widget-content">
       <ul>
+        
+          <li>
+            <a href="/2019/05/03/test-asset/">test asset</a>
+          </li>
         
           <li>
             <a href="/2019/05/03/md图片处理/">Markdown 图片的简单处理</a>
@@ -217,11 +240,16 @@ github 设置添加 SSH很多朋友在用 github 管理项目的时候，都是�
             <a href="/2019/05/02/github远程仓库/">git 连接 github 远程仓库</a>
           </li>
         
-          <li>
-            <a href="/2019/05/01/Visual-Studio-Code-配置-C-C-环境/">Visual Studio Code 配置 C/C++ 环境</a>
-          </li>
-        
       </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CODE/">CODE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TEST/">TEST</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -230,7 +258,7 @@ github 设置添加 SSH很多朋友在用 github 管理项目的时候，都是�
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -239,10 +267,75 @@ github 设置添加 SSH很多朋友在用 github 管理项目的时候，都是�
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/markdown/" style="font-size: 20px;">markdown</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
+      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/markdown/" style="font-size: 15px;">markdown</a> <a href="/tags/test/" style="font-size: 20px;">test</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
     </div>
   </aside>
 
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget-content">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">9</span></li></ul>
+    </div>
+  </aside>
+
+  
+    <script>
+    // sub title
+    var subtitleList = [
+        "『卑鄙是卑鄙者的通行证，高尚是高尚者的墓志铭。』——北岛",
+        "『所有模型都是错的，但其中一些是有用的。』",
+        "『程序员的双手是魔术师的双手，他们把枯燥无味的代码变成了丰富多彩的软件。』——《疯狂的程序员》",
+        "『质疑计算机能不能思考，就相当于质疑潜艇能不能游泳。』——Edsger Dijkstra",
+        "人们认为计算机科学是天才的艺术，但是实际情况相反，只是许多人在其它人基础上做一些东西，就像一面由石子垒成的墙。』——高德纳",
+        "『Stay young. Stay simple. Always naive!』",
+        "『你们媒体千万要记着，不要「见得风，是得雨」。接到消息，你们媒体本身也要判断。』——长者",
+        "『假设这些完全无中生有的东西，你再帮他说一遍，你等于......你也有责任吧？』——长者",
+        "『刚才你问我啊，我可以回答你一句「无可奉告」。』——长者",
+        "『我告诉你们我是身经百战了，见得多了！』——长者",
+        "『美国的华莱士，比你们不知要高到哪里去了，我跟他谈笑风生。』——长者",
+        "『我有这个必要告诉你们一点，人生的经验。』——长者",
+        "『我没有说要钦定，没有任何这个意思。』——长者",
+        "『你们啊，不要想喜欢弄个大新闻，说现在已经钦定了，就把我批判一番。』——长者",
+        "『一个人的命运啊，当然要靠自我奋斗，但是也要考虑历史的进程。』——长者",
+        "『我说另请高明吧，我实在也不是谦虚。』——长者",
+        "『苟利国家生死以，岂因祸福避趋之。』——林则徐",
+        "『敢同恶鬼争高下，不向霸王让寸分。』——毛泽东",
+        "『我生不为逐鹿来，都门懒筑黄金台。状元百官都如狗，总是刀下觳觫材。』——张献忠",
+        "『我自成佛自度我，佛度凡尘我度佛。』",
+        "『龙吟九天，一曲焚尘；苍山听雪，归时余几人。』",
+        "『人最大的痛苦就是说一些自己都不相信的话。』",
+        "『燃琴为薪，铸银矢以射白羽；斑音成竹，裁短笛而驭青龙。』",
+        "『我们在人生的每个阶段，能影响多少人，就影响多少人，哪怕只能影响一个人，也好过不影响。』——罗永浩",
+        "『每个人心中都有一个死小孩。』——《龙族II》",
+        "『前面是山，我们就爬山；前面是海，我们就渡海；前面是皇宫，我们就开炮！』——《龙族前传》",
+        "『不要习惯了黑暗就为黑暗辩护；不要为自己的苟且而得意；不要嘲讽那些比自己更勇敢热情的人们。我们可以卑微如尘土，不可扭曲如蛆虫。』——季业",
+    ];
+
+    document.addEventListener('DOMContentLoaded', evt => {
+        var i = Math.floor(Math.random() * subtitleList.length);
+        document.querySelector('#subtitle').innerText = subtitleList[i];
+    });
+
+    //Kill XP and IE8
+    (function(){
+        var ua = navigator.userAgent;
+        var res = /Windows NT (\d+\.\d+)/.exec(ua);
+        var xpOrLower = res && JSON.parse(res[1]) < 6;
+        res = /MSIE (\d+\.\d+)/.exec(ua);
+        var ie8OrLower = res && JSON.parse(res[1]) < 9;
+        if(xpOrLower || ie8OrLower) {
+            alert('请不要用XP及之前的Windows系统，和IE8及之前的IE浏览器访问本站！');
+            location.href = "about:blank";
+        }
+        var fromBaiduSE = /^https?:\/\/www.baidu.com/.test(document.referrer);
+        if(fromBaiduSE) {
+            alert('检测到你还在使用百度搜索，作为一个程序员，这是一种自暴自弃！\n\n做不作恶的程序员，从不用百度开始！');
+            location.href = "about:blank";
+        }
+    })();
+</script>
   
 </div>
       </div>
