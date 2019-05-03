@@ -62,6 +62,386 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-md图片处理" class="post-md图片处理 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/05/03/md图片处理/">Markdown 图片的简单处理</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/md图片处理/" data-id="cjv7fiqq30007u4fmzezu2oh5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h1><p>最近写md文章的时候发现，在 markdown 里插入一些很长的图片的时候，会显得很不好看，于是去查了一下如何实现 markdown 里图片的并排显示，参考了各个博客内的内容和 markdown 文档，了解 markdown 支持一些 html 的标签，下面用 &lt;img> 实现对图片的简单处理。</p>
+<h1 id="1-单张居中显示"><a href="#1-单张居中显示" class="headerlink" title="1.单张居中显示"></a>1.单张居中显示</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;center&gt;</span><br><span class="line">    &lt;img src=&quot;http://dreamofbook.qiniudn.com/Zero.png&quot;&gt;</span><br><span class="line">&lt;/center&gt;</span><br><span class="line"></span><br><span class="line">OR</span><br><span class="line"></span><br><span class="line">&lt;figure&gt;</span><br><span class="line">    &lt;img src=&quot;http://xxx.jpg&quot;&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="2-固定图片宽度-高度："><a href="#2-固定图片宽度-高度：" class="headerlink" title="2.固定图片宽度 / 高度："></a>2.固定图片宽度 / 高度：</h1><pre><code>&lt;img src=&quot;http://xxx.jpg&quot; title=&quot;Logo&quot; width=&quot;100&quot; /&gt;
+</code></pre><p>宽度是 Width，高度是 High。Title 为图片描述。</p>
+<h1 id="3-两张并排显示："><a href="#3-两张并排显示：" class="headerlink" title="3.两张并排显示："></a>3.两张并排显示：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;figure class=&quot;half&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://xxx.jpg&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://yyy.jpg&quot;&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="4-三张并排显示："><a href="#4-三张并排显示：" class="headerlink" title="4.三张并排显示："></a>4.三张并排显示：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;figure class=&quot;third&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://xxx.jpg&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://yyy.jpg&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://zzz.jpg&quot;&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure>
+<p>固定宽度，并排显示并居中<br>就是把上面的几个例子和起来，下面给出代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;center class=&quot;half&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://xxx.jpg&quot; width=&quot;300&quot;/&gt;</span><br><span class="line">    &lt;img src=&quot;http://yyy.jpg&quot; width=&quot;300&quot;/&gt;</span><br><span class="line">&lt;/center&gt;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/05/03/md图片处理/">
+    <time datetime="2019-05-03T01:51:56.000Z" class="entry-date">
+        2019-05-03
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-md常用语法" class="post-md常用语法 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/05/02/md常用语法/">.md 即 markdown 文件的基本常用编写语法</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/md常用语法/" data-id="cjv7fiqqk000hu4fmghrbyi5m" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h2><hr>
+<p>Markdown 是一种纯文本格式的标记语言。通过简单的标记语法，它可以使普通文本内容具有一定的格式。<br>现在的项目都使用了 git 仓库，再加上远程仓库 github 托管，那就难免要写一些 readme 等等的说明性文件，但是这样的文件一般都是.md 的文件，编写的语法自然跟其他格式的文件有所区别，至于为什么要用这种格式的文件，不要问我，我也不知道，但我们遵循最佳实践原则，跟着用就对了，本文也算是学习写 markdown 文件的一个笔记吧。</p>
+<h2 id="1-标题的几种写法"><a href="#1-标题的几种写法" class="headerlink" title="1.标题的几种写法"></a>1.标题的几种写法</h2><hr>
+<ol>
+<li>前面带 #号，后面带文字，分别表示 h1-h6, 上图可以看出，只到 h6，而且 h1 下面会有一条横线，注意，# 号后面有空格<br><img src="/images/md常用语法/1.png" alt="1"><br><img src="/images/md常用语法/2.png" alt="2"></li>
+<li>这种方式好像只能表示一级和二级标题，而且 = 和 - 的数量没有限制，只要大于一个就行<br><img src="/images/md常用语法/3.png" alt="3">! <a href="/images/md常用语法/4.png">4</a></li>
+<li>这里的标题支持 h1-h6，为了减少篇幅，我就偷个懒，只写前面二个，这个比较好理解，相当于标签闭合，注意，标题与 #号要有空格<br><img src="/images/md常用语法/5.png" alt="5"> <img src="/images/md常用语法/6.png" alt="6"><br>那既然 3 种都可以使用，可不可以混合使用呢？我试了一下，是可以的，但是为了让页面标签的统一性，不建议混合使用，推荐使用第一种，比较简洁，全面<br>为了搞清楚原理，我可以使用在线编写 markdown 的工具，发现实际上是把这些标签最后转化为 html 标签，如图：<br><img src="/images/md常用语法/7.png" alt="7"><br>在线地址请看这里： <a href="http://tool.oschina.net/markdown/" target="_blank" rel="noopener">markdown 在线编辑</a></li>
+</ol>
+<h2 id="2-列表"><a href="#2-列表" class="headerlink" title="2.列表"></a>2.列表</h2><hr>
+<ol>
+<li><p>无序列表<br><figure class="half"><br> <img src="/images/md常用语法/8.png" width="280"> <img src="/images/md常用语法/9.png" width="280"><br></figure><br>可以看到，无序列表可以用 <em> ， + ， — 来创建，用在线编辑器看，实际上是转换成了 ul&gt;li ，所以使用哪个都可以，推荐使用 </em> 吧。</p>
+</li>
+<li><p>有序列表<br><img src="/images/md常用语法/10.png" alt="10"> <img src="/images/md常用语法/11.png" alt="11"><br>有序列表就相对简单一点，只有这一种方式，注意，数字后面的点只能是英文的点，特别注意，有序列表的序号是根据第一行列表的数字顺序来的，比如说：<br><img src="/images/md常用语法/18.png" alt="18"> <img src="/images/md常用语法/19.png" alt="19"><br><img src="/images/md常用语法/20.png" alt="20"> <img src="/images/md常用语法/21.png" alt="21"><br>第一组本来是 3 2 1 倒序，但是现实 3 4 5 ，后面一组 序号是乱的， 但是还是显示 3 4 5 ，这点必须注意了。</p>
+</li>
+</ol>
+<h2 id="3-区块引用"><a href="#3-区块引用" class="headerlink" title="3.区块引用"></a>3.区块引用</h2><hr>
+<p>比如说当你想对某个部分做的内容做一些说明或者引用某某的话等，可以用这个语句。<br><img src="/images/md常用语法/12.png" alt="12"> <img src="/images/md常用语法/13.png" alt="13"><br>无序列表下方的便是引用，可以有多种用途，看你的需求了，用法就是在语句前面加一个 &gt; ，注意是英文的那个右尖括号，注意空格，引用会终止于下一个换行符。<br>引用因为是一个区块，理论上是应该什么内容都可以放，比如说：标题，列表，引用等等，看看下图：<br><img src="/images/md常用语法/14.png" alt="14"> <img src="/images/md常用语法/15.png" alt="15"><br>将上面的代码稍微改一下，全部加上引用标签，就变成了一个大的引用，还有引用里面还有引用，那引用嵌套引用还没有别的写法呢？</p>
+<figure class="half"><br>    <img src="/images/md常用语法/16.png" width="280"> <img src="/images/md常用语法/17.png" width="280"><br></figure>
+
+<p>上图可以看出，想要在上一次引用中嵌套一层引用，只需多加一个 &gt;，理论上可以无限嵌套，我就不整那么多了，注意：多层嵌套的 &gt; 是不需要连续在一起的，只要在一行就可以了，中间允许有空格，但是为了好看，还是把排版搞好吧.</p>
+<h2 id="4-分割线"><a href="#4-分割线" class="headerlink" title="4.分割线"></a>4.分割线</h2><hr>
+<p>分割线可以由 * - _（星号，减号，底线）这 3 个符号的至少 3 个符号表示，注意至少要 3 个，且不需要连续，有空格也可以。</p>
+<figure class="half"><br>    <img src="/images/md常用语法/22.png" width="280"> <img src="/images/md常用语法/23.png" width="280"><br></figure>
+
+<p>为了代码的排版好看可以自己定规则吧，前面有用到星号，建议用减号。</p>
+<h2 id="5-链接"><a href="#5-链接" class="headerlink" title="5.链接"></a>5.链接</h2><hr>
+<p>支持 2 种链接方式：行内式和参数式，不管是哪一种，链接文字都是用 [方括号] 来标记。<br><img src="/images/md常用语法/24.png" alt="24"> <img src="/images/md常用语法/25.png" alt="25"><br>上图可知，行内式的链接格式是：链接的文字放在 [] 中，链接地址放在随后的（）中，举一反三，经常出现的列表链接就应该这样写：<br><img src="/images/md常用语法/26.png" alt="26"> <img src="/images/md常用语法/27.png" alt="27"><br>链接还可以带 title 属性，好像也只能带 title，带不了其他属性，注意，是链接地址后面空一格，然后用引号引起来<br><img src="/images/md常用语法/28.png" alt="28"><br>这是行内式的写法，参数式的怎么写：<br><img src="/images/md常用语法/29.png" alt="29"> <img src="/images/md常用语法/30.png" alt="30"><br>这就好理解了，就是把链接当成参数，适合多出使用相同链接的场景，注意参数的对应关系，参数定义时，这 3 种写法都可以：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[foo]: http://example.com/ &quot;Optional Title Here&quot;</span><br><span class="line">[foo]: http://example.com/ &apos;Optional Title Here&apos;</span><br><span class="line">[foo]: http://example.com/ (Optional Title Here)</span><br><span class="line">#还支持这种写法，如果你不想混淆的话：</span><br><span class="line">[foo]: &lt;http://example.com/&gt; &quot;Optional Title Here&quot;</span><br></pre></td></tr></table></figure></p>
+<p>其实还有一种隐式链接的写法，但是我觉得那种写法不直观，所以就不写了，经常用的一般就上面 2 种，如果你想了解隐式链接，可以看我文章最后放出的参考地址.</p>
+<h2 id="6-图片"><a href="#6-图片" class="headerlink" title="6.图片"></a>6.图片</h2><hr>
+<p>图片也有 2 种方式：行内式和参数式：<br>用法跟链接的基本一样，唯一的不同就是，图片前面要写一个 _！_</p>
+<h3 id="e-g"><a href="#e-g" class="headerlink" title="e.g."></a>e.g.</h3><p><img src="/images/md常用语法/45.png" alt="45"><br><img src="/images/s.ico" alt="e.g.1"></p>
+<p>这里是参数式图片：<img src="/images/s.ico" alt="e.g.2"></p>
+<h2 id="7-代码区块"><a href="#7-代码区块" class="headerlink" title="7.代码区块"></a>7.代码区块</h2><hr>
+<p>要在 Markdown 中建立代码区块很简单，只要简单地缩进 4 个空格或是 1 个制表符就可以。<br>例如输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">这是一个普通段落：</span><br><span class="line"></span><br><span class="line">    这是一个代码区块。</span><br></pre></td></tr></table></figure></p>
+<p>Markdown 会转换成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;这是一个普通段落：&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;pre&gt;&lt;code&gt;这是一个代码区块。</span><br><span class="line">&lt;/code&gt;&lt;/pre&gt;</span><br></pre></td></tr></table></figure></p>
+<p>也可以使用反引号标记代码。<br>如果代码量比较少，只有单行的话，可以用单反引号包起来，如下：<br><img src="/images/md常用语法/33.png" alt="33"> <img src="/images/md常用语法/34.png" alt="34"><br>要是多行这个就不行了，多行可以用三对反引号：<br><img src="/images/md常用语法/35.png" alt="35"> <img src="/images/md常用语法/36.png" alt="36"><br>如果要写注释，可以在反引号后面写。</p>
+<h2 id="8-表格"><a href="#8-表格" class="headerlink" title="8.表格"></a>8.表格</h2><hr>
+<figure class="half"><br>    <img src="/images/md常用语法/37.png" width="280"> <img src="/images/md常用语法/38.png" width="280"><br></figure>
+
+<p>从这 3 种不同写法看，表格的格式不一定要对的非常起，但是为了好看，对齐肯定是最好的，第一种的分割线后面的冒号表示对齐方式，写在左边表示左对齐，右边为右对齐，两边都写表示居中，还是有点意思的，不过现实出来的结果是，表格外面并没有线框包起来，不知道别人的怎么弄的。</p>
+<h2 id="9-强调"><a href="#9-强调" class="headerlink" title="9.强调"></a>9.强调</h2><hr>
+<p>一个星号或者是一个下划线包起来，会转换为 &lt;em> 倾斜，如果是 2 个，会转换为 &lt; strong &gt; 加粗。</p>
+<figure class="half"><br>    <img src="/images/md常用语法/39.png" width="280"> <img src="/images/md常用语法/40.png" width="280"><br></figure>
+
+<h2 id="10-转义"><a href="#10-转义" class="headerlink" title="10.转义"></a>10.转义</h2><hr>
+<p>使用反斜杠 “<em>\</em>“ 转义特殊字符。<br><img src="/images/md常用语法/41.png" alt="35"> <img src="/images/md常用语法/42.png" alt="36"></p>
+<h2 id="11-删除线"><a href="#11-删除线" class="headerlink" title="11.删除线"></a>11.删除线</h2><hr>
+<figure class="half"><br>    <img src="/images/md常用语法/43.png" width="280"> <img src="/images/md常用语法/44.png" width="280"><br></figure>
+
+<p>常用的基本上就这些了，如果还有一些常用的，会在后续更新。</p>
+<h2 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h2><hr>
+<p><a href="http://www.markdown.cn/" target="_blank" rel="noopener">MarkDown - 语法说明</a><br><a href="https://www.cnblogs.com/liugang-vip/p/6337580.html" target="_blank" rel="noopener">.md 即 markdown 文件的基本常用编写语法（图文并茂）</a><br><a href="http://www.appinn.com/markdown/" target="_blank" rel="noopener">Markdown 语法说明 (简体中文版) </a><br><a href="http://sspai.com/25137" target="_blank" rel="noopener">认识与入门 Markdown</a></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/05/02/md常用语法/">
+    <time datetime="2019-05-02T09:02:52.000Z" class="entry-date">
+        2019-05-02
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-git常用命令" class="post-git常用命令 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/05/02/git常用命令/">常用 Git 命令清单</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/git常用命令/" data-id="cjv7fiqpw0004u4fmn194qiwi" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="零、前言"><a href="#零、前言" class="headerlink" title="零、前言"></a>零、前言</h2><p>几个专用名词的译名如下：</p>
+<ul>
+<li>Workspace：工作区</li>
+<li>Index / Stage：暂存区</li>
+<li>Repository：仓库区（或本地仓库）</li>
+<li>Remote：远程仓库</li>
+</ul>
+<h2 id="一、新建代码库"><a href="#一、新建代码库" class="headerlink" title="一、新建代码库"></a>一、新建代码库</h2><p> 在当前目录新建一个Git代码库<br>$ git init</p>
+<p> 新建一个目录，将其初始化为Git代码库<br>$ git init [project-name]</p>
+<p> 下载一个项目和它的整个代码历史<br>$ git clone [url]</p>
+<h2 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h2><p>Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。</p>
+<p> 显示当前的Git配置<br>$ git config –list</p>
+<p> 编辑Git配置文件<br>$ git config -e [–global]</p>
+<p> 设置提交代码时的用户信息<br>$ git config [–global] user.name “[name]”<br>$ git config [–global] user.email “[email address]”</p>
+<h2 id="三、增加-删除文件"><a href="#三、增加-删除文件" class="headerlink" title="三、增加 / 删除文件"></a>三、增加 / 删除文件</h2><p> 添加指定文件到暂存区</p>
+<p>$ git add [file1] [file2] …</p>
+<p> 添加指定目录到暂存区，包括子目录<br>$ git add [dir]</p>
+<p> 添加当前目录的所有文件到暂存区<br>$ git add .</p>
+<p> 添加每个变化前，都会要求确认<br> 对于同一个文件的多处变化，可以实现分次提交<br>$ git add -p</p>
+<p> 删除工作区文件，并且将这次删除放入暂存区<br>$ git rm [file1] [file2] …</p>
+<p> 停止追踪指定文件，但该文件会保留在工作区<br>$ git rm –cached [file]</p>
+<p> 改名文件，并且将这个改名放入暂存区<br>$ git mv [file-original] [file-renamed]<br>四、代码提交</p>
+<p> 提交暂存区到仓库区<br>$ git commit -m [message]</p>
+<p> 提交暂存区的指定文件到仓库区<br>$ git commit [file1] [file2] … -m [message]</p>
+<p> 提交工作区自上次commit之后的变化，直接到仓库区<br>$ git commit -a</p>
+<p> 提交时显示所有diff信息<br>$ git commit -v</p>
+<p> 使用一次新的commit，替代上一次提交<br> 如果代码没有任何新变化，则用来改写上一次commit的提交信息<br>$ git commit –amend -m [message]</p>
+<p> 重做上一次commit，并包括指定文件的新变化<br>$ git commit –amend [file1] [file2] …</p>
+<h2 id="五、分支"><a href="#五、分支" class="headerlink" title="五、分支"></a>五、分支</h2><p> 列出所有本地分支<br>$ git branch</p>
+<p> 列出所有远程分支<br>$ git branch -r</p>
+<p> 列出所有本地分支和远程分支<br>$ git branch -a</p>
+<p> 新建一个分支，但依然停留在当前分支<br>$ git branch [branch-name]</p>
+<p> 新建一个分支，并切换到该分支<br>$ git checkout -b [branch]</p>
+<p> 新建一个分支，指向指定commit<br>$ git branch [branch] [commit]</p>
+<p> 新建一个分支，与指定的远程分支建立追踪关系<br>$ git branch –track [branch] [remote-branch]</p>
+<p> 切换到指定分支，并更新工作区<br>$ git checkout [branch-name]</p>
+<p> 切换到上一个分支<br>$ git checkout -</p>
+<p> 建立追踪关系，在现有分支与指定的远程分支之间<br>$ git branch –set-upstream [branch] [remote-branch]</p>
+<p> 合并指定分支到当前分支<br>$ git merge [branch]</p>
+<p> 选择一个commit，合并进当前分支<br>$ git cherry-pick [commit]</p>
+<p> 删除分支<br>$ git branch -d [branch-name]</p>
+<p> 删除远程分支<br>$ git push origin –delete [branch-name]<br>$ git branch -dr [remote/branch]</p>
+<h2 id="六、标签"><a href="#六、标签" class="headerlink" title="六、标签"></a>六、标签</h2><p> 列出所有tag<br>$ git tag</p>
+<p> 新建一个tag在当前commit<br>$ git tag [tag]</p>
+<p> 新建一个tag在指定commit<br>$ git tag [tag] [commit]</p>
+<p> 删除本地tag<br>$ git tag -d [tag]</p>
+<p> 删除远程tag<br>$ git push origin :refs/tags/[tagName]</p>
+<p> 查看tag信息<br>$ git show [tag]</p>
+<p> 提交指定tag<br>$ git push [remote] [tag]</p>
+<p> 提交所有tag<br>$ git push [remote] –tags</p>
+<p> 新建一个分支，指向某个tag<br>$ git checkout -b [branch] [tag]</p>
+<h2 id="七、查看信息"><a href="#七、查看信息" class="headerlink" title="七、查看信息"></a>七、查看信息</h2><p> 显示有变更的文件<br>$ git status</p>
+<p> 显示当前分支的版本历史<br>$ git log</p>
+<p> 显示commit历史，以及每次commit发生变更的文件<br>$ git log –stat</p>
+<p> 搜索提交历史，根据关键词<br>$ git log -S [keyword]</p>
+<p> 显示某个commit之后的所有变动，每个commit占据一行<br>$ git log [tag] HEAD –pretty=format:%s</p>
+<p> 显示某个commit之后的所有变动，其”提交说明”必须符合搜索条件<br>$ git log [tag] HEAD –grep feature</p>
+<p> 显示某个文件的版本历史，包括文件改名<br>$ git log –follow [file]<br>$ git whatchanged [file]</p>
+<p> 显示指定文件相关的每一次diff<br>$ git log -p [file]</p>
+<p> 显示过去5次提交<br>$ git log -5 –pretty –oneline</p>
+<p> 显示所有提交过的用户，按提交次数排序<br>$ git shortlog -sn</p>
+<p> 显示指定文件是什么人在什么时间修改过<br>$ git blame [file]</p>
+<p> 显示暂存区和工作区的差异<br>$ git diff</p>
+<p> 显示暂存区和上一个commit的差异<br>$ git diff –cached [file]</p>
+<p> 显示工作区与当前分支最新commit之间的差异<br>$ git diff HEAD</p>
+<p> 显示两次提交之间的差异<br>$ git diff [first-branch]…[second-branch]</p>
+<p> 显示今天你写了多少行代码<br>$ git diff –shortstat “@{0 day ago}”</p>
+<p> 显示某次提交的元数据和内容变化<br>$ git show [commit]</p>
+<p> 显示某次提交发生变化的文件<br>$ git show –name-only [commit]</p>
+<p> 显示某次提交时，某个文件的内容<br>$ git show [commit]:[filename]</p>
+<p> 显示当前分支的最近几次提交<br>$ git reflog</p>
+<h2 id="八、远程同步"><a href="#八、远程同步" class="headerlink" title="八、远程同步"></a>八、远程同步</h2><p> 下载远程仓库的所有变动<br>$ git fetch [remote]</p>
+<p> 显示所有远程仓库<br>$ git remote -v</p>
+<p> 显示某个远程仓库的信息<br>$ git remote show [remote]</p>
+<p> 增加一个新的远程仓库，并命名<br>$ git remote add [shortname] [url]</p>
+<p> 取回远程仓库的变化，并与本地分支合并<br>$ git pull [remote] [branch]</p>
+<p> 上传本地指定分支到远程仓库<br>$ git push [remote] [branch]</p>
+<p> 强行推送当前分支到远程仓库，即使有冲突<br>$ git push [remote] –force</p>
+<p> 推送所有分支到远程仓库<br>$ git push [remote] –all</p>
+<h2 id="九、撤销"><a href="#九、撤销" class="headerlink" title="九、撤销"></a>九、撤销</h2><p> 恢复暂存区的指定文件到工作区<br>$ git checkout [file]</p>
+<p> 恢复某个commit的指定文件到暂存区和工作区<br>$ git checkout [commit] [file]</p>
+<p> 恢复暂存区的所有文件到工作区<br>$ git checkout .</p>
+<p> 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变<br>$ git reset [file]</p>
+<p> 重置暂存区与工作区，与上一次commit保持一致<br>$ git reset –hard</p>
+<p> 重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变<br>$ git reset [commit]</p>
+<p> 重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致<br>$ git reset –hard [commit]</p>
+<p> 重置当前HEAD为指定commit，但保持暂存区和工作区不变<br>$ git reset –keep [commit]</p>
+<p> 新建一个commit，用来撤销指定commit<br> 后者的所有变化都将被前者抵消，并且应用到当前分支<br>$ git revert [commit]</p>
+<p> 暂时将未提交的变化移除，稍后再移入<br>$ git stash<br>$ git stash pop</p>
+<h2 id="十、其他"><a href="#十、其他" class="headerlink" title="十、其他"></a>十、其他</h2><p> 生成一个可供发布的压缩包<br>$ git archive</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/05/02/git常用命令/">
+    <time datetime="2019-05-02T08:39:33.000Z" class="entry-date">
+        2019-05-02
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-github远程仓库" class="post-github远程仓库 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/05/02/github远程仓库/">git 连接 github 远程仓库</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/github远程仓库/" data-id="cjv7fiqpt0002u4fmvlbzgcma" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h2><hr>
+<h3 id="github-设置添加-SSH"><a href="#github-设置添加-SSH" class="headerlink" title="github 设置添加 SSH"></a>github 设置添加 SSH</h3><p>很多朋友在用 github 管理项目的时候，都是直接使用 https url 克隆到本地，当然也有些人使用 SSH url 克隆到本地。然而，为什么绝大多数人会使用 https url 克隆呢？<br>这是因为，使用 https url 克隆对初学者来说会比较方便，复制 https url 然后到 git Bash 里面直接用 clone 命令克隆到本地就好了。而使用 SSH url 克隆却需要在克隆之前先配置和添加好 SSH key 。<br>因此，如果你想要使用 SSH url 克隆的话，你必须是这个项目的拥有者。否则你是无法添加 SSH key 的。</p>
+<h3 id="https-和-SSH-的区别："><a href="#https-和-SSH-的区别：" class="headerlink" title="https 和 SSH 的区别："></a>https 和 SSH 的区别：</h3><ol>
+<li>前者可以随意克隆 github 上的项目，而不管是谁的；而后者则是你必须是你要克隆的项目的拥有者或管理员，且需要先添加 SSH key ，否则无法克隆。</li>
+<li>https url 在 push 的时候是需要验证用户名和密码的；而 SSH 在 push 的时候，是不需要输入用户名的，如果配置 SSH key 的时候设置了密码，则需要输入密码的，否则直接是不需要输入密码的。</li>
+</ol>
+<h2 id="1-在-github-上添加-SSH-key-的步骤："><a href="#1-在-github-上添加-SSH-key-的步骤：" class="headerlink" title="1.在 github 上添加 SSH key 的步骤："></a>1.在 github 上添加 SSH key 的步骤：</h2><hr>
+<h3 id="1-首先需要检查你电脑是否已经有-SSH-key"><a href="#1-首先需要检查你电脑是否已经有-SSH-key" class="headerlink" title="1.首先需要检查你电脑是否已经有 SSH key"></a>1.首先需要检查你电脑是否已经有 SSH key</h3><p>运行 git Bash 客户端，输入如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/.ssh</span><br><span class="line">$ ls</span><br></pre></td></tr></table></figure></p>
+<p>这两个命令就是检查是否已经存在 id_rsa.pub 或 id_dsa.pub 文件，如果文件已经存在，那么你可以跳过步骤 2，直接进入步骤 3。</p>
+<h3 id="2-创建一个-SSH-key"><a href="#2-创建一个-SSH-key" class="headerlink" title="2.创建一个 SSH key"></a>2.创建一个 SSH key</h3><p><code>$ ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</code><br>代码参数含义：</p>
+<p>-t 指定密钥类型，默认是 rsa ，可以省略。<br>-C 设置注释文字，比如邮箱。<br>-f 指定密钥文件存储文件名。</p>
+<p>以上代码省略了 -f 参数，因此，运行上面那条命令后会让你输入一个文件名，用于保存刚才生成的 SSH key 代码，如：</p>
+<blockquote>
+<p>Generating public/private rsa key pair.<br>Enter file in which to save the key (/c/Users/you/.ssh/id_rsa): [Press enter]</p>
+</blockquote>
+<p>当然，你也可以按enter不输入文件名，使用默认文件名（推荐），那么就会生成 id_rsa 和 id_rsa.pub 两个秘钥文件。</p>
+<p>接着又会提示你输入两次密码（该密码是你 <strong>push 文件的时候要输入的密码</strong>，而不是 <strong>github 管理者的密码</strong>），</p>
+<p>当然，你也可以不输入密码，直接按回车。那么 push 的时候就不需要输入密码，直接提交到 github 上了，如：</p>
+<blockquote>
+<p>Enter passphrase (empty for no passphrase):<br>Enter same passphrase again:</p>
+</blockquote>
+<p>接下来，就会显示如下代码提示，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Your identification has been saved in /c/Users/you/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /c/Users/you/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com</span><br></pre></td></tr></table></figure></p>
+<p>当你看到上面这段代码的时候，那就说明，你的 SSH key 已经创建成功，你只需要添加到 github 的 SSH key 上就可以了。</p>
+<h3 id="3-添加你的-SSH-key-到-github-上面去"><a href="#3-添加你的-SSH-key-到-github-上面去" class="headerlink" title="3.添加你的 SSH key 到 github 上面去"></a>3.添加你的 SSH key 到 github 上面去</h3><ol>
+<li>首先你需要拷贝 id_rsa.pub 文件的内容，你可以用编辑器打开文件复制，也可以用 git 命令复制该文件的内容，如：</li>
+</ol>
+<p><code>$ clip &lt; ~/.ssh/id_rsa.pub</code></p>
+<ol start="2">
+<li><p>登录你的 github 账号，从又上角的设置（ Account Settings ）进入，然后点击菜单栏的 SSH key 进入页面添加 SSH key。</p>
+</li>
+<li><p>点击 Add SSH key 按钮添加一个 SSH key 。把你复制的 SSH key 代码粘贴到 key 所对应的输入框中，记得 SSH key 代码的前后不要留有空格或者回车。当然，上面的 Title 所对应的输入框你也可以输入一个该 SSH key 显示在 github 上的一个别名。默认的会使用你的邮件名称。</p>
+</li>
+</ol>
+<h3 id="4-测试一下该-SSH-key"><a href="#4-测试一下该-SSH-key" class="headerlink" title="4.测试一下该 SSH key"></a>4.测试一下该 SSH key</h3><p>在 git Bash 中输入以下代码</p>
+<p><code>$ ssh -T git@github.com</code></p>
+<p>当你输入以上代码时，会有一段警告代码，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host &apos;github.com (207.97.227.239)&apos; can&apos;t be established.</span><br><span class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure></p>
+<p>这是正常的，你输入 yes 回车既可。如果你创建 SSH key 的时候设置了密码，接下来就会提示你输入密码，如：</p>
+<p><code>Enter passphrase for key &#39;/c/Users/Administrator/.ssh/id_rsa&#39;:</code></p>
+<p>当然如果你密码输错了，会再要求你输入，知道对了为止。</p>
+<p><em>注意：输入密码时如果输错一个字就会不正确，使用删除键是无法更正的。</em></p>
+<p>密码正确后你会看到下面这段话，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hi username! You&apos;ve successfully authenticated, but GitHub does not</span><br><span class="line">provide shell access.</span><br></pre></td></tr></table></figure></p>
+<p>如果用户名是正确的，你已经成功设置 SSH 密钥。如果你看到 “access denied” ，者表示拒绝访问，那么你就需要使用 https 去访问，而不是 SSH 。</p>
+<h2 id="2-远程仓库操作"><a href="#2-远程仓库操作" class="headerlink" title="2.远程仓库操作"></a>2.远程仓库操作</h2><hr>
+<h3 id="1-本地仓库推送到远程仓库"><a href="#1-本地仓库推送到远程仓库" class="headerlink" title="1.本地仓库推送到远程仓库"></a>1.本地仓库推送到远程仓库</h3><p>现在的情景是：我们已经在本地创建了一个 Git 仓库后，又想在 github 创建一个 Git 仓库，并且希望这两个仓库进行远程同步，这样 github 的仓库可以作为备份，又可以其他人通过该仓库来协作。<br><img src="/images/github远程仓库/1.png" alt="1"><br>首先，登录 github 上，然后在右上角找到 “create a new repo” 创建一个新的仓库。<br>在 Repository name 填入 testgit，其他保持默认设置，点击 “Create repository” 按钮，就成功地创建了一个新的 Git 仓库：<br><img src="/images/github远程仓库/2.png" alt="2"><br>目前，在 GitHub 上的这个 testgit 仓库还是空的，GitHub 告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到 GitHub 仓库。<br>现在，我们根据 GitHub 的提示，在本地的 testgit 仓库下运行命令：<br><code>$ git remote add origin https://github.com/username/testgit.git</code><br>把本地库的内容推送到远程，使用命令:<br><code>$ git push -u origin master</code><br>如果本地仓库没有过 commit,那么此时就会报错:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br><span class="line">error: src refspec master does not match any.</span><br><span class="line">error: failed to push some refs to &apos;git@github.com:username/testgit.git&apos;</span><br></pre></td></tr></table></figure></p>
+<p>原因：<br>本地仓库为空<br>解决方法：</p>
+<ol>
+<li>使用命令 <em>git add</em> 添加文件。</li>
+<li>使用命令 <em>git commit</em> 提交修改。</li>
+</ol>
+<p><em>git push</em> 命令实际上是把当前分支 master 推送到远程。由于远程库是空的，我们第一次推送 master 分支时，加上了 –u 参数，Git 不但会把本地的 master 分支内容推送的远程新的 master 分支，还会把本地的 master 分支和远程的 master 分支关联起来，在以后的推送或者拉取时就可以简化命令。<br>推送成功后，可以立刻在 github 页面中看到远程库的内容已经和本地一模一样了。<br>从现在起，只要本地作了提交，就可以通过如下命令：<br><code>$ git push origin master</code><br>把本地 master 分支的最新修改推送到 github 上了，现在你就拥有了真正的分布式版本库了。</p>
+<h3 id="2-远程仓库克隆到本地仓库"><a href="#2-远程仓库克隆到本地仓库" class="headerlink" title="2.远程仓库克隆到本地仓库"></a>2.远程仓库克隆到本地仓库</h3><p>上面我们了解了先有本地库，后有远程库时候，如何关联远程库。<br>现在我们想，假如远程库有新的内容了，我想克隆到本地来 如何克隆呢？<br>首先，登录 github，创建一个新的仓库，名字叫 testgit2. 如下：<br><img src="/images/github远程仓库/3.png" alt="3"><br>现在，远程库已经准备好了，下一步是使用命令 <em>git clone</em> 克隆一个本地库了。如下所示：<br><code>$ git clone git@github.com:username/testgit2.git</code><br>接着在我本地目录下 生成 testgit2 目录了，如下所示：<br><img src="/images/github远程仓库/4.png" alt="4"><br>接下来在本地上对 testgit2 的修改就可以通过命令 <em>git push</em> 推送到远程仓库。</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/05/02/github远程仓库/">
+    <time datetime="2019-05-02T05:16:58.000Z" class="entry-date">
+        2019-05-02
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-Visual-Studio-Code-配置-C-C-环境" class="post-Visual-Studio-Code-配置-C-C-环境 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -77,7 +457,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/Visual-Studio-Code-配置-C-C-环境/" data-id="cjv5a0p1u0003c4fm8rya9lzz" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/Visual-Studio-Code-配置-C-C-环境/" data-id="cjv7fiqqh000gu4fm30kqr07e" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -148,7 +528,7 @@
     
     
   <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/">vscode</a></li></ul>
 
     </footer>
 </article>
@@ -174,7 +554,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/this-is-a-new-article/" data-id="cjv5a0p1c0000c4fms3w90qgl" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/this-is-a-new-article/" data-id="cjv7fiqq60008u4fmp6pfyfre" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -216,7 +596,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/firts/" data-id="cjv5a0p1j0002c4fm5vxw669t" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/firts/" data-id="cjv7fiqpl0000u4fmbj8506a5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -259,7 +639,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/hello-world/" data-id="cjv5a0p1h0001c4fm2zgnphj0" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/hello-world/" data-id="cjv7fiqq00006u4fma5zna99l" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -318,19 +698,23 @@
       <ul>
         
           <li>
+            <a href="/2019/05/03/md图片处理/">Markdown 图片的简单处理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/02/md常用语法/">.md 即 markdown 文件的基本常用编写语法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/02/git常用命令/">常用 Git 命令清单</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/02/github远程仓库/">git 连接 github 远程仓库</a>
+          </li>
+        
+          <li>
             <a href="/2019/05/01/Visual-Studio-Code-配置-C-C-环境/">Visual Studio Code 配置 C/C++ 环境</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/01/this-is-a-new-article/">this is a new article</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/01/firts/">first</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/01/hello-world/">Hello World</a>
           </li>
         
       </ul>
@@ -342,7 +726,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -351,7 +735,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/c/" style="font-size: 10px;">c++</a>
+      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/markdown/" style="font-size: 20px;">markdown</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
     </div>
   </aside>
 
