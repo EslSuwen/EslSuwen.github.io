@@ -65,6 +65,136 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-sakila-database" class="post-sakila-database post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/06/02/sakila-database/">Sakila MySQL 样例数据库解析</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/02/sakila-database/" data-id="cjweqdt230009gsfm4zgsrv7k" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h1><p>Sakila 可以作为数据库设计的参考，也可作为实验数据。本例是用作数据分析学习的实验数据。</p>
+<blockquote>
+<p>The Sakila sample database was developed by Mike Hillyer, a former member of the MySQL AB documentation team, and is intended to provide a standard schema that can be used for examples in books, tutorials, articles, samples, and so forth. Sakila sample database also serves to highlight the latest features of MySQL such as Views, Stored Procedures, and Triggers.</p>
+</blockquote>
+<h1 id="1-实验环境"><a href="#1-实验环境" class="headerlink" title="1.实验环境"></a>1.实验环境</h1><h3 id="方法一：安装-MySQL-时选择-FULL-完全安装"><a href="#方法一：安装-MySQL-时选择-FULL-完全安装" class="headerlink" title="方法一：安装 MySQL 时选择 FULL 完全安装"></a>方法一：安装 MySQL 时选择 FULL 完全安装</h3><p>安装 MySQL 时选择 FULL 完全安装，默认安装了 Sakila sample database<br><img src="/2019/06/02/sakila-database/1.png" alt="1"></p>
+<h3 id="方法二：下载后导入"><a href="#方法二：下载后导入" class="headerlink" title="方法二：下载后导入"></a>方法二：下载后导入</h3><p>下载地址：</p>
+<ul>
+<li><a href="http://downloads.mysql.com/docs/sakila-db.zip" target="_blank" rel="noopener">ZIP 格式</a></li>
+<li><a href="http://downloads.mysql.com/docs/sakila-db.tar.gz" target="_blank" rel="noopener">tar 格式</a></li>
+<li><a href="http://dev.mysql.com/doc/sakila/en/index.html" target="_blank" rel="noopener">官方文档</a></li>
+</ul>
+<p>解压后得到三个文件：</p>
+<ol>
+<li>sakila-schema.sql 文件包含创建 Sakila 数据库的结构：表、视图、存储过程和触发器</li>
+<li>sakila-data.sql 文件包含：使用 INSERT 语句填充数据及在初始数据加载后，必须创建的触发器的定义</li>
+<li>sakila.mwb 文件是一个 MySQL Workbench 数据模型，可以在 MySQL 的工作台打开查看数据库结构。</li>
+</ol>
+<blockquote>
+<p>导入参考： <a href="http://dev.mysql.com/doc/sakila/en/sakila-installation.html" target="_blank" rel="noopener">http://dev.mysql.com/doc/sakila/en/sakila-installation.html</a></p>
+</blockquote>
+<pre><code>shell&gt; mysql -u root -p
+mysql&gt; SOURCE C:/temp/sakila-db/sakila-schema.sql;
+mysql&gt; SOURCE C:/temp/sakila-db/sakila-data.sql;
+</code></pre><h1 id="2-数据结构"><a href="#2-数据结构" class="headerlink" title="2.数据结构"></a>2.数据结构</h1><p>Sakila 样例数据库包括 16 张表格，7 个视图，3 个 Stored Procedures，3 个 Functions，6 个 Triggers。英文描述点开相应连接即可查看。<br>总览：<br><img src="/2019/06/02/sakila-database/2.png" alt="2"><br>关系图:<br><img src="/2019/06/02/sakila-database/3.png" alt="3"></p>
+<h1 id="3-视图"><a href="#3-视图" class="headerlink" title="3.视图"></a>3.视图</h1><p>actor_info 视图提供了所有演员的列表及所演的电影，电影按 category 分组.<br>actor → film_actor → film →  film_category → category</p>
+<ol>
+<li>actor_id: 代理主键用于唯一标识表中的每个演员</li>
+<li>first_name: 演员的名字</li>
+<li>last_name: 演员的姓氏</li>
+<li>last_update: 该行已创建或最近更新的时间</li>
+</ol>
+<p><img src="/2019/06/02/sakila-database/4.png" alt="4"></p>
+<p>客户列表，firstname和lastname连接成fullname，将 address, city, country 集成在一个视图里<br>customer → address → city → country</p>
+<ol>
+<li>stomer_id: 代理主键用于唯一标识表中的每个客户</li>
+<li>store_id: 一个外键，确定客户所属的 store。</li>
+<li>first_name: 客户的名字</li>
+<li>last_name: 客户的姓氏</li>
+<li>email: 客户的电子邮件地址</li>
+<li>address_id: 使用在地址 表的外键来确定客户的地址</li>
+<li>active: 表示客户是否是活跃的客户</li>
+<li>create_date: 顾客被添加到系统中的日期。使用 INSERT 触发器自动设置。</li>
+<li>last_update: 该行已创建或最近更新的时间</li>
+</ol>
+<p><img src="/2019/06/02/sakila-database/5.png" alt="5"></p>
+<p>每个电影种类的销售额<br>payment → rental → inventory → film → film_category → category</p>
+<p><img src="/2019/06/02/sakila-database/6.png" alt="6"></p>
+<p>每个商店的 manager 及销售额。<br>payment → rental → inventory → store → staff</p>
+<p>store 表列出了系统中的所有商店 。<br>store 使用外键来标识工作人员和地址；在员工、客户、库存表被作为外键使用。</p>
+<ol>
+<li>store_id: 代理主键唯一标识的商店</li>
+<li>manager_staff_id: 使用外键来标识这家商店的经理</li>
+<li>address_id: 使用外键来确定这家店的地址</li>
+<li>last_update: 该行已创建或最近更新的时间</li>
+</ol>
+<p><img src="/2019/06/02/sakila-database/7.png" alt="7"></p>
+<p>工作人员的列表</p>
+<p>工作人员表列出了所有的工作人员，包括电子邮件地址，登录信息和图片信息 。<br>工作人员表是指使用外键来标识存储和地址表；在出租、支付和商店表中作为外键。</p>
+<ol>
+<li>staff_id: 代理主键唯一标识的工作人员</li>
+<li>first_name: 工作人员的名字</li>
+<li>last_name: 工作人员的姓氏</li>
+<li>address_id: 工作人员的地址在地址表的外键</li>
+<li>picture: 工作人员的照片，使用了 BLOB 属性</li>
+<li>email: 工作人员的电子邮件地址</li>
+<li>store_id: 工作人员所在的商店，用外键标识</li>
+<li>active: 是否是活跃的工作人员。</li>
+<li>username: 用户名，由工作人员用来访问租赁系统</li>
+<li>password: 工作人员访问租赁系统所使用的密码。使用了 SHA1 函数</li>
+<li>last_update: 该行已创建或最近更新的时间</li>
+<li>active: 是否有效，删除时设置为 False</li>
+</ol>
+<p><img src="/2019/06/02/sakila-database/8.png" alt="8"></p>
+<h1 id="4-数据分析"><a href="#4-数据分析" class="headerlink" title="4.数据分析"></a>4.数据分析</h1><p><em>最具有购买潜力的顾客</em>：</p>
+<p>从600位顾客中去发现和找出最具有购买潜力的顾客，找出他们的邮箱地址和联系方法，并给他们发送邮件进行感谢，以保持该部分用户的持续购买欲望，增加用户的满意度，以此来保持商品的销售量。</p>
+<h3 id="0-数据获取"><a href="#0-数据获取" class="headerlink" title="0.数据获取"></a>0.数据获取</h3><p>根据customer、payment两个表进行数据筛选，获得顾客编号：customer.customer_id 顾客编号；计算总消费金额;最后根据顾客消费总金额降序排列。<br><img src="/2019/06/02/sakila-database/9.png" alt="9"><br>具体代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">  customer1.customer_id 顾客编号,</span><br><span class="line">	CONCAT( customer1.`first_name`, CONCAT( &quot; &quot;, customer1.`last_name` ) ) AS &apos;顾客名&apos;,</span><br><span class="line">	FORMAT(sum(payment.amount),2) AS &apos;消费金额&apos;</span><br><span class="line">FROM</span><br><span class="line">	customer1,</span><br><span class="line">	payment</span><br><span class="line">WHERE</span><br><span class="line">	customer1.customer_id = payment.customer_id</span><br><span class="line">GROUP BY</span><br><span class="line">	CONCAT( customer1.`first_name`, CONCAT( &quot; &quot;, customer1.`last_name` ) )</span><br><span class="line">ORDER BY</span><br><span class="line">	FORMAT(sum(payment.amount),2)+0 DESC</span><br></pre></td></tr></table></figure></p>
+<h3 id="1-连接顾客姓名"><a href="#1-连接顾客姓名" class="headerlink" title="1.连接顾客姓名"></a>1.连接顾客姓名</h3><p>通过筛选address_id连接customer和address两表得到顾客的编号、地址、电话，然后通过顾客的编号升序排列。<br><img src="/2019/06/02/sakila-database/10.png" alt="10"><br>具体代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">CONCAT( customer1.`first_name`, CONCAT( &quot; &quot;, customer1.`last_name` ) ) AS 顾客姓名,</span><br><span class="line">customer1.customer_id 顾客编号,</span><br><span class="line">address.address 顾客地址,</span><br><span class="line">address.phone 顾客电话,</span><br><span class="line">customer1.email</span><br><span class="line">FROM</span><br><span class="line">customer1 ,</span><br><span class="line">address</span><br><span class="line">WHERE</span><br><span class="line">	customer1.address_id=address.address_id</span><br><span class="line">GROUP BY</span><br><span class="line">	CONCAT( customer1.`first_name`, CONCAT( &quot; &quot;, customer1.`last_name` ) )</span><br><span class="line">ORDER BY</span><br><span class="line">  customer1.customer_id+0 ASC</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-结果分析"><a href="#2-结果分析" class="headerlink" title="2.结果分析"></a>2.结果分析</h3><p>通过表一得到散点图：</p>
+<p><img src="/2019/06/02/sakila-database/11.png" alt="11"></p>
+<p>根据数据分析我们可以看到顾客KARL SEAL的消费金额221.55是600位顾客中消费总金额最高的一位，他便是最有潜力的顾客，然后我们可以通过表二去得到他的联系信息。<br>通过散点图我们可以分析到大多数的顾客消费总金额分布在120元上下，所以我们以120元为界，将消费总金额在120元以上顾客列为有购买潜力的顾客，从表二寻找他们的联系方式，批量对他们发送邮件进行感谢。</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/06/02/sakila-database/">
+    <time datetime="2019-06-02T08:22:59.000Z" class="entry-date">
+        2019-06-02
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/DATABASE/">DATABASE</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-servlet转发" class="post-servlet转发 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -80,7 +210,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/24/servlet转发/" data-id="cjw1cwjzj000biwfmal8nrkpf" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/24/servlet转发/" data-id="cjweqdt2d000ggsfmw9pw3imm" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -158,7 +288,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/23/eclipse-servlet/" data-id="cjw1cwjzd0005iwfmabpjdlmt" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/23/eclipse-servlet/" data-id="cjweqdt1c0000gsfm1v4m4udo" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -247,7 +377,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/test-asset/" data-id="cjw1cwjzn000fiwfm2hhkol98" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/test-asset/" data-id="cjweqdt2b000egsfmgfdx2toe" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -289,7 +419,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/md图片处理/" data-id="cjw1cwjzi000aiwfm157fpb3u" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/md图片处理/" data-id="cjweqdt29000agsfm6r0tpt48" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -331,108 +461,6 @@
 
 
   
-    <article id="post-md常用语法" class="post-md常用语法 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2019/05/02/md常用语法/">.md 即 markdown 文件的基本常用编写语法</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/md常用语法/" data-id="cjw1cwk0h0019iwfm8a5nd7jn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h2><hr>
-<p>Markdown 是一种纯文本格式的标记语言。通过简单的标记语法，它可以使普通文本内容具有一定的格式。<br>现在的项目都使用了 git 仓库，再加上远程仓库 github 托管，那就难免要写一些 readme 等等的说明性文件，但是这样的文件一般都是.md 的文件，编写的语法自然跟其他格式的文件有所区别，至于为什么要用这种格式的文件，不要问我，我也不知道，但我们遵循最佳实践原则，跟着用就对了，本文也算是学习写 markdown 文件的一个笔记吧。</p>
-<h2 id="1-标题的几种写法"><a href="#1-标题的几种写法" class="headerlink" title="1.标题的几种写法"></a>1.标题的几种写法</h2><hr>
-<ol>
-<li>前面带 #号，后面带文字，分别表示 h1-h6, 上图可以看出，只到 h6，而且 h1 下面会有一条横线，注意，# 号后面有空格<br><img src="/2019/05/02/md常用语法/1.png" alt="1"><br><img src="/2019/05/02/md常用语法/2.png" alt="2"></li>
-<li>这种方式好像只能表示一级和二级标题，而且 = 和 - 的数量没有限制，只要大于一个就行<br><img src="/2019/05/02/md常用语法/3.png" alt="3">! <a href="/2019/05/02/md常用语法/4.png">4</a></li>
-<li>这里的标题支持 h1-h6，为了减少篇幅，我就偷个懒，只写前面二个，这个比较好理解，相当于标签闭合，注意，标题与 #号要有空格<br><img src="/2019/05/02/md常用语法/5.png" alt="5"> <img src="/2019/05/02/md常用语法/6.png" alt="6"><br>那既然 3 种都可以使用，可不可以混合使用呢？我试了一下，是可以的，但是为了让页面标签的统一性，不建议混合使用，推荐使用第一种，比较简洁，全面<br>为了搞清楚原理，我可以使用在线编写 markdown 的工具，发现实际上是把这些标签最后转化为 html 标签，如图：<br><img src="/2019/05/02/md常用语法/7.png" alt="7"><br>在线地址请看这里： <a href="http://tool.oschina.net/markdown/" target="_blank" rel="noopener">markdown 在线编辑</a></li>
-</ol>
-<h2 id="2-列表"><a href="#2-列表" class="headerlink" title="2.列表"></a>2.列表</h2><hr>
-<ol>
-<li><p>无序列表<br><figure class="half"><br> <img src="/2019/05/02/md常用语法/8.png" width="280"> <img src="/2019/05/02/md常用语法/9.png" width="280"><br></figure><br>可以看到，无序列表可以用 <em> ， + ， — 来创建，用在线编辑器看，实际上是转换成了 ul&gt;li ，所以使用哪个都可以，推荐使用 </em> 吧。</p>
-</li>
-<li><p>有序列表<br><img src="/2019/05/02/md常用语法/10.png" alt="10"> <img src="/2019/05/02/md常用语法/11.png" alt="11"><br>有序列表就相对简单一点，只有这一种方式，注意，数字后面的点只能是英文的点，特别注意，有序列表的序号是根据第一行列表的数字顺序来的，比如说：<br><img src="/2019/05/02/md常用语法/18.png" alt="18"> <img src="/2019/05/02/md常用语法/19.png" alt="19"><br><img src="/2019/05/02/md常用语法/20.png" alt="20"> <img src="/2019/05/02/md常用语法/21.png" alt="21"><br>第一组本来是 3 2 1 倒序，但是现实 3 4 5 ，后面一组 序号是乱的， 但是还是显示 3 4 5 ，这点必须注意了。</p>
-</li>
-</ol>
-<h2 id="3-区块引用"><a href="#3-区块引用" class="headerlink" title="3.区块引用"></a>3.区块引用</h2><hr>
-<p>比如说当你想对某个部分做的内容做一些说明或者引用某某的话等，可以用这个语句。<br><img src="/2019/05/02/md常用语法/12.png" alt="12"> <img src="/2019/05/02/md常用语法/13.png" alt="13"><br>无序列表下方的便是引用，可以有多种用途，看你的需求了，用法就是在语句前面加一个 &gt; ，注意是英文的那个右尖括号，注意空格，引用会终止于下一个换行符。<br>引用因为是一个区块，理论上是应该什么内容都可以放，比如说：标题，列表，引用等等，看看下图：<br><img src="/2019/05/02/md常用语法/14.png" alt="14"> <img src="/2019/05/02/md常用语法/15.png" alt="15"><br>将上面的代码稍微改一下，全部加上引用标签，就变成了一个大的引用，还有引用里面还有引用，那引用嵌套引用还没有别的写法呢？</p>
-<figure class="half"><br>    <img src="/2019/05/02/md常用语法/16.png" width="280"> <img src="/2019/05/02/md常用语法/17.png" width="280"><br></figure>
-
-<p>上图可以看出，想要在上一次引用中嵌套一层引用，只需多加一个 &gt;，理论上可以无限嵌套，我就不整那么多了，注意：多层嵌套的 &gt; 是不需要连续在一起的，只要在一行就可以了，中间允许有空格，但是为了好看，还是把排版搞好吧.</p>
-<h2 id="4-分割线"><a href="#4-分割线" class="headerlink" title="4.分割线"></a>4.分割线</h2><hr>
-<p>分割线可以由 * - _（星号，减号，底线）这 3 个符号的至少 3 个符号表示，注意至少要 3 个，且不需要连续，有空格也可以。</p>
-<figure class="half"><br>    <img src="/2019/05/02/md常用语法/22.png" width="280"> <img src="/2019/05/02/md常用语法/23.png" width="280"><br></figure>
-
-<p>为了代码的排版好看可以自己定规则吧，前面有用到星号，建议用减号。</p>
-<h2 id="5-链接"><a href="#5-链接" class="headerlink" title="5.链接"></a>5.链接</h2><hr>
-<p>支持 2 种链接方式：行内式和参数式，不管是哪一种，链接文字都是用 [方括号] 来标记。<br><img src="/2019/05/02/md常用语法/24.png" alt="24"> <img src="/2019/05/02/md常用语法/25.png" alt="25"><br>上图可知，行内式的链接格式是：链接的文字放在 [] 中，链接地址放在随后的（）中，举一反三，经常出现的列表链接就应该这样写：<br><img src="/2019/05/02/md常用语法/26.png" alt="26"> <img src="/2019/05/02/md常用语法/27.png" alt="27"><br>链接还可以带 title 属性，好像也只能带 title，带不了其他属性，注意，是链接地址后面空一格，然后用引号引起来<br><img src="/2019/05/02/md常用语法/28.png" alt="28"><br>这是行内式的写法，参数式的怎么写：<br><img src="/2019/05/02/md常用语法/29.png" alt="29"> <img src="/2019/05/02/md常用语法/30.png" alt="30"><br>这就好理解了，就是把链接当成参数，适合多出使用相同链接的场景，注意参数的对应关系，参数定义时，这 3 种写法都可以：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[foo]: http://example.com/ &quot;Optional Title Here&quot;</span><br><span class="line">[foo]: http://example.com/ &apos;Optional Title Here&apos;</span><br><span class="line">[foo]: http://example.com/ (Optional Title Here)</span><br><span class="line">#还支持这种写法，如果你不想混淆的话：</span><br><span class="line">[foo]: &lt;http://example.com/&gt; &quot;Optional Title Here&quot;</span><br></pre></td></tr></table></figure></p>
-<p>其实还有一种隐式链接的写法，但是我觉得那种写法不直观，所以就不写了，经常用的一般就上面 2 种，如果你想了解隐式链接，可以看我文章最后放出的参考地址.</p>
-<h2 id="6-图片"><a href="#6-图片" class="headerlink" title="6.图片"></a>6.图片</h2><hr>
-<p>图片也有 2 种方式：行内式和参数式：<br>用法跟链接的基本一样，唯一的不同就是，图片前面要写一个 _！_</p>
-<h3 id="e-g"><a href="#e-g" class="headerlink" title="e.g."></a>e.g.</h3><p><img src="/2019/05/02/md常用语法/45.png" alt="45"><br><img src="/2019/05/02/s.ico" alt="e.g.1"></p>
-<p>这里是参数式图片：<img src="/2019/05/02/s.ico" alt="e.g.2"></p>
-<h2 id="7-代码区块"><a href="#7-代码区块" class="headerlink" title="7.代码区块"></a>7.代码区块</h2><hr>
-<p>要在 Markdown 中建立代码区块很简单，只要简单地缩进 4 个空格或是 1 个制表符就可以。<br>例如输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">这是一个普通段落：</span><br><span class="line"></span><br><span class="line">    这是一个代码区块。</span><br></pre></td></tr></table></figure></p>
-<p>Markdown 会转换成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;这是一个普通段落：&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;pre&gt;&lt;code&gt;这是一个代码区块。</span><br><span class="line">&lt;/code&gt;&lt;/pre&gt;</span><br></pre></td></tr></table></figure></p>
-<p>也可以使用反引号标记代码。<br>如果代码量比较少，只有单行的话，可以用单反引号包起来，如下：<br><img src="/2019/05/02/md常用语法/33.png" alt="33"> <img src="/2019/05/02/md常用语法/34.png" alt="34"><br>要是多行这个就不行了，多行可以用三对反引号：<br><img src="/2019/05/02/md常用语法/35.png" alt="35"> <img src="/2019/05/02/md常用语法/36.png" alt="36"><br>如果要写注释，可以在反引号后面写。</p>
-<h2 id="8-表格"><a href="#8-表格" class="headerlink" title="8.表格"></a>8.表格</h2><hr>
-<figure class="half"><br>    <img src="/2019/05/02/md常用语法/37.png" width="280"> <img src="/2019/05/02/md常用语法/38.png" width="280"><br></figure>
-
-<p>从这 3 种不同写法看，表格的格式不一定要对的非常起，但是为了好看，对齐肯定是最好的，第一种的分割线后面的冒号表示对齐方式，写在左边表示左对齐，右边为右对齐，两边都写表示居中，还是有点意思的，不过现实出来的结果是，表格外面并没有线框包起来，不知道别人的怎么弄的。</p>
-<h2 id="9-强调"><a href="#9-强调" class="headerlink" title="9.强调"></a>9.强调</h2><hr>
-<p>一个星号或者是一个下划线包起来，会转换为 &lt;em> 倾斜，如果是 2 个，会转换为 &lt; strong &gt; 加粗。</p>
-<figure class="half"><br>    <img src="/2019/05/02/md常用语法/39.png" width="280"> <img src="/2019/05/02/md常用语法/40.png" width="280"><br></figure>
-
-<h2 id="10-转义"><a href="#10-转义" class="headerlink" title="10.转义"></a>10.转义</h2><hr>
-<p>使用反斜杠 “<em>\</em>“ 转义特殊字符。<br><img src="/2019/05/02/md常用语法/41.png" alt="35"> <img src="/2019/05/02/md常用语法/42.png" alt="36"></p>
-<h2 id="11-删除线"><a href="#11-删除线" class="headerlink" title="11.删除线"></a>11.删除线</h2><hr>
-<figure class="half"><br>    <img src="/2019/05/02/md常用语法/43.png" width="280"> <img src="/2019/05/02/md常用语法/44.png" width="280"><br></figure>
-
-<p>常用的基本上就这些了，如果还有一些常用的，会在后续更新。</p>
-<h2 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h2><hr>
-<p><a href="http://www.markdown.cn/" target="_blank" rel="noopener">MarkDown - 语法说明</a><br><a href="https://www.cnblogs.com/liugang-vip/p/6337580.html" target="_blank" rel="noopener">.md 即 markdown 文件的基本常用编写语法（图文并茂）</a><br><a href="http://www.appinn.com/markdown/" target="_blank" rel="noopener">Markdown 语法说明 (简体中文版) </a><br><a href="http://sspai.com/25137" target="_blank" rel="noopener">认识与入门 Markdown</a></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2019/05/02/md常用语法/">
-    <time datetime="2019-05-02T09:02:52.000Z" class="entry-date">
-        2019-05-02
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/CODE/">CODE</a>
-  </div>
-
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
   
     <nav id="pagination">
       <nav id="page-nav">
@@ -448,7 +476,8 @@
   <h3 class="widget-title">ABOUT ME</h3>
   <div class="widget-content">
     <p>E-MAIL:esllovesn@gmail.com</p>
-    <p>QQ：577014284</p>
+    <p>Github: <a href="https://github.com/EslSuwen" target="_blank">EslSuwen</a></p>
+    <p>QQ：<a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=577014284&website=www.oicqzone.com" target="_blank">577014284</a></p>
     <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=577014284&website=www.oicqzone.com" target="_blank"><img src="http://q.qlogo.cn/headimg_dl?bs=qq&dst_uin=577014284&src_uin=www.feifeiboke.com&fid=blog&spec=100" alt="hfl"></a>
     <p><strong>#全栈工程师</strong></p>
     <p>“精通 C++/Java/HTML/CSS/JS 等单词的拼写。”</p>
@@ -471,6 +500,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/02/sakila-database/">Sakila MySQL 样例数据库解析</a>
+          </li>
+        
+          <li>
             <a href="/2019/05/24/servlet转发/">Servlet 的三种跳转方式</a>
           </li>
         
@@ -486,10 +519,6 @@
             <a href="/2019/05/03/md图片处理/">Markdown 图片的简单处理</a>
           </li>
         
-          <li>
-            <a href="/2019/05/02/md常用语法/">.md 即 markdown 文件的基本常用编写语法</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -499,7 +528,7 @@
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CODE/">CODE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA企业开发框架/">JAVA企业开发框架</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TEST/">TEST</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CODE/">CODE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DATABASE/">DATABASE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA企业开发框架/">JAVA企业开发框架</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TEST/">TEST</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">2</span></li></ul>
     </div>
   </aside>
 
@@ -508,7 +537,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eclipse/">eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eclipse/">eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -517,7 +546,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/markdown/" style="font-size: 15px;">markdown</a> <a href="/tags/test/" style="font-size: 20px;">test</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
+      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/markdown/" style="font-size: 15px;">markdown</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/test/" style="font-size: 20px;">test</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
     </div>
   </aside>
 
@@ -526,7 +555,7 @@
   <aside class="widget">
     <h3 class="widget-title">Archives</h3>
     <div class="widget-content">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">11</span></li></ul>
     </div>
   </aside>
 
