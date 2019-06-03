@@ -65,6 +65,95 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-eclipse-servlet" class="post-eclipse-servlet post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/05/23/eclipse-servlet/">Eclipse JSP/Servlet 环境搭建</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/23/eclipse-servlet/" data-id="cjwftdsft0004jgfmq6c36z5l" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="0-软件下载"><a href="#0-软件下载" class="headerlink" title="0.软件下载"></a>0.软件下载</h2><hr>
+<p>本文假定你已安装了 JDK 环境，如未安装，可参阅 Java 开发环境配置 。</p>
+<p>我们可以使用 Eclipse 来搭建 JSP 开发环境，首先我们分别下载一下软件包：</p>
+<ul>
+<li><a href="http://www.eclipse.org/downloads/" target="_blank" rel="noopener">Eclipse J2EE</a></li>
+<li><a href="http://tomcat.apache.org/download-70.cgi" target="_blank" rel="noopener">Tomcat</a></li>
+</ul>
+<h2 id="1-Tomcat-下载安装"><a href="#1-Tomcat-下载安装" class="headerlink" title="1.Tomcat 下载安装"></a>1.Tomcat 下载安装</h2><hr>
+<p>你可以根据你的系统下载对应的包 (以下以 Window 系统为例)：<br><img src="/2019/05/23/eclipse-servlet/1.png" alt="1"><br>下载之后，将压缩包解压到 D 盘（你可以自己选择）：<br><img src="/2019/05/23/eclipse-servlet/2.png" alt="2"><br>注意目录名不能有中文和空格。目录介绍如下：</p>
+<ul>
+<li>bin：二进制执行文件。里面最常用的文件是 startup.bat，如果是 Linux 或 Mac 系统启动文件为 startup.sh。</li>
+<li>conf: 配置目录。里面最核心的文件是 server.xml。可以在里面改端口号等。默认端口号是 8080，也就是说，此端口号不能被其他应用程序占用。</li>
+<li>lib：库文件。tomcat 运行时需要的 jar 包所在的目录</li>
+<li>logs：日志</li>
+<li>temp：临时产生的文件，即缓存</li>
+<li>webapps：web 的应用程序。web 应用放置到此目录下浏览器可以直接访问</li>
+<li>work：编译以后的 class 文件。</li>
+</ul>
+<p>接着我们可以双击 startup.bat 启动 Tomcat，弹出如下界面：<br><img src="/2019/05/23/eclipse-servlet/3.png" alt="3"><br>这个时候，本地的服务器就已经搭建起来了。如果想关闭服务器，可以直接关闭上面的窗口，或者在里面输入 Ctrl+C 禁止服务。<br>接着我们在浏览器中输入 <a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a>，如果弹出如下界面，表示 tomcat 安装成功并且启动起来了：<br><img src="/2019/05/23/eclipse-servlet/4.jpg" alt="4"></p>
+<h2 id="2-将-Tomcat-和-Eclipse-相关联"><a href="#2-将-Tomcat-和-Eclipse-相关联" class="headerlink" title="2.将 Tomcat 和 Eclipse 相关联"></a>2.将 Tomcat 和 Eclipse 相关联</h2><hr>
+<p>选择菜单栏 Windows–&gt;preferences（Mac 系统为 Eclipse–&gt; 偏好设置），弹出如下界面：<br><img src="/2019/05/23/eclipse-servlet/5.png" alt="5"><br>上图中，点击 “add” 的添加按钮，弹出如下界面：<br><img src="/2019/05/23/eclipse-servlet/6.png" alt="6"><br>在选项中，我们选择对应的 Tomcat 版本，接着点击 “Next”，选择 Tomcat 的安装目录，并选择我们安装的 Java 环境：<br><img src="/2019/05/23/eclipse-servlet/7.png" alt="7"><br>点击 “Finish”，完成配置。</p>
+<h2 id="3-创建实例"><a href="#3-创建实例" class="headerlink" title="3.创建实例"></a>3.创建实例</h2><hr>
+<p>选择 “File–&gt;New–&gt;Dynamic Web Project”，创建 TomcatTest 项目：<br><img src="/2019/05/23/eclipse-servlet/8.png" alt="8"><br><img src="/2019/05/23/eclipse-servlet/9.png" alt="9"><br>点开上图中的红框部分，弹出如下界面：<br><img src="/2019/05/23/eclipse-servlet/10.jpg" alt="10"><br>注意如果已默认选择了我们之前安装的 Tomcat 和 JDK 则可跳过此步。<br>然后，单击 finish, 继续：<br><img src="/2019/05/23/eclipse-servlet/11.png" alt="11"><br><img src="/2019/05/23/eclipse-servlet/12.png" alt="12"><br>工程文件结构：<br><img src="/2019/05/23/eclipse-servlet/13.png" alt="13"><br>上图中各个目录解析：</p>
+<ul>
+<li>deployment descriptor：部署的描述。</li>
+<li>Web App Libraries：自己加的包可以放在里面。</li>
+<li>build：放入编译之后的文件。</li>
+<li>WebContent: 放进写入的页面。</li>
+</ul>
+<p>在 WebContent 文件夹下新建一个 hello.jsp 文件。在下图中可以看到它的默认代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;</span><br><span class="line">    pageEncoding=&quot;UTF-8&quot;%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>接着我们修改下 test.jsp 文件代码如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;</span><br><span class="line">    pageEncoding=&quot;UTF-8&quot; import=&quot;java.util.Date&quot;%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</span><br><span class="line">&lt;title&gt;hello&lt;/title&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">	body&#123;</span><br><span class="line">		background-color:limegreen;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;今天天气真的好&lt;/h1&gt;</span><br><span class="line">&lt;h2&gt;当前时间 &lt;%=new Date() %&gt;&lt;/h2&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>接着我们运行该项目:<br><img src="/2019/05/23/eclipse-servlet/14.png" alt="14"><br>会在内置浏览器中输出：<br><img src="/2019/05/23/eclipse-servlet/15.png" alt="15"><br>亦可浏览器访问 <a href="http://localhost:8080/TomcatTest/test.jsp" target="_blank" rel="noopener">http://localhost:8080/TomcatTest/test.jsp</a>, 即可输出正常结果：</p>
+<h2 id="4-Servlet实例创建"><a href="#4-Servlet实例创建" class="headerlink" title="4.Servlet实例创建"></a>4.Servlet实例创建</h2><hr>
+<p>我们也可以使用以上环境创建 Servlet 文件，选择 “File–&gt;New–&gt;Servlet”:<br><img src="/2019/05/23/eclipse-servlet/16.png" alt="16"><br><img src="/2019/05/23/eclipse-servlet/17.jpg" alt="17"><br>HelloServlet.java 代码如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package package1;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line">import javax.servlet.ServletException;</span><br><span class="line">import javax.servlet.annotation.WebServlet;</span><br><span class="line">import javax.servlet.http.HttpServlet;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Servlet implementation class HelloServlet</span><br><span class="line"> */</span><br><span class="line">@WebServlet(&quot;/HelloServlet&quot;)</span><br><span class="line">public class HelloServlet extends HttpServlet &#123;</span><br><span class="line">    private static final long serialVersionUID = 1L;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @see HttpServlet#HttpServlet()</span><br><span class="line">     */</span><br><span class="line">    public HelloServlet() &#123;</span><br><span class="line">        super();</span><br><span class="line">        // TODO Auto-generated constructor stub</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)</span><br><span class="line">     */</span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        // 使用 GBK 设置中文正常显示</span><br><span class="line">        response.setCharacterEncoding(&quot;GBK&quot;);</span><br><span class="line">        response.getWriter().write(&quot;百度：http://www.baidu.com&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)</span><br><span class="line">     */</span><br><span class="line">    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        // TODO Auto-generated method stub</span><br><span class="line">        doGet(request, response);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>创建 /TomcatTest/WebContent/WEB-INF/web.xml 文件（如果没有），代码如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;web-app version=&quot;2.5&quot;</span><br><span class="line">    xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot;</span><br><span class="line">    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">    xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee</span><br><span class="line">    http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot;&gt;</span><br><span class="line">  &lt;servlet&gt;</span><br><span class="line">     &lt;!-- 类名 --&gt;</span><br><span class="line">    &lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">    &lt;!-- 所在的包 --&gt;</span><br><span class="line">    &lt;servlet-class&gt;com.runoob.test.HelloServlet&lt;/servlet-class&gt;</span><br><span class="line">  &lt;/servlet&gt;</span><br><span class="line">  &lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;</span><br><span class="line">    &lt;!-- 访问的网址 --&gt;</span><br><span class="line">    &lt;url-pattern&gt;/TomcatTest/HelloServlet&lt;/url-pattern&gt;</span><br><span class="line">    &lt;/servlet-mapping&gt;</span><br><span class="line">&lt;/web-app&gt;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Servlet3.0 新特性 (得 Tomcat7.0 版本及以上)，@WebServlet 用于将一个类声明为 Servlet，该注解将会在部署时被容器处理，容器将根据具体的属性配置将相应的类部署为 Servlet。*</p>
+</blockquote>
+<p>接着重启 Tomcat，浏览器访问 <a href="http://localhost:8080/TomcatTest/HelloServlet：" target="_blank" rel="noopener">http://localhost:8080/TomcatTest/HelloServlet：</a><br><img src="/2019/05/23/eclipse-servlet/18.png" alt="18"></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/05/23/eclipse-servlet/">
+    <time datetime="2019-05-23T12:48:08.000Z" class="entry-date">
+        2019-05-23
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/JAVA企业开发框架/">JAVA企业开发框架</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/eclipse/">eclipse</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jsp/">jsp</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-test-asset" class="post-test-asset post type-post status-publish format-standard hentry">
     <!---->
 
@@ -80,7 +169,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/test-asset/" data-id="cjwfqfsky000irsfmc6pcvu82" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/test-asset/" data-id="cjwftdsgx000njgfmdtuzqzix" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -122,7 +211,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/md图片处理/" data-id="cjwfqfskq000crsfmzt8mjs8c" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/md图片处理/" data-id="cjwftdsgn000ajgfmieryzqs5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -179,7 +268,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/md常用语法/" data-id="cjwfqfsm3001irsfmr0ms3z3o" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/md常用语法/" data-id="cjwftdsj2001qjgfmuygybu9b" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -281,7 +370,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/git常用命令/" data-id="cjwfqfskp000brsfmmsp1x92f" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/git常用命令/" data-id="cjwftdsgq000ejgfmdh1z4zb2" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -407,107 +496,6 @@
 
 
   
-    <article id="post-github远程仓库" class="post-github远程仓库 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2019/05/02/github远程仓库/">git 连接 github 远程仓库</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/github远程仓库/" data-id="cjwfqfskm0008rsfmb4gpoq9s" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h2><hr>
-<h3 id="github-设置添加-SSH"><a href="#github-设置添加-SSH" class="headerlink" title="github 设置添加 SSH"></a>github 设置添加 SSH</h3><p>很多朋友在用 github 管理项目的时候，都是直接使用 https url 克隆到本地，当然也有些人使用 SSH url 克隆到本地。然而，为什么绝大多数人会使用 https url 克隆呢？<br>这是因为，使用 https url 克隆对初学者来说会比较方便，复制 https url 然后到 git Bash 里面直接用 clone 命令克隆到本地就好了。而使用 SSH url 克隆却需要在克隆之前先配置和添加好 SSH key 。<br>因此，如果你想要使用 SSH url 克隆的话，你必须是这个项目的拥有者。否则你是无法添加 SSH key 的。</p>
-<h3 id="https-和-SSH-的区别："><a href="#https-和-SSH-的区别：" class="headerlink" title="https 和 SSH 的区别："></a>https 和 SSH 的区别：</h3><ol>
-<li>前者可以随意克隆 github 上的项目，而不管是谁的；而后者则是你必须是你要克隆的项目的拥有者或管理员，且需要先添加 SSH key ，否则无法克隆。</li>
-<li>https url 在 push 的时候是需要验证用户名和密码的；而 SSH 在 push 的时候，是不需要输入用户名的，如果配置 SSH key 的时候设置了密码，则需要输入密码的，否则直接是不需要输入密码的。</li>
-</ol>
-<h2 id="1-在-github-上添加-SSH-key-的步骤："><a href="#1-在-github-上添加-SSH-key-的步骤：" class="headerlink" title="1.在 github 上添加 SSH key 的步骤："></a>1.在 github 上添加 SSH key 的步骤：</h2><hr>
-<h3 id="1-首先需要检查你电脑是否已经有-SSH-key"><a href="#1-首先需要检查你电脑是否已经有-SSH-key" class="headerlink" title="1.首先需要检查你电脑是否已经有 SSH key"></a>1.首先需要检查你电脑是否已经有 SSH key</h3><p>运行 git Bash 客户端，输入如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/.ssh</span><br><span class="line">$ ls</span><br></pre></td></tr></table></figure></p>
-<p>这两个命令就是检查是否已经存在 id_rsa.pub 或 id_dsa.pub 文件，如果文件已经存在，那么你可以跳过步骤 2，直接进入步骤 3。</p>
-<h3 id="2-创建一个-SSH-key"><a href="#2-创建一个-SSH-key" class="headerlink" title="2.创建一个 SSH key"></a>2.创建一个 SSH key</h3><p><code>$ ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</code><br>代码参数含义：</p>
-<p>-t 指定密钥类型，默认是 rsa ，可以省略。<br>-C 设置注释文字，比如邮箱。<br>-f 指定密钥文件存储文件名。</p>
-<p>以上代码省略了 -f 参数，因此，运行上面那条命令后会让你输入一个文件名，用于保存刚才生成的 SSH key 代码，如：</p>
-<blockquote>
-<p>Generating public/private rsa key pair.<br>Enter file in which to save the key (/c/Users/you/.ssh/id_rsa): [Press enter]</p>
-</blockquote>
-<p>当然，你也可以按enter不输入文件名，使用默认文件名（推荐），那么就会生成 id_rsa 和 id_rsa.pub 两个秘钥文件。</p>
-<p>接着又会提示你输入两次密码（该密码是你 <strong>push 文件的时候要输入的密码</strong>，而不是 <strong>github 管理者的密码</strong>），</p>
-<p>当然，你也可以不输入密码，直接按回车。那么 push 的时候就不需要输入密码，直接提交到 github 上了，如：</p>
-<blockquote>
-<p>Enter passphrase (empty for no passphrase):<br>Enter same passphrase again:</p>
-</blockquote>
-<p>接下来，就会显示如下代码提示，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Your identification has been saved in /c/Users/you/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /c/Users/you/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com</span><br></pre></td></tr></table></figure></p>
-<p>当你看到上面这段代码的时候，那就说明，你的 SSH key 已经创建成功，你只需要添加到 github 的 SSH key 上就可以了。</p>
-<h3 id="3-添加你的-SSH-key-到-github-上面去"><a href="#3-添加你的-SSH-key-到-github-上面去" class="headerlink" title="3.添加你的 SSH key 到 github 上面去"></a>3.添加你的 SSH key 到 github 上面去</h3><ol>
-<li>首先你需要拷贝 id_rsa.pub 文件的内容，你可以用编辑器打开文件复制，也可以用 git 命令复制该文件的内容，如：</li>
-</ol>
-<p><code>$ clip &lt; ~/.ssh/id_rsa.pub</code></p>
-<ol start="2">
-<li><p>登录你的 github 账号，从又上角的设置（ Account Settings ）进入，然后点击菜单栏的 SSH key 进入页面添加 SSH key。</p>
-</li>
-<li><p>点击 Add SSH key 按钮添加一个 SSH key 。把你复制的 SSH key 代码粘贴到 key 所对应的输入框中，记得 SSH key 代码的前后不要留有空格或者回车。当然，上面的 Title 所对应的输入框你也可以输入一个该 SSH key 显示在 github 上的一个别名。默认的会使用你的邮件名称。</p>
-</li>
-</ol>
-<h3 id="4-测试一下该-SSH-key"><a href="#4-测试一下该-SSH-key" class="headerlink" title="4.测试一下该 SSH key"></a>4.测试一下该 SSH key</h3><p>在 git Bash 中输入以下代码</p>
-<p><code>$ ssh -T git@github.com</code></p>
-<p>当你输入以上代码时，会有一段警告代码，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host &apos;github.com (207.97.227.239)&apos; can&apos;t be established.</span><br><span class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure></p>
-<p>这是正常的，你输入 yes 回车既可。如果你创建 SSH key 的时候设置了密码，接下来就会提示你输入密码，如：</p>
-<p><code>Enter passphrase for key &#39;/c/Users/Administrator/.ssh/id_rsa&#39;:</code></p>
-<p>当然如果你密码输错了，会再要求你输入，知道对了为止。</p>
-<p><em>注意：输入密码时如果输错一个字就会不正确，使用删除键是无法更正的。</em></p>
-<p>密码正确后你会看到下面这段话，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hi username! You&apos;ve successfully authenticated, but GitHub does not</span><br><span class="line">provide shell access.</span><br></pre></td></tr></table></figure></p>
-<p>如果用户名是正确的，你已经成功设置 SSH 密钥。如果你看到 “access denied” ，者表示拒绝访问，那么你就需要使用 https 去访问，而不是 SSH 。</p>
-<h2 id="2-远程仓库操作"><a href="#2-远程仓库操作" class="headerlink" title="2.远程仓库操作"></a>2.远程仓库操作</h2><hr>
-<h3 id="1-本地仓库推送到远程仓库"><a href="#1-本地仓库推送到远程仓库" class="headerlink" title="1.本地仓库推送到远程仓库"></a>1.本地仓库推送到远程仓库</h3><p>现在的情景是：我们已经在本地创建了一个 Git 仓库后，又想在 github 创建一个 Git 仓库，并且希望这两个仓库进行远程同步，这样 github 的仓库可以作为备份，又可以其他人通过该仓库来协作。<br><img src="/2019/05/02/github远程仓库/1.png"><br>首先，登录 github 上，然后在右上角找到 “create a new repo” 创建一个新的仓库。<br>在 Repository name 填入 testgit，其他保持默认设置，点击 “Create repository” 按钮，就成功地创建了一个新的 Git 仓库：<br><img src="/2019/05/02/github远程仓库/2.png"><br>目前，在 GitHub 上的这个 testgit 仓库还是空的，GitHub 告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到 GitHub 仓库。<br>现在，我们根据 GitHub 的提示，在本地的 testgit 仓库下运行命令：<br><code>$ git remote add origin https://github.com/username/testgit.git</code><br>把本地库的内容推送到远程，使用命令:<br><code>$ git push -u origin master</code><br>如果本地仓库没有过 commit,那么此时就会报错:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br><span class="line">error: src refspec master does not match any.</span><br><span class="line">error: failed to push some refs to &apos;git@github.com:username/testgit.git&apos;</span><br></pre></td></tr></table></figure></p>
-<p>原因：<br>本地仓库为空<br>解决方法：</p>
-<ol>
-<li>使用命令 <em>git add</em> 添加文件。</li>
-<li>使用命令 <em>git commit</em> 提交修改。</li>
-</ol>
-<p><em>git push</em> 命令实际上是把当前分支 master 推送到远程。由于远程库是空的，我们第一次推送 master 分支时，加上了 –u 参数，Git 不但会把本地的 master 分支内容推送的远程新的 master 分支，还会把本地的 master 分支和远程的 master 分支关联起来，在以后的推送或者拉取时就可以简化命令。<br>推送成功后，可以立刻在 github 页面中看到远程库的内容已经和本地一模一样了。<br>从现在起，只要本地作了提交，就可以通过如下命令：<br><code>$ git push origin master</code><br>把本地 master 分支的最新修改推送到 github 上了，现在你就拥有了真正的分布式版本库了。</p>
-<h3 id="2-远程仓库克隆到本地仓库"><a href="#2-远程仓库克隆到本地仓库" class="headerlink" title="2.远程仓库克隆到本地仓库"></a>2.远程仓库克隆到本地仓库</h3><p>上面我们了解了先有本地库，后有远程库时候，如何关联远程库。<br>现在我们想，假如远程库有新的内容了，我想克隆到本地来 如何克隆呢？<br>首先，登录 github，创建一个新的仓库，名字叫 testgit2. 如下：<br><img src="/2019/05/02/github远程仓库/3.png"><br>现在，远程库已经准备好了，下一步是使用命令 <em>git clone</em> 克隆一个本地库了。如下所示：<br><code>$ git clone git@github.com:username/testgit2.git</code><br>接着在我本地目录下 生成 testgit2 目录了，如下所示：<br><img src="/2019/05/02/github远程仓库/4.png"><br>接下来在本地上对 testgit2 的修改就可以通过命令 <em>git push</em> 推送到远程仓库。</p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2019/05/02/github远程仓库/">
-    <time datetime="2019-05-02T05:16:58.000Z" class="entry-date">
-        2019-05-02
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/TOOL/">TOOL</a>
-  </div>
-
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
   
     <nav id="pagination">
       <nav id="page-nav">
@@ -547,6 +535,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/03/Java-Filter/">JavaWeb Filter 实现登录注册过滤</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/03/Java-Login/">JavaWeb MySQL 实现登录验证</a>
           </li>
         
@@ -562,10 +554,6 @@
             <a href="/2019/05/24/servlet转发/">Servlet 的三种跳转方式</a>
           </li>
         
-          <li>
-            <a href="/2019/05/23/eclipse-servlet/">Eclipse JSP/Servlet 环境搭建</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -575,7 +563,7 @@
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CODE/">CODE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DATABASE/">DATABASE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA企业开发框架/">JAVA企业开发框架</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TEST/">TEST</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CODE/">CODE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DATABASE/">DATABASE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA企业开发框架/">JAVA企业开发框架</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TEST/">TEST</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">2</span></li></ul>
     </div>
   </aside>
 
@@ -584,7 +572,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eclipse/">eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eclipse/">eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -593,7 +581,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/markdown/" style="font-size: 15px;">markdown</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/test/" style="font-size: 20px;">test</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
+      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/mysql/" style="font-size: 20px;">mysql</a> <a href="/tags/test/" style="font-size: 16.67px;">test</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
     </div>
   </aside>
 
@@ -602,7 +590,7 @@
   <aside class="widget">
     <h3 class="widget-title">Archives</h3>
     <div class="widget-content">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">11</span></li></ul>
     </div>
   </aside>
 
