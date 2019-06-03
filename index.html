@@ -80,7 +80,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/03/Java-Filter/" data-id="cjwftdsiw001ojgfmg4kwfj50" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/03/Java-Filter/" data-id="cjwftza23001o4gfmzqfpa7m2" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -103,11 +103,11 @@
 <li>然后判断登录状态，true 放行，false 强制跳转到 login.jsp</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">package login;</span><br><span class="line"></span><br><span class="line">import javax.servlet.*;</span><br><span class="line">import javax.servlet.annotation.WebFilter;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line">import javax.servlet.http.HttpSession;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.PrintWriter;</span><br><span class="line">import java.net.URLEncoder;</span><br><span class="line"></span><br><span class="line">@WebFilter(filterName = &quot;LoginFilter&quot;, urlPatterns = &quot;/*&quot;)</span><br><span class="line">public class LoginFilter implements Filter &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 需要排除的页面</span><br><span class="line">     */</span><br><span class="line">    private String excludedPages;</span><br><span class="line">    private String[] excludedPageArray = &#123;&quot;/index.jsp&quot;, &quot;/login.jsp&quot;, &quot;/login&quot;&#125;;</span><br><span class="line"></span><br><span class="line">    public void destroy() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException &#123;</span><br><span class="line">        HttpServletRequest request = (HttpServletRequest) req;</span><br><span class="line">        HttpServletResponse response = (HttpServletResponse) resp;</span><br><span class="line"></span><br><span class="line">        response.setCharacterEncoding(&quot;UTF-8&quot;);</span><br><span class="line">        response.setContentType(&quot;text/html;charset=UTF-8&quot;);</span><br><span class="line">        //使用request对象的getSession()获取session，如果session不存在则创建一个</span><br><span class="line">        HttpSession session = request.getSession();</span><br><span class="line"></span><br><span class="line">        //获取session的Id</span><br><span class="line">        String sessionId = session.getId();</span><br><span class="line">        //判断session是不是新创建的</span><br><span class="line">        if (session.isNew()) &#123;</span><br><span class="line">            //将数据存储到session中</span><br><span class="line">            session.setAttribute(&quot;isLogin&quot;, &quot;false&quot;);</span><br><span class="line">            response.getWriter().print(&quot;session generate successfully, the ID of session: &quot; + sessionId);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            response.getWriter().print(&quot;sever has existed the session, the ID of session: &quot; + sessionId);</span><br><span class="line">        &#125;</span><br><span class="line">        Object loginFlag = session.getAttribute(&quot;isLogin&quot;);     //(&quot;isLogin&quot;);</span><br><span class="line">        response.getWriter().print(&quot;  session.isLogin: &quot; + loginFlag);</span><br><span class="line"></span><br><span class="line">        boolean isExcludedPage = false;</span><br><span class="line">        response.getWriter().print(&quot;  current.url=&quot; + request.getServletPath()+&quot; current.user=&quot;+session.getAttribute(&quot;username&quot;));</span><br><span class="line">        for (</span><br><span class="line">                String page : excludedPageArray) &#123;// 判断是否在过滤 url 之外</span><br><span class="line">            if (request.getServletPath().equals(page)) &#123;</span><br><span class="line">                isExcludedPage = true;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (isExcludedPage) &#123;// 在过滤 url 之外</span><br><span class="line">            chain.doFilter(request, response);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if (loginFlag == &quot;false&quot;) &#123;</span><br><span class="line">                //没有登录</span><br><span class="line">                PrintWriter out = response.getWriter();</span><br><span class="line">                out.print(&quot;&lt;script language=&apos;javascript&apos;&gt;alert(&apos;Please login first! 请先登录！out.print&apos;);window.location.href=&apos;index.jsp&apos;;&lt;/script&gt;&quot;);</span><br><span class="line">                out.flush();</span><br><span class="line">                out.close();</span><br><span class="line">            &#125;</span><br><span class="line">            chain.doFilter(request, response);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void init(FilterConfig config) throws ServletException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="4-调试"><a href="#4-调试" class="headerlink" title="4.调试"></a>4.调试</h1><p>开户 filter 后，访问其他页面会被阻止并返回登录：<br><img src alt="0"><br><img src alt="1"></p>
-<p>成功登录：<br><img src alt="2"><br><img src alt="3"></p>
-<p>登录验证失败：<br><img src alt="5"><br><img src alt="6"></p>
-<p>注册判断用户名是否被占用：<br><img src alt="2"><br><img src alt="4"></p>
-<p>成功注册：<br><img src alt="7"><br><img src alt="8"></p>
+<h1 id="4-调试"><a href="#4-调试" class="headerlink" title="4.调试"></a>4.调试</h1><p>开户 filter 后，访问其他页面会被阻止并返回登录：<br><img src="/2019/06/03/Java-Filter/0.png" alt="0"><br><img src="/2019/06/03/Java-Filter/1.png" alt="1"></p>
+<p>成功登录：<br><img src="/2019/06/03/Java-Filter/2.png" alt="2"><br><img src="/2019/06/03/Java-Filter/3.png" alt="3"></p>
+<p>登录验证失败：<br><img src="/2019/06/03/Java-Filter/5.png" alt="5"><br><img src="/2019/06/03/Java-Filter/6.png" alt="6"></p>
+<p>注册判断用户名是否被占用：<br><img src="/2019/06/03/Java-Filter/2.png" alt="2"><br><img src="/2019/06/03/Java-Filter/4.png" alt="4"></p>
+<p>成功注册：<br><img src="/2019/06/03/Java-Filter/7.png" alt="7"><br><img src="/2019/06/03/Java-Filter/8.png" alt="8"></p>
 <h1 id="5-附"><a href="#5-附" class="headerlink" title="5.附"></a>5.附</h1><p>完整项目及其他相关资源下载：</p>
 <blockquote>
 <p><a href="https://github.com/EslSuwen/JavaWeb" target="_blank" rel="noopener">https://github.com/EslSuwen/JavaWeb</a></p>
@@ -156,7 +156,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/03/Java-Login/" data-id="cjwftdsfd0000jgfmzk6vu1uo" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/03/Java-Login/" data-id="cjwftz9yu00024gfm1t5qlnuh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -232,7 +232,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/02/Java-MySQL/" data-id="cjwftdsfm0001jgfmxv4misoy" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/02/Java-MySQL/" data-id="cjwftz9yo00004gfmdvd75uno" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -292,7 +292,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/02/sakila-database/" data-id="cjwftdsgt000gjgfme6uh2j7z" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/02/sakila-database/" data-id="cjwftz9zi000i4gfmakbtbxx7" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -422,7 +422,7 @@ mysql&gt; SOURCE C:/temp/sakila-db/sakila-data.sql;
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/24/servlet转发/" data-id="cjwftdsgw000ljgfmlqb5pajo" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/24/servlet转发/" data-id="cjwftz9zl000n4gfmhbx3lp7s" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
