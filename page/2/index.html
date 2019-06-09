@@ -65,6 +65,86 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-servlet转发" class="post-servlet转发 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/05/24/servlet转发/">Servlet 的三种跳转方式</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/24/servlet转发/" data-id="cjwoehegw001dvofmar8asfe9" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="1-Forword"><a href="#1-Forword" class="headerlink" title="1.Forword"></a>1.Forword</h2><hr>
+<p>request.getRequestDispatcher (“url”).forword (request,response) 是请求转发，也就是说，一个 Servlet 向当前的</p>
+<p>Servlet 发出请求后，经过这个方法后，请求会继续转发到请求的 URL, 在这个过程中，只向服务器发出一次请求。效率当然也就高了.<br>从在浏览器地址栏中显示的 URL 来看，response.sendRedirect (“url”), 地址栏中的 URL 会发生变化，会显示重定向的这个 URL 的地址，<br>而 request.getRequestDispatcher (“url”).forword (request,response) 这种方法，地址栏中的地址是不变的.<br>示例如下：<br>先创建 servlet 实例：a.java 代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">package package1;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line">import javax.servlet.ServletException;</span><br><span class="line">import javax.servlet.annotation.WebServlet;</span><br><span class="line">import javax.servlet.http.HttpServlet;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Servlet implementation class a</span><br><span class="line"> */</span><br><span class="line">@WebServlet(&quot;/a&quot;)</span><br><span class="line">public class a extends HttpServlet &#123;</span><br><span class="line">	private static final long serialVersionUID = 1L;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @see HttpServlet#HttpServlet()</span><br><span class="line">     */</span><br><span class="line">    public a() &#123;</span><br><span class="line">        super();</span><br><span class="line">        // TODO Auto-generated constructor stub</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)</span><br><span class="line">	 */</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		//第一种 请求转发</span><br><span class="line">		request.setAttribute(&quot;message&quot;,&quot;aaaaaa&quot;);</span><br><span class="line">		request.getRequestDispatcher(&quot;/b&quot;).forward(request,response);</span><br><span class="line">		// 第二种 重定向</span><br><span class="line">		response.setContentType(&quot;text/html; charset=UTF-8&quot;);</span><br><span class="line">		response.sendRedirect(&quot;/Tomcat_Test/b&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)</span><br><span class="line">	 */</span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>创建 servlet 实例：b.java 代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">package package1;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line">import javax.servlet.ServletException;</span><br><span class="line">import javax.servlet.annotation.WebServlet;</span><br><span class="line">import javax.servlet.http.HttpServlet;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Servlet implementation class b</span><br><span class="line"> */</span><br><span class="line">@WebServlet(&quot;/b&quot;)</span><br><span class="line">public class b extends HttpServlet &#123;</span><br><span class="line">	private static final long serialVersionUID = 1L;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @see HttpServlet#HttpServlet()</span><br><span class="line">     */</span><br><span class="line">    public b() &#123;</span><br><span class="line">        super();</span><br><span class="line">        // TODO Auto-generated constructor stub</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)</span><br><span class="line">	 */</span><br><span class="line">	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		response.setCharacterEncoding(&quot;utf-8&quot;);</span><br><span class="line">		String message=(String)request.getAttribute(&quot;message&quot;);</span><br><span class="line">		response.getWriter().append(&quot;this is B page with message from A: &quot;).append(message);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)</span><br><span class="line">	 */</span><br><span class="line">	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>先注释<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 第二种 重定向</span><br><span class="line">response.setContentType(&quot;text/html; charset=UTF-8&quot;);</span><br><span class="line">response.sendRedirect(&quot;/Tomcat_Test/b&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>运行 a.java 测试“请求转发”</p>
+<p><img src="/2019/05/24/servlet转发/1.png" alt="1"></p>
+<p><em>getRequestDispatcher () 方法的参数必须以 “/” 开始，“/” 表示本 Web 应用程序的根目录。如上例中，表示要跳转的地址为 <a href="http://localhost:8080/servlet/b" target="_blank" rel="noopener">http://localhost:8080/servlet/b</a></em></p>
+<p>forward 是最常用的方式，在 Structs 等 MVC 框架中，都是用 Servlet 来处理用户请求，把结果通过 request.setAttribute () 放到 request 中，<br>然后 forward 到 JSP 中显示。<br>当执行 forward 方法时，不能有任何输出到达客户端，否则会抛出异常，也就是说，在 forward 之前，不要使用 out.println () 语句向客户端输出。</p>
+<p>尤其注意 HttpServlet 默认的 super.doGet () 和 super.goPost () 方法都包含了相关操作，所以在使用时应该把这两个方法注释掉！！</p>
+<h2 id="2-Redirect"><a href="#2-Redirect" class="headerlink" title="2.Redirect"></a>2.Redirect</h2><hr>
+<p>这种方式要传值出去的话，只能在 url 中带 parameter 或者放在 session 中，无法使用 request.setAttribute 来传递。<br>这种方式是在客户端作的重定向处理。该方法通过修改 HTTP 协议的 HEADER 部分，对浏览器下达重定向指令的，让浏览器对在 location 中指定的 URL 提出请求，使浏览器显示重定向网页的内容。该方法可以接受绝对的或相对的 URLs。如果传递到该方法的参数是一个相对的 URL，那么 Web container 在将它发送到客户端前会把它转换成一个绝对的 URL。</p>
+<p>注释<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 第一种 请求转发</span><br><span class="line">response.setContentType(&quot;text/html; charset=UTF-8&quot;);</span><br><span class="line">response.sendRedirect(&quot;/Tomcat_Test/b&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>运行 a.java 测试“重定向”</p>
+<p><img src="/2019/05/24/servlet转发/2.png" alt="2"></p>
+<h2 id="3-JavaScript"><a href="#3-JavaScript" class="headerlink" title="3.JavaScript"></a>3.JavaScript</h2><hr>
+<p>另还有一种跳转页面的方法，也就是在 Servlet 中输出 JavaScript 代码，也能实现页面的跳转</p>
+<pre><code>PrintWriter out = request.getWriter();
+out.println(&quot;&lt;script&gt;window.location.href = &quot;url&quot;&lt;/script&gt;&quot;);
+out.flush();
+out.close();
+</code></pre><p>这种方法和 response.sendRedirect () 的效率是差不多的，也要向服务器发出再次请求才能跳转到的 URL。</p>
+<h2 id="4-小结"><a href="#4-小结" class="headerlink" title="4.小结"></a>4.小结</h2><hr>
+<ul>
+<li>0、跳转 (forward) 是在服务器端实现的，客户端浏览器并不知道该浏览动作，而使用 sendRedirect 跳转时，跳转是在客户端实现的，也就是说客户端浏览器实际上请求了 2 次服务器。</li>
+<li>1、forward 重定向是在容器内部实现的同一个 Web 应用程序的重定向，所以 forward 方法只能重定向到同一个 Web 应用程序中的一个资源，重定向后浏览器地址栏 URL 不变，而 sendRedirect 方法可以重定向到任何 URL， 因为这种方法是修改 http 头来实现的，URL 没什么限制，重定向后浏览器地址栏 URL 改变。</li>
+<li>2、forward 重定向将原始的 HTTP 请求对象（request）从一个 servlet 实例传递到另一个实例，而采用 sendRedirect 方式两者不是同一个 application。</li>
+<li>3、基于第二点，参数的传递方式不一样。forward 的 form 参数跟着传递，所以在第二个实例中可以取得 HTTP 请求的参数。sendRedirect 只能通过链接传递参数，response.sendRedirect (“login.jsp?param1=a”)。</li>
+<li>4、sendRedirect 能够处理相对 URL，自动把它们转换成绝对 URL，如果地址是相对的，没有一个‘/’，那么 Web container 就认为它是相对于当前的请求 URI 的。比如，如果为 response.sendRedirect (“login.jsp”)，则会从当前 servlet 的 URL 路径下找 login.jsp： <a href="http://10.1.18.8:8081/dms/servlet/Servlet" target="_blank" rel="noopener">http://10.1.18.8:8081/dms/servlet/Servlet</a> 重定向的 URL: <a href="http://10.1.18.8:8081/dms/servlet/login.jsp，如果为" target="_blank" rel="noopener">http://10.1.18.8:8081/dms/servlet/login.jsp，如果为</a> response.sendRedirect (“/login.jsp”) 则会从当前应用径下查找 url:<a href="http://10.1.18.8:8081/login.jsp。而" target="_blank" rel="noopener">http://10.1.18.8:8081/login.jsp。而</a> forward 不能这样处理相对路径。</li>
+</ul>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/05/24/servlet转发/">
+    <time datetime="2019-05-24T00:07:31.000Z" class="entry-date">
+        2019-05-24
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/JAVA企业开发框架/">JAVA企业开发框架</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-eclipse-servlet" class="post-eclipse-servlet post type-post status-publish format-standard hentry">
     <!---->
 
@@ -80,7 +160,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/23/eclipse-servlet/" data-id="cjwftz9z000064gfmtd0a7loy" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/23/eclipse-servlet/" data-id="cjwoeheas0004vofm9j2eb40a" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -169,7 +249,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/test-asset/" data-id="cjwftz9zp000u4gfmulg86opd" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/test-asset/" data-id="cjwoehegl0019vofmuiaz3biu" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -211,7 +291,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/md图片处理/" data-id="cjwftz9zg000f4gfm27c7ue7m" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/md图片处理/" data-id="cjwoehebl000avofm224gl5x6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -268,7 +348,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/md常用语法/" data-id="cjwftza24001p4gfmhgqxc7ta" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/md常用语法/" data-id="cjwoeheit001qvofm6papjgpq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -355,151 +435,10 @@
 
 
   
-    <article id="post-git常用命令" class="post-git常用命令 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2019/05/02/git常用命令/">常用 Git 命令清单</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/02/git常用命令/" data-id="cjwftz9ze000b4gfmjg1c815c" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h2 id="零、前言"><a href="#零、前言" class="headerlink" title="零、前言"></a>零、前言</h2><p>几个专用名词的译名如下：</p>
-<ul>
-<li>Workspace：工作区</li>
-<li>Index / Stage：暂存区</li>
-<li>Repository：仓库区（或本地仓库）</li>
-<li>Remote：远程仓库</li>
-</ul>
-<h2 id="一、新建代码库"><a href="#一、新建代码库" class="headerlink" title="一、新建代码库"></a>一、新建代码库</h2><p> 在当前目录新建一个Git代码库<br>$ git init</p>
-<p> 新建一个目录，将其初始化为Git代码库<br>$ git init [project-name]</p>
-<p> 下载一个项目和它的整个代码历史<br>$ git clone [url]</p>
-<h2 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h2><p>Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。</p>
-<p> 显示当前的Git配置<br>$ git config –list</p>
-<p> 编辑Git配置文件<br>$ git config -e [–global]</p>
-<p> 设置提交代码时的用户信息<br>$ git config [–global] user.name “[name]”<br>$ git config [–global] user.email “[email address]”</p>
-<h2 id="三、增加-删除文件"><a href="#三、增加-删除文件" class="headerlink" title="三、增加 / 删除文件"></a>三、增加 / 删除文件</h2><p> 添加指定文件到暂存区</p>
-<p>$ git add [file1] [file2] …</p>
-<p> 添加指定目录到暂存区，包括子目录<br>$ git add [dir]</p>
-<p> 添加当前目录的所有文件到暂存区<br>$ git add .</p>
-<p> 添加每个变化前，都会要求确认<br> 对于同一个文件的多处变化，可以实现分次提交<br>$ git add -p</p>
-<p> 删除工作区文件，并且将这次删除放入暂存区<br>$ git rm [file1] [file2] …</p>
-<p> 停止追踪指定文件，但该文件会保留在工作区<br>$ git rm –cached [file]</p>
-<p> 改名文件，并且将这个改名放入暂存区<br>$ git mv [file-original] [file-renamed]<br>四、代码提交</p>
-<p> 提交暂存区到仓库区<br>$ git commit -m [message]</p>
-<p> 提交暂存区的指定文件到仓库区<br>$ git commit [file1] [file2] … -m [message]</p>
-<p> 提交工作区自上次commit之后的变化，直接到仓库区<br>$ git commit -a</p>
-<p> 提交时显示所有diff信息<br>$ git commit -v</p>
-<p> 使用一次新的commit，替代上一次提交<br> 如果代码没有任何新变化，则用来改写上一次commit的提交信息<br>$ git commit –amend -m [message]</p>
-<p> 重做上一次commit，并包括指定文件的新变化<br>$ git commit –amend [file1] [file2] …</p>
-<h2 id="五、分支"><a href="#五、分支" class="headerlink" title="五、分支"></a>五、分支</h2><p> 列出所有本地分支<br>$ git branch</p>
-<p> 列出所有远程分支<br>$ git branch -r</p>
-<p> 列出所有本地分支和远程分支<br>$ git branch -a</p>
-<p> 新建一个分支，但依然停留在当前分支<br>$ git branch [branch-name]</p>
-<p> 新建一个分支，并切换到该分支<br>$ git checkout -b [branch]</p>
-<p> 新建一个分支，指向指定commit<br>$ git branch [branch] [commit]</p>
-<p> 新建一个分支，与指定的远程分支建立追踪关系<br>$ git branch –track [branch] [remote-branch]</p>
-<p> 切换到指定分支，并更新工作区<br>$ git checkout [branch-name]</p>
-<p> 切换到上一个分支<br>$ git checkout -</p>
-<p> 建立追踪关系，在现有分支与指定的远程分支之间<br>$ git branch –set-upstream [branch] [remote-branch]</p>
-<p> 合并指定分支到当前分支<br>$ git merge [branch]</p>
-<p> 选择一个commit，合并进当前分支<br>$ git cherry-pick [commit]</p>
-<p> 删除分支<br>$ git branch -d [branch-name]</p>
-<p> 删除远程分支<br>$ git push origin –delete [branch-name]<br>$ git branch -dr [remote/branch]</p>
-<h2 id="六、标签"><a href="#六、标签" class="headerlink" title="六、标签"></a>六、标签</h2><p> 列出所有tag<br>$ git tag</p>
-<p> 新建一个tag在当前commit<br>$ git tag [tag]</p>
-<p> 新建一个tag在指定commit<br>$ git tag [tag] [commit]</p>
-<p> 删除本地tag<br>$ git tag -d [tag]</p>
-<p> 删除远程tag<br>$ git push origin :refs/tags/[tagName]</p>
-<p> 查看tag信息<br>$ git show [tag]</p>
-<p> 提交指定tag<br>$ git push [remote] [tag]</p>
-<p> 提交所有tag<br>$ git push [remote] –tags</p>
-<p> 新建一个分支，指向某个tag<br>$ git checkout -b [branch] [tag]</p>
-<h2 id="七、查看信息"><a href="#七、查看信息" class="headerlink" title="七、查看信息"></a>七、查看信息</h2><p> 显示有变更的文件<br>$ git status</p>
-<p> 显示当前分支的版本历史<br>$ git log</p>
-<p> 显示commit历史，以及每次commit发生变更的文件<br>$ git log –stat</p>
-<p> 搜索提交历史，根据关键词<br>$ git log -S [keyword]</p>
-<p> 显示某个commit之后的所有变动，每个commit占据一行<br>$ git log [tag] HEAD –pretty=format:%s</p>
-<p> 显示某个commit之后的所有变动，其”提交说明”必须符合搜索条件<br>$ git log [tag] HEAD –grep feature</p>
-<p> 显示某个文件的版本历史，包括文件改名<br>$ git log –follow [file]<br>$ git whatchanged [file]</p>
-<p> 显示指定文件相关的每一次diff<br>$ git log -p [file]</p>
-<p> 显示过去5次提交<br>$ git log -5 –pretty –oneline</p>
-<p> 显示所有提交过的用户，按提交次数排序<br>$ git shortlog -sn</p>
-<p> 显示指定文件是什么人在什么时间修改过<br>$ git blame [file]</p>
-<p> 显示暂存区和工作区的差异<br>$ git diff</p>
-<p> 显示暂存区和上一个commit的差异<br>$ git diff –cached [file]</p>
-<p> 显示工作区与当前分支最新commit之间的差异<br>$ git diff HEAD</p>
-<p> 显示两次提交之间的差异<br>$ git diff [first-branch]…[second-branch]</p>
-<p> 显示今天你写了多少行代码<br>$ git diff –shortstat “@{0 day ago}”</p>
-<p> 显示某次提交的元数据和内容变化<br>$ git show [commit]</p>
-<p> 显示某次提交发生变化的文件<br>$ git show –name-only [commit]</p>
-<p> 显示某次提交时，某个文件的内容<br>$ git show [commit]:[filename]</p>
-<p> 显示当前分支的最近几次提交<br>$ git reflog</p>
-<h2 id="八、远程同步"><a href="#八、远程同步" class="headerlink" title="八、远程同步"></a>八、远程同步</h2><p> 下载远程仓库的所有变动<br>$ git fetch [remote]</p>
-<p> 显示所有远程仓库<br>$ git remote -v</p>
-<p> 显示某个远程仓库的信息<br>$ git remote show [remote]</p>
-<p> 增加一个新的远程仓库，并命名<br>$ git remote add [shortname] [url]</p>
-<p> 取回远程仓库的变化，并与本地分支合并<br>$ git pull [remote] [branch]</p>
-<p> 上传本地指定分支到远程仓库<br>$ git push [remote] [branch]</p>
-<p> 强行推送当前分支到远程仓库，即使有冲突<br>$ git push [remote] –force</p>
-<p> 推送所有分支到远程仓库<br>$ git push [remote] –all</p>
-<h2 id="九、撤销"><a href="#九、撤销" class="headerlink" title="九、撤销"></a>九、撤销</h2><p> 恢复暂存区的指定文件到工作区<br>$ git checkout [file]</p>
-<p> 恢复某个commit的指定文件到暂存区和工作区<br>$ git checkout [commit] [file]</p>
-<p> 恢复暂存区的所有文件到工作区<br>$ git checkout .</p>
-<p> 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变<br>$ git reset [file]</p>
-<p> 重置暂存区与工作区，与上一次commit保持一致<br>$ git reset –hard</p>
-<p> 重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变<br>$ git reset [commit]</p>
-<p> 重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致<br>$ git reset –hard [commit]</p>
-<p> 重置当前HEAD为指定commit，但保持暂存区和工作区不变<br>$ git reset –keep [commit]</p>
-<p> 新建一个commit，用来撤销指定commit<br> 后者的所有变化都将被前者抵消，并且应用到当前分支<br>$ git revert [commit]</p>
-<p> 暂时将未提交的变化移除，稍后再移入<br>$ git stash<br>$ git stash pop</p>
-<h2 id="十、其他"><a href="#十、其他" class="headerlink" title="十、其他"></a>十、其他</h2><p> 生成一个可供发布的压缩包<br>$ git archive</p>
-<h2 id="十一、附录"><a href="#十一、附录" class="headerlink" title="十一、附录"></a>十一、附录</h2><p><a href="https://learngitbranching.js.org/" target="_blank" rel="noopener">learn git branching</a></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2019/05/02/git常用命令/">
-    <time datetime="2019-05-02T08:39:33.000Z" class="entry-date">
-        2019-05-02
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/CODE/">CODE</a>
-  </div>
-
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
   
     <nav id="pagination">
       <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
       </nav>
     </nav>
   
@@ -535,6 +474,10 @@
       <ul>
         
           <li>
+            <a href="/2019/06/09/当前云平台发展现状/">当前云平台发展现状</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/03/Java-Filter/">JavaWeb Filter 实现登录注册过滤</a>
           </li>
         
@@ -550,10 +493,6 @@
             <a href="/2019/06/02/sakila-database/">Sakila MySQL 样例数据库解析</a>
           </li>
         
-          <li>
-            <a href="/2019/05/24/servlet转发/">Servlet 的三种跳转方式</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -563,7 +502,7 @@
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CODE/">CODE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DATABASE/">DATABASE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA企业开发框架/">JAVA企业开发框架</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TEST/">TEST</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CODE/">CODE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DATABASE/">DATABASE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA企业开发框架/">JAVA企业开发框架</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TEST/">TEST</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">3</span></li></ul>
     </div>
   </aside>
 
@@ -572,7 +511,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eclipse/">eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloud-platforms/">cloud platforms</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eclipse/">eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -581,7 +520,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/mysql/" style="font-size: 20px;">mysql</a> <a href="/tags/test/" style="font-size: 16.67px;">test</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
+      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cloud-platforms/" style="font-size: 10px;">cloud platforms</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/mysql/" style="font-size: 20px;">mysql</a> <a href="/tags/test/" style="font-size: 16.67px;">test</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
     </div>
   </aside>
 
@@ -590,7 +529,7 @@
   <aside class="widget">
     <h3 class="widget-title">Archives</h3>
     <div class="widget-content">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">11</span></li></ul>
     </div>
   </aside>
 

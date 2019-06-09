@@ -27,7 +27,7 @@ Servlet 发出请求后，经过这个方法后，请求会继续转发到请求
 <meta property="og:locale" content="CHS">
 <meta property="og:image" content="http://yoursite.com/2019/05/24/servlet转发/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/24/servlet转发/2.png">
-<meta property="og:updated_time" content="2019-05-24T00:35:47.040Z">
+<meta property="og:updated_time" content="2019-06-03T04:34:31.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Servlet 的三种跳转方式">
 <meta name="twitter:description" content="1.Forword request.getRequestDispatcher (“url”).forword (request,response) 是请求转发，也就是说，一个 Servlet 向当前的 Servlet 发出请求后，经过这个方法后，请求会继续转发到请求的 URL, 在这个过程中，只向服务器发出一次请求。效率当然也就高了.从在浏览器地址栏中显示的 URL 来看，response.sen">
@@ -90,7 +90,7 @@ Servlet 发出请求后，经过这个方法后，请求会继续转发到请求
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/24/servlet转发/" data-id="cjwftz9zl000n4gfmhbx3lp7s" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/24/servlet转发/" data-id="cjwoehegw001dvofmar8asfe9" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -113,9 +113,11 @@ Servlet 发出请求后，经过这个方法后，请求会继续转发到请求
 <p><img src="/2019/05/24/servlet转发/2.png" alt="2"></p>
 <h2 id="3-JavaScript"><a href="#3-JavaScript" class="headerlink" title="3.JavaScript"></a>3.JavaScript</h2><hr>
 <p>另还有一种跳转页面的方法，也就是在 Servlet 中输出 JavaScript 代码，也能实现页面的跳转</p>
-<p>PrintWriter out = request.getWriter();</p>
-<p>out.println(“<script>window.location.href = “url”</script>“);</p>
-<p>这种方法和 response.sendRedirect () 的效率是差不多的，也要向服务器发出再次请求才能跳转到的 URL。</p>
+<pre><code>PrintWriter out = request.getWriter();
+out.println(&quot;&lt;script&gt;window.location.href = &quot;url&quot;&lt;/script&gt;&quot;);
+out.flush();
+out.close();
+</code></pre><p>这种方法和 response.sendRedirect () 的效率是差不多的，也要向服务器发出再次请求才能跳转到的 URL。</p>
 <h2 id="4-小结"><a href="#4-小结" class="headerlink" title="4.小结"></a>4.小结</h2><hr>
 <ul>
 <li>0、跳转 (forward) 是在服务器端实现的，客户端浏览器并不知道该浏览动作，而使用 sendRedirect 跳转时，跳转是在客户端实现的，也就是说客户端浏览器实际上请求了 2 次服务器。</li>
@@ -196,6 +198,10 @@ Servlet 发出请求后，经过这个方法后，请求会继续转发到请求
       <ul>
         
           <li>
+            <a href="/2019/06/09/当前云平台发展现状/">当前云平台发展现状</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/03/Java-Filter/">JavaWeb Filter 实现登录注册过滤</a>
           </li>
         
@@ -211,10 +217,6 @@ Servlet 发出请求后，经过这个方法后，请求会继续转发到请求
             <a href="/2019/06/02/sakila-database/">Sakila MySQL 样例数据库解析</a>
           </li>
         
-          <li>
-            <a href="/2019/05/24/servlet转发/">Servlet 的三种跳转方式</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -224,7 +226,7 @@ Servlet 发出请求后，经过这个方法后，请求会继续转发到请求
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CODE/">CODE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DATABASE/">DATABASE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA企业开发框架/">JAVA企业开发框架</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TEST/">TEST</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CODE/">CODE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DATABASE/">DATABASE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA企业开发框架/">JAVA企业开发框架</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TEST/">TEST</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">3</span></li></ul>
     </div>
   </aside>
 
@@ -233,7 +235,7 @@ Servlet 发出请求后，经过这个方法后，请求会继续转发到请求
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eclipse/">eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloud-platforms/">cloud platforms</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eclipse/">eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -242,7 +244,7 @@ Servlet 发出请求后，经过这个方法后，请求会继续转发到请求
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/mysql/" style="font-size: 20px;">mysql</a> <a href="/tags/test/" style="font-size: 16.67px;">test</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
+      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cloud-platforms/" style="font-size: 10px;">cloud platforms</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/mysql/" style="font-size: 20px;">mysql</a> <a href="/tags/test/" style="font-size: 16.67px;">test</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
     </div>
   </aside>
 
@@ -251,7 +253,7 @@ Servlet 发出请求后，经过这个方法后，请求会继续转发到请求
   <aside class="widget">
     <h3 class="widget-title">Archives</h3>
     <div class="widget-content">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">11</span></li></ul>
     </div>
   </aside>
 
