@@ -65,6 +65,67 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-Java-MySQL" class="post-Java-MySQL post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/06/02/Java-MySQL/">Java MySQL 连接</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/02/Java-MySQL/" data-id="ck00c5btk0006lkfmpu2ys0ep" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h1 id="0-环境准备"><a href="#0-环境准备" class="headerlink" title="0.环境准备"></a>0.环境准备</h1><p>Java 连接 MySQL 需要驱动包，最新版下载地址为：<a href="http://dev.mysql.com/downloads/connector/j/" target="_blank" rel="noopener">http://dev.mysql.com/downloads/connector/j/</a>, 解压后得到 jar 库文件，然后在对应的项目中导入该库文件。<br>本实例使用的是 IDEA，导入 jar 包：<br><img src="/2019/06/02/Java-MySQL/1.png" alt="1"><br>也可直接放到 jdk 里，路径为：</p>
+<blockquote>
+<p>*\Java\jdk1.8.0_121\jre\lib\</p>
+</blockquote>
+<h1 id="1-创建测试数据"><a href="#1-创建测试数据" class="headerlink" title="1.创建测试数据"></a>1.创建测试数据</h1><p>接下来我们在 MySQL 中创建 Test 数据库，并创建 websites 数据表，表结构如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `websites` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `name` char(20) NOT NULL DEFAULT &apos;&apos; COMMENT &apos; 站点名称&apos;,</span><br><span class="line">  `url` varchar(255) NOT NULL DEFAULT &apos;&apos;,</span><br><span class="line">  `alexa` int(11) NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;Alexa 排名&apos;,</span><br><span class="line">  `country` char(10) NOT NULL DEFAULT &apos;&apos; COMMENT &apos; 国家&apos;,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure></p>
+<p>插入一些数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO `websites`</span><br><span class="line">VALUES</span><br><span class="line">	( &apos;1&apos;, &apos;Google&apos;, &apos;https://www.google.cm/&apos;, &apos;1&apos;, &apos;USA&apos; ),</span><br><span class="line">	( &apos;2&apos;, &apos; 淘宝&apos;, &apos;https://www.taobao.com/&apos;, &apos;13&apos;, &apos;CN&apos; ),</span><br><span class="line">	( &apos;3&apos;, &apos; 腾讯&apos;, &apos;http://www.qq.com&apos;, &apos;5892&apos;, &apos;&apos; ),</span><br><span class="line">	( &apos;4&apos;, &apos; 微博&apos;, &apos;http://weibo.com/&apos;, &apos;20&apos;, &apos;CN&apos; ),</span><br><span class="line">	( &apos;5&apos;, &apos;Facebook&apos;, &apos;https://www.facebook.com/&apos;, &apos;3&apos;, &apos;USA&apos; );</span><br></pre></td></tr></table></figure></p>
+<p>数据表显示如下：<br><img src="/2019/06/02/Java-MySQL/2.png" alt="2"></p>
+<h1 id="2-连接数据库"><a href="#2-连接数据库" class="headerlink" title="2.连接数据库"></a>2.连接数据库</h1><p>以下实例使用了 JDBC 连接 MySQL 数据库，注意一些数据如用户名，密码需要根据你的开发环境来配置：</p>
+<p>创建 JDBC 操作类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">package database;</span><br><span class="line"></span><br><span class="line">import java.sql.*;</span><br><span class="line"></span><br><span class="line">public class JdbcOp &#123;</span><br><span class="line"></span><br><span class="line">    private Connection conn = null;</span><br><span class="line">    private Statement statement = null;</span><br><span class="line">    // JDBC 驱动名及数据库 URL</span><br><span class="line">    private final String driver=&quot;com.mysql.cj.jdbc.Driver&quot;;</span><br><span class="line">    private final String jdbcUrl=&quot;jdbc:mysql://localhost:3306/&quot;;</span><br><span class="line">    private final String UrlParam = &quot;?useUnicode=true&amp;characterEncoding=UTF-8&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&quot;;</span><br><span class="line">    // 数据库的用户名与密码，需要根据自己的设置</span><br><span class="line">    private final String userName=&quot;youraccount&quot;;</span><br><span class="line">    private final String userPwd=&quot;yourpassword&quot;;</span><br><span class="line">    public void open(String Url) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Class.forName(driver).newInstance();</span><br><span class="line">            conn = DriverManager.getConnection(jdbcUrl+Url+UrlParam, userName, userPwd);</span><br><span class="line">            statement = conn.createStatement();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int executeUpdate(String sql) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            return statement.executeUpdate(sql);</span><br><span class="line">        &#125; catch (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public ResultSet executeQuery(String sql) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            return statement.executeQuery(sql);</span><br><span class="line">        &#125; catch (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void close() &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            conn.close();</span><br><span class="line">            statement.close();</span><br><span class="line">        &#125; catch (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>创建 JDBC 测试类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">package database;</span><br><span class="line"></span><br><span class="line">import java.sql.ResultSet;</span><br><span class="line"></span><br><span class="line">public class JdbcTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            JdbcOp jdbc = new JdbcOp();</span><br><span class="line">            jdbc.open(&quot;Test&quot;);</span><br><span class="line">            // 执行查询</span><br><span class="line">            ResultSet rs = jdbc.executeQuery(&quot;SELECT id, name, url FROM websites&quot;);</span><br><span class="line">            // 展开结果集数据库</span><br><span class="line">            while (rs.next()) &#123;</span><br><span class="line">                // 通过字段检索</span><br><span class="line">                int id  = rs.getInt(&quot;id&quot;);</span><br><span class="line">                String name = rs.getString(&quot;name&quot;);</span><br><span class="line">                String url = rs.getString(&quot;url&quot;);</span><br><span class="line">                // 输出数据</span><br><span class="line">                 System.out.print(&quot;ID: &quot; + id);</span><br><span class="line">                System.out.print(&quot;, 站点名称: &quot; + name);</span><br><span class="line">                System.out.print(&quot;, 站点 URL: &quot; + url);</span><br><span class="line">                System.out.print(&quot;\n&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            // 完成后关闭</span><br><span class="line">            jdbc.close();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上实例执行输出结果如下：<br><img src="/2019/06/02/Java-MySQL/3.png" alt="3"></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/06/02/Java-MySQL/">
+    <time datetime="2019-06-02T14:04:45.000Z" class="entry-date">
+        2019-06-02
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/JAVA企业开发框架/">JAVA企业开发框架</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-sakila-database" class="post-sakila-database post type-post status-publish format-standard hentry">
     <!---->
 
@@ -80,7 +141,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/02/sakila-database/" data-id="cjyldt5pr000lc8fmhmsebm22" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/02/sakila-database/" data-id="ck00c5but000llkfm18y8yepk" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -210,7 +271,7 @@ mysql&gt; SOURCE C:/temp/sakila-db/sakila-data.sql;
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/24/servlet转发/" data-id="cjyldt5ps000oc8fmydvyoz9s" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/24/servlet转发/" data-id="ck00c5buz000nlkfmj2or5rgi" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -290,7 +351,7 @@ out.close();
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/23/eclipse-servlet/" data-id="cjyldt5p40006c8fmw9se4qan" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/23/eclipse-servlet/" data-id="ck00c5btp0007lkfmq585rzyk" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -379,7 +440,7 @@ out.close();
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/test-asset/" data-id="cjyldt5pv000tc8fm1nbhp0jh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/test-asset/" data-id="ck00c5bvi000vlkfmu3rgyzpl" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -397,63 +458,6 @@ out.close();
 </a>
     
     
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-md图片处理" class="post-md图片处理 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2019/05/03/md图片处理/">Markdown 图片的简单处理</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/03/md图片处理/" data-id="cjyldt5po000hc8fmm539rvpl" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h1><p>最近写md文章的时候发现，在 markdown 里插入一些很长的图片的时候，会显得很不好看，于是去查了一下如何实现 markdown 里图片的并排显示，参考了各个博客内的内容和 markdown 文档，了解 markdown 支持一些 html 的标签，下面用 &lt;img> 实现对图片的简单处理。</p>
-<h1 id="1-单张居中显示"><a href="#1-单张居中显示" class="headerlink" title="1.单张居中显示"></a>1.单张居中显示</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;center&gt;</span><br><span class="line">    &lt;img src=&quot;http://dreamofbook.qiniudn.com/Zero.png&quot;&gt;</span><br><span class="line">&lt;/center&gt;</span><br><span class="line"></span><br><span class="line">OR</span><br><span class="line"></span><br><span class="line">&lt;figure&gt;</span><br><span class="line">    &lt;img src=&quot;http://xxx.jpg&quot;&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="2-固定图片宽度-高度："><a href="#2-固定图片宽度-高度：" class="headerlink" title="2.固定图片宽度 / 高度："></a>2.固定图片宽度 / 高度：</h1><pre><code>&lt;img src=&quot;http://xxx.jpg&quot; title=&quot;Logo&quot; width=&quot;100&quot; /&gt;
-</code></pre><p>宽度是 Width，高度是 High。Title 为图片描述。</p>
-<h1 id="3-两张并排显示："><a href="#3-两张并排显示：" class="headerlink" title="3.两张并排显示："></a>3.两张并排显示：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;figure class=&quot;half&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://xxx.jpg&quot;&gt;&lt;img src=&quot;http://yyy.jpg&quot;&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="4-三张并排显示："><a href="#4-三张并排显示：" class="headerlink" title="4.三张并排显示："></a>4.三张并排显示：</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;figure class=&quot;third&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://xxx.jpg&quot;&gt;&lt;img src=&quot;http://yyy.jpg&quot;&gt;&lt;img src=&quot;http://zzz.jpg&quot;&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="5-固定宽度，并排显示并居中"><a href="#5-固定宽度，并排显示并居中" class="headerlink" title="5.固定宽度，并排显示并居中"></a>5.固定宽度，并排显示并居中</h1><p>就是把上面的几个例子和起来，下面给出代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;center class=&quot;half&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;http://xxx.jpg&quot; width=&quot;300&quot;/&gt;&lt;img src=&quot;http://yyy.jpg&quot; width=&quot;300&quot;/&gt;</span><br><span class="line">&lt;/center&gt;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2019/05/03/md图片处理/">
-    <time datetime="2019-05-03T01:51:56.000Z" class="entry-date">
-        2019-05-03
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/CODE/">CODE</a>
-  </div>
-
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
-
     </footer>
 </article>
 
@@ -502,6 +506,10 @@ out.close();
       <ul>
         
           <li>
+            <a href="/2019/09/01/ubuntu-install/">Windows 10 &amp; Linux 的艰难历程</a>
+          </li>
+        
+          <li>
             <a href="/2019/06/23/2017gdp-rank/">2017 世界主要国家和地区 GDP 排名</a>
           </li>
         
@@ -517,10 +525,6 @@ out.close();
             <a href="/2019/06/03/Java-Login/">JavaWeb MySQL 实现登录验证</a>
           </li>
         
-          <li>
-            <a href="/2019/06/02/Java-MySQL/">Java MySQL 连接</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -530,7 +534,7 @@ out.close();
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CODE/">CODE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DATABASE/">DATABASE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA企业开发框架/">JAVA企业开发框架</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TEST/">TEST</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">4</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CODE/">CODE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DATABASE/">DATABASE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA企业开发框架/">JAVA企业开发框架</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TEST/">TEST</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">5</span></li></ul>
     </div>
   </aside>
 
@@ -539,7 +543,7 @@ out.close();
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloud-platforms/">cloud platforms</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eclipse/">eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tableau/">tableau</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloud-platforms/">cloud platforms</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eclipse/">eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tableau/">tableau</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -548,7 +552,7 @@ out.close();
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cloud-platforms/" style="font-size: 10px;">cloud platforms</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/mysql/" style="font-size: 20px;">mysql</a> <a href="/tags/tableau/" style="font-size: 10px;">tableau</a> <a href="/tags/test/" style="font-size: 16.67px;">test</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a>
+      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cloud-platforms/" style="font-size: 10px;">cloud platforms</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/mysql/" style="font-size: 20px;">mysql</a> <a href="/tags/tableau/" style="font-size: 10px;">tableau</a> <a href="/tags/test/" style="font-size: 16.67px;">test</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
     </div>
   </aside>
 
@@ -557,7 +561,7 @@ out.close();
   <aside class="widget">
     <h3 class="widget-title">Archives</h3>
     <div class="widget-content">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">11</span></li></ul>
     </div>
   </aside>
 
