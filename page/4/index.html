@@ -65,6 +65,108 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-vscode-c++" class="post-vscode-c++ post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/05/01/vscode-c++/">Visual Studio Code 配置 C/C++ 环境</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/vscode-c++/" data-id="ck2tq8utb001dsj77w6teq9qj" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h2><p>VS Code 是微软发布一款跨平台的源代码编辑器，其拥有强大的功能和丰富的扩展，使之能适合编写许多语言。</p>
+<p>本文面向初学者（但不是纯小白），分享一点我配置 C/C++ 的经验。</p>
+<p>本文所有内容均可从 VS Code 的官方文档：<a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">C++ programming with Visual Studio Code</a> 以及各个扩展的文档中获得，并且他们还会进行更新。</p>
+<p>我的环境：64 位 Windows 10。VS Code 的配置文件在 Linux 下应该也是通用的，但需要修改路径等部位配置。</p>
+<h2 id="1-环境的准备"><a href="#1-环境的准备" class="headerlink" title="1. 环境的准备"></a>1. 环境的准备</h2><p>VS Code 的官网和下载、安装最新的版本。VS Code 只是一个<strong>编辑器</strong>，并不是 IDE（集成开发环境）。不含<strong>编译器</strong>（和许多其它功能），所以编译器要自己安装好。如果想用其他工具链或单纯用官方扩展。</p>
+<p>然后下载安装 MinGW-w64，其实 MinGW 和 MinGW-w64 只是名字像，它们是两个不同的项目。为了方便，本文中的 MinGW 指的其实都是 MinGW-w64。MinGW 本身已经很久没有更新了，故<strong>不推荐</strong>。下载以下两个程序（都要）：</p>
+<p><a href="http://releases.llvm.org/download.html" target="_blank" rel="noopener">LLVM Download Page</a> 在此页面下载 Clang。选 Pre-Built Binaries 中的 Clang for Windows (64-bit)， <strong>不需要下.sig 文件</strong><br><a href="https://sourceforge.net/projects/mingw-w64/files/" target="_blank" rel="noopener">MinGW-w64 - for 32 and 64 bit Windows</a> 往下稍微翻一下，选最新版本中的 x86_64-posix-sjlj 。最好不要用 Download Latest Version，这个是在线安装包，有可能因为国内的 “网络环境” 下载失败。如果浏览器还是下载失败就换迅雷下，还失败，那就使用能访问 Google 的那种方法下。选 Add LLVM to the system PATH for all users（即第二项，不过第三项也差不多）。Clang 的安装路径（Destination folder）我推荐填 C:\Program Files\LLVM，不装那里也行，下面的配置里路径就自己改。安装完了以后可能会弹出 cmd 说 MSVC integration install failed。这个是因为 Clang 默认使用的是 msvc 的工具链，而我们选择的工具链是 MinGW，所以就不用管这个提示。</p>
+<p>MinGW 随便装哪，Architecture 选 x86_64，装好以后把东西全部复制到 Clang 的文件夹里去，他们会无冲突合并。同样，不做这一步也行，下面的配置里路径就自己改，还要手动把 MinGW 的 bin 文件夹加到 path 中，因为 MinGW 不会自己加。至于为什么既要装 Clang 又要装 MinGW，是因为 Clang 没有头文件。然后就可以把 MinGW 删了（Uninstall.exe）。不建议安装多个 MinGW，如果你安装了其他 IDE 需要注意把其他的 MinGW 从环境变量中去掉；也可以自己把他们的编译器设为 Clang。因为几乎所有的轻量级 IDE 用的都是 MinGW 或 TDM-GCC，它们不制造编译器，只是打包了一个。而且它们用在 VSC 里也会有奇怪的错误。</p>
+<p>运行 cmd，输 clang，应该会提示 no input files 而不是 “不是内部命令或外部命令” 或者 “无法将 “clang” 项识别为 cmdlet、函数、脚本文件或可运行程序的名称”。输 clang -v 或 gcc -v 可以显示出各自的版本。如果是 “不是内部命令或外部命令”，说明 clang.exe 在的文件夹（我的是 C:\Program Files\LLVM\bin）没有在环境变量中，要加到 path 里才行。</p>
+<p>配置环境变量</p>
+<p>下面我们来配置系统环境<br>在我的电脑上右键点击属性，然后依次点击下面图片的操作，将 MinGW 中的 bin 文件夹路径添加进去（我的路径为 D:\Program Files\MinGW\bin）<br>之后一直点击确定即可<br><strong>注：设置完系统环境变量之后需要重启 vs code</strong></p>
+<p><img src="/2019/05/01/vscode-c++/1.png" alt><br><img src="/2019/05/01/vscode-c++/2.png" alt></p>
+<h3 id="安装扩展-extension"><a href="#安装扩展-extension" class="headerlink" title="安装扩展 (extension)"></a>安装扩展 (extension)</h3><h4 id="必装："><a href="#必装：" class="headerlink" title="必装："></a>必装：</h4><ul>
+<li>C/C++：又名 cpptools，提供 Debug 和 Format 功能</li>
+<li>C/C++ Clang Command * Adapter：提供静态检测（Lint）功能</li>
+<li>Code Runner：右键即可编译运行单文件，很方便；但无法 Dubug</li>
+</ul>
+<h4 id="其他可选扩展："><a href="#其他可选扩展：" class="headerlink" title="其他可选扩展："></a>其他可选扩展：</h4><ul>
+<li>Bracket Pair Colorizer：彩虹花括号</li>
+<li>Include Autocomplete：提供头文件名字的补全，不过用处不大；而且其实现在 cpptools 已经自带这个功能了，但本文不使用它的补全</li>
+<li>C/C++ Snippets：Snippets 即重用代码块，效果自己百度；这个扩展安装量虽高，不过个人感觉用处实在不大，你也可以选择其他的 Snippets 扩展甚至自己定义</li>
+<li>One Dark Pro：大概是 VS Code 安装量最高的主题</li>
+<li>vscode-clangd：这个和 Adapter 二选一，出得比 Adapter 晚，下载量也低，但却是 llvm 官方出的。出现问题时可以换着试试 Clang-Format：只有想自定义代码风格时才装，比如大括号不换行。</li>
+</ul>
+<h4 id="需要另外学习如何使用不建议-不需要装的扩展："><a href="#需要另外学习如何使用不建议-不需要装的扩展：" class="headerlink" title="需要另外学习如何使用不建议 / 不需要装的扩展："></a>需要另外学习如何使用不建议 / 不需要装的扩展：</h4><ul>
+<li>GBKtoUTF8：把 GBK 编码的文档转换成 UTF8 编码的。此扩展可能有严重的 bug。</li>
+<li>C++ Intellisense：用的是 gtags，本文第一个版本的选择。效果非常非常一般。</li>
+</ul>
+<h2 id="2-配置四个-json-文件"><a href="#2-配置四个-json-文件" class="headerlink" title="2. 配置四个.json 文件"></a>2. 配置四个.json 文件</h2><p>先创建一个你打算存放代码的文件夹（称作工作区），路径不能含有中文和空格和引号。c 语言和 c++ 需要建立不同的工作区（除非你懂得下面 json 文件的某些选项，则可以做到一个工作区使用不同的 build task）。</p>
+<p>打开 VS Code，选打开文件夹（不要选 “添加工作区文件夹”，理由见上一句），选择刚才那个文件夹，点 VS Code 上的新建文件夹，名称为.vscode（这样做的原因是 Windows 的 Explorer 不允许创建的文件夹第一个字符是点），然后创建 launch.json，tasks.json，settings.json，c_cpp_properties.json 放到.vscode 文件夹下，效果图：</p>
+<p><img src="/2019/05/01/vscode-c++/3.png" alt></p>
+<h3 id="launch-json-代码："><a href="#launch-json-代码：" class="headerlink" title="launch.json 代码："></a>launch.json 代码：</h3><p>stopAtEntry 可根据自己喜好修改；cwd 可以控制程序运行时的相对路径，如有需要可以改为 ${fileDirname}。其他无需更改，除非你不用 windows，则可以用 lldb 调试（需要自己装）。type 和 request 不变色是正常现象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// https://github.com/Microsoft/vscode-cpptools/blob/master/launch.md</span><br><span class="line">&#123;</span><br><span class="line">    &quot;version&quot;: &quot;0.2.0&quot;,</span><br><span class="line">    &quot;configurations&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;(gdb) Launch&quot;, // 配置名称，将会在启动配置的下拉菜单中显示</span><br><span class="line">            &quot;type&quot;: &quot;cppdbg&quot;, // 配置类型，这里只能为cppdbg</span><br><span class="line">            &quot;request&quot;: &quot;launch&quot;, // 请求配置类型，可以为launch（启动）或attach（附加）</span><br><span class="line">            &quot;program&quot;: &quot;$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.exe&quot;, // 将要进行调试的程序的路径</span><br><span class="line">            &quot;args&quot;: [], // 程序调试时传递给程序的命令行参数，一般设为空即可</span><br><span class="line">            &quot;stopAtEntry&quot;: false, // 设为true时程序将暂停在程序入口处，相当于在main上打断点</span><br><span class="line">            &quot;cwd&quot;: &quot;$&#123;workspaceFolder&#125;&quot;, // 调试程序时的工作目录，此为工作区文件夹；改成$&#123;fileDirname&#125;可变为文件所在目录</span><br><span class="line">            &quot;environment&quot;: [], // 环境变量</span><br><span class="line">            &quot;externalConsole&quot;: true, // 为true时使用单独的cmd窗口，与其它IDE一致；18年10月后设为false可调用VSC内置终端</span><br><span class="line">            &quot;internalConsoleOptions&quot;: &quot;neverOpen&quot;, // 如果不设为neverOpen，调试时会跳到“调试控制台”选项卡，你应该不需要对gdb手动输命令吧？</span><br><span class="line">            &quot;MIMode&quot;: &quot;gdb&quot;, // 指定连接的调试器，可以为gdb或lldb。但我没试过lldb</span><br><span class="line">            &quot;miDebuggerPath&quot;: &quot;gdb.exe&quot;, // 调试器路径，Windows下后缀不能省略，Linux下则不要</span><br><span class="line">            &quot;setupCommands&quot;: [ // 用处未知，模板如此</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;,</span><br><span class="line">                    &quot;text&quot;: &quot;-enable-pretty-printing&quot;,</span><br><span class="line">                    &quot;ignoreFailures&quot;: false</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            &quot;preLaunchTask&quot;: &quot;Compile&quot; // 调试会话开始前执行的任务，一般为编译程序。与tasks.json的label相对应</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="tasks-json-代码："><a href="#tasks-json-代码：" class="headerlink" title="tasks.json 代码："></a>tasks.json 代码：</h3><p>reveal 可根据自己喜好修改，即使设为 never，也只是编译时不跳转到 “终端” 而已，手动点进去还是可以看到，我个人设为 never。<br>命令行参数方面，-std 根据自己的需要修改。如果使用 Clang 编写 C 语言，把 command 的值改成 clang。<br>如果使用 MinGW，编译 C 用 gcc，编译 c++ 用 g++，并把 - target 和 - fcolor 那两条删去。如果不想要额外警告，把 - Wall 那一条删去。<br>参数的作用我加了注释，还看不懂，百度 gcc 使用教程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">// https://code.visualstudio.com/docs/editor/tasks</span><br><span class="line">&#123;</span><br><span class="line">    &quot;version&quot;: &quot;2.0.0&quot;,</span><br><span class="line">    &quot;tasks&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;label&quot;: &quot;Compile&quot;, // 任务名称，与launch.json的preLaunchTask相对应</span><br><span class="line">            &quot;command&quot;: &quot;clang&quot;, // 要使用的编译器，C++用clang++</span><br><span class="line">            &quot;args&quot;: [</span><br><span class="line">                &quot;$&#123;file&#125;&quot;,</span><br><span class="line">                &quot;-o&quot;, // 指定输出文件名，不加该参数则默认输出a.exe，Linux下默认a.out</span><br><span class="line">                &quot;$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.exe&quot;,</span><br><span class="line">                &quot;-g&quot;, // 生成和调试有关的信息</span><br><span class="line">                &quot;-Wall&quot;, // 开启额外警告</span><br><span class="line">                &quot;-static-libgcc&quot;, // 静态链接libgcc</span><br><span class="line">                &quot;--target=x86_64-w64-mingw&quot;, // clang的默认target为msvc，不加这一条就会找不到头文件；Linux下去掉这一条</span><br><span class="line">                &quot;-std=c11&quot; // C++最新标准为c++17，或根据自己的需要进行修改</span><br><span class="line">            ], // 编译命令参数</span><br><span class="line">            &quot;type&quot;: &quot;shell&quot;, // 可以为shell或process，前者相当于先打开shell再输入命令，后者是直接运行命令</span><br><span class="line">            &quot;group&quot;: &#123;</span><br><span class="line">                &quot;kind&quot;: &quot;build&quot;,</span><br><span class="line">                &quot;isDefault&quot;: true // 设为false可做到一个tasks.json配置多个编译指令，需要自己修改本文件，我这里不多提</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;presentation&quot;: &#123;</span><br><span class="line">                &quot;echo&quot;: true,</span><br><span class="line">                &quot;reveal&quot;: &quot;always&quot;, // 在“终端”中显示编译信息的策略，可以为always，silent，never。具体参见VSC的文档</span><br><span class="line">                &quot;focus&quot;: false, // 设为true后可以使执行task时焦点聚集在终端，但对编译c和c++来说，设为true没有意义</span><br><span class="line">                &quot;panel&quot;: &quot;shared&quot; // 不同的文件的编译信息共享一个终端面板</span><br><span class="line">            &#125;</span><br><span class="line">            // &quot;problemMatcher&quot;:&quot;$gcc&quot; // 如果你不使用clang，去掉前面的注释符，并在上一条之后加个逗号。照着我的教程做的不需要改（也可以把这行删去)</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="settings-json-代码："><a href="#settings-json-代码：" class="headerlink" title="settings.json 代码："></a>settings.json 代码：</h3><p>把这个文件里的东西放到 “用户设置” 里也可以覆盖全局设置，自己进行选择。</p>
+<p>Code Runner 的命令行和某些选项可以根据自己的需要在此处修改，用法还是参见此扩展的文档和百度 gcc 使用教程。</p>
+<p>如果你要使用其他地方的头文件和库文件，可能要往 clang.cflags 和 clang.cxxflags 里加 - I 和 - L，用法百度 gcc 使用教程。</p>
+<p>clang 的补全，在我过去的测试过程中会让 VSC 非常卡，但是现在好像没有这个问题了。</p>
+<p>如果你卡，就把 clang 的补全关掉，用 cpptools 的。</p>
+<p>Linux 下去掉 code runner 和 flags 的 –target 那一条，共四个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;files.defaultLanguage&quot;: &quot;cpp&quot;, // ctrl+N新建文件后默认的语言</span><br><span class="line">    &quot;editor.formatOnType&quot;: true, // 输入时就进行格式化，默认触发字符较少，分号可以触发</span><br><span class="line">    &quot;editor.snippetSuggestions&quot;: &quot;top&quot;, // snippets代码优先显示补全</span><br><span class="line"></span><br><span class="line">    &quot;code-runner.runInTerminal&quot;: true, // 设置成false会在“输出”中输出，无法输入</span><br><span class="line">    &quot;code-runner.executorMap&quot;: &#123;</span><br><span class="line">        &quot;c&quot;: &quot;cd $dir &amp;&amp; clang $fileName -o $fileNameWithoutExt.exe -Wall -g -Og -static-libgcc -fcolor-diagnostics --target=x86_64-w64-mingw -std=c11 &amp;&amp; $dir$fileNameWithoutExt&quot;,</span><br><span class="line">        &quot;cpp&quot;: &quot;cd $dir &amp;&amp; clang++ $fileName -o $fileNameWithoutExt.exe -Wall -g -Og -static-libgcc -fcolor-diagnostics --target=x86_64-w64-mingw -std=c++17 &amp;&amp; $dir$fileNameWithoutExt&quot;</span><br><span class="line">    &#125;, // 设置code runner的命令行</span><br><span class="line">    &quot;code-runner.saveFileBeforeRun&quot;: true, // run code前保存</span><br><span class="line">    &quot;code-runner.preserveFocus&quot;: true, // 若为false，run code后光标会聚焦到终端上。如果需要频繁输入数据可设为false</span><br><span class="line">    &quot;code-runner.clearPreviousOutput&quot;: false, // 每次run code前清空属于code runner的终端消息</span><br><span class="line"></span><br><span class="line">    &quot;C_Cpp.clang_format_sortIncludes&quot;: true, // 格式化时调整include的顺序（按字母排序）</span><br><span class="line">    &quot;C_Cpp.intelliSenseEngine&quot;: &quot;Default&quot;, // 可以为Default或Tag Parser，后者较老，功能较简单。具体差别参考cpptools扩展文档</span><br><span class="line">    &quot;C_Cpp.errorSquiggles&quot;: &quot;Disabled&quot;, // 因为有clang的lint，所以关掉</span><br><span class="line">    &quot;C_Cpp.autocomplete&quot;: &quot;Disabled&quot;, // 因为有clang的补全，所以关掉</span><br><span class="line"></span><br><span class="line">    &quot;clang.cflags&quot;: [ // 控制c语言静态检测的参数</span><br><span class="line">        &quot;--target=x86_64-w64-mingw&quot;,</span><br><span class="line">        &quot;-std=c11&quot;,</span><br><span class="line">        &quot;-Wall&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;clang.cxxflags&quot;: [ // 控制c++静态检测时的参数</span><br><span class="line">        &quot;--target=x86_64-w64-mingw&quot;,</span><br><span class="line">        &quot;-std=c++17&quot;,</span><br><span class="line">        &quot;-Wall&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;clang.completion.enable&quot;:true // 效果效果比cpptools要好</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="c-cpp-properties-json-代码："><a href="#c-cpp-properties-json-代码：" class="headerlink" title="c_cpp_properties.json 代码："></a>c_cpp_properties.json 代码：</h3><p>此文件内容来自于 Microsoft/vscode-cpptools；这个 json 不允许有注释（其实按照标准本来就不能有）。</p>
+<p>如果你没有合并 Clang 和 MinGW，则该文件中的 compilerPath 必需修改成 MinGW 的完整路径，精确到 gcc.exe，否则会提示找不到头文件；Linux 下应该是 /usr/bin/gcc。</p>
+<p>如果你自己编写了头文件又不在 workspaceFolder 下，路径也要加到 includePath 和 browse 里。这些路径是否递归有效暂时未知，我的测试是有效的。</p>
+<p>Windows 下的路径为反斜杠，原本应使用两个反斜杠来转义，但直接用斜杠在 VS Code 中也接受。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;configurations&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;MinGW&quot;,</span><br><span class="line">            &quot;intelliSenseMode&quot;: &quot;clang-x64&quot;,</span><br><span class="line">            &quot;compilerPath&quot;: &quot;C:/Program Files/LLVM/bin/gcc.exe&quot;,</span><br><span class="line">            &quot;includePath&quot;: [</span><br><span class="line">                &quot;$&#123;workspaceFolder&#125;&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;defines&quot;: [],</span><br><span class="line">            &quot;browse&quot;: &#123;</span><br><span class="line">                &quot;path&quot;: [</span><br><span class="line">                    &quot;$&#123;workspaceFolder&#125;&quot;</span><br><span class="line">                ],</span><br><span class="line">                &quot;limitSymbolsToIncludedHeaders&quot;: true,</span><br><span class="line">                &quot;databaseFilename&quot;: &quot;&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;cStandard&quot;: &quot;c11&quot;,</span><br><span class="line">            &quot;cppStandard&quot;: &quot;c++17&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;version&quot;: 4</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为什么要往 json 里写这么多的东西？因为 VSC 本身并没有对 C 语言特别优待，对其他许多语言也是这样。另外稍微提一下，以 $ 开头的是 VSC 预定义的变量，具体参见：Variables Reference。</p>
+<p>关于 VS Code 输出会出现乱码，很多人都遇到过。这是因为 VS Code 内部用的是 utf-8 编码，cmd/powershell 是 gbk 编码。直接编译，会把 “你好” 输出成 “浣犲ソ”。<br>其实可以点右下角 选 Reopen with Encoding 选 Chinese GBK 就可以正常输入中文了，而且输出也是正常的<br>还可以在设置里搜索 encode，把 files.encoding 改成 gbk，而且最好把 files.autoGuessEncoding 也改成 true</p>
+<blockquote>
+<p><em>本文主要在作者：<a href="https://www.zhihu.com/question/30315894/answer/154979413" target="_blank" rel="noopener">谭九鼎</a>的基础上简化。</em></p>
+</blockquote>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/05/01/vscode-c++/">
+    <time datetime="2019-05-01T13:13:46.000Z" class="entry-date">
+        2019-05-01
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/TOOL/">TOOL</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/">vscode</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-this-is-a-new-article" class="post-this-is-a-new-article post type-post status-publish format-standard hentry">
     <!---->
 
@@ -80,7 +182,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/this-is-a-new-article/" data-id="ck00c5bvd000slkfm1gkvf8k3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/this-is-a-new-article/" data-id="ck2tq8ut40016sj77bdfyie1s" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -93,65 +195,6 @@
     <footer class="entry-meta">
     <a href="/2019/05/01/this-is-a-new-article/">
     <time datetime="2019-05-01T12:16:21.000Z" class="entry-date">
-        2019-05-01
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/TEST/">TEST</a>
-  </div>
-
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="post-hello-world post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2019/05/01/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/hello-world/" data-id="ck00c5bu9000clkfm8lsbdi3o" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2019/05/01/hello-world/">
-    <time datetime="2019-05-01T08:58:24.000Z" class="entry-date">
         2019-05-01
     </time>
 </a>
@@ -189,7 +232,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/firts/" data-id="ck00c5bti0005lkfmqt55sv37" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/firts/" data-id="ck2tq8us3000csj77g864grid" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -202,6 +245,65 @@
 
     <footer class="entry-meta">
     <a href="/2019/05/01/firts/">
+    <time datetime="2019-05-01T08:58:24.000Z" class="entry-date">
+        2019-05-01
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/TEST/">TEST</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/">test</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-hello-world" class="post-hello-world post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2019/05/01/hello-world/">Hello World</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/01/hello-world/" data-id="ck2tq8usn000lsj77qkr0lq1b" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/05/01/hello-world/">
     <time datetime="2019-05-01T08:58:24.000Z" class="entry-date">
         2019-05-01
     </time>
@@ -264,6 +366,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/11/conceptual-model/">conceptual-model</a>
+          </li>
+        
+          <li>
             <a href="/2019/09/01/ubuntu-install/">Windows 10 &amp; Linux 的艰难历程</a>
           </li>
         
@@ -277,10 +383,6 @@
         
           <li>
             <a href="/2019/06/03/Java-Filter/">JavaWeb Filter 实现登录注册过滤</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/03/Java-Login/">JavaWeb MySQL 实现登录验证</a>
           </li>
         
       </ul>
@@ -319,7 +421,7 @@
   <aside class="widget">
     <h3 class="widget-title">Archives</h3>
     <div class="widget-content">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">11</span></li></ul>
     </div>
   </aside>
 
