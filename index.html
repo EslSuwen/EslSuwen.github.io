@@ -73,20 +73,97 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2019/11/11/conceptual-model/">conceptual-model</a>
+      <a class="article-title" href="/2019/11/11/conceptual-model/">概念模型的建立</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/11/11/conceptual-model/" data-id="ck2tq8uri0007sj77d7f3jxcp" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/11/11/conceptual-model/" data-id="ck4l31hyh0006v477j38gvomc" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        
+        <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h1><h3 id="学习目的"><a href="#学习目的" class="headerlink" title="学习目的"></a>学习目的</h3><p>1．根据需求分析，把现实世界中的具体事物抽象为某一概念级的数据模型，<br>即建立整个问题的概念模型，建立起数据库设计人员与用户之间的交流，为结构数据模型的建立奠定基础。<br>2．学会认识和分析现实世界，根据对用户需求，描述用户的数据要求：</p>
+<ul>
+<li>（1）练习如何从中抽取实体；</li>
+<li>（2）练习如何建立各实体之间的联系；</li>
+<li>（3）从各实体和实体间的联系，抽取出数据处理的过程。</li>
+</ul>
+<h1 id="1-实验原理"><a href="#1-实验原理" class="headerlink" title="1.实验原理"></a>1.实验原理</h1><p>对于概念模型的建立，可以通过手工方法建立，也可以通过辅助设计工具建立，如Sybase公司的Power Designer等。熟悉实体、属性、练习的建立方法。</p>
+<ol>
+<li>手工建立<br>通过一些编辑工具如word、Visio等，建立概念模型，通过该方法可以建立直观的概念模型，但后期的利用率很低，如通过该模型来建立逻辑模型和物理模型。</li>
+<li>辅助工具<br>通过辅助工具，不仅可以建立直观的概念模型，还可以通过概念模型直接转<br>换为逻辑模型和物理模型，辅助工具可以很快速的完成，而且转换较合理。</li>
+<li>使用Power Designer练习</li>
+</ol>
+<h1 id="2-实验过程"><a href="#2-实验过程" class="headerlink" title="2.实验过程"></a>2.实验过程</h1><p>下面以Power Designer15为工具、以学生成绩为例简介建立概念模型的方<br>法及步骤。</p>
+<h3 id="1-进入Power-Designer环境中，如图1。"><a href="#1-进入Power-Designer环境中，如图1。" class="headerlink" title="1.进入Power Designer环境中，如图1。"></a>1.进入Power Designer环境中，如图1。</h3><p><img src="/2019/11/11/conceptual-model/1.png" alt="1"></p>
+<p><em>图1 打开Power Designer</em></p>
+<h3 id="2-新建模型"><a href="#2-新建模型" class="headerlink" title="2.新建模型"></a>2.新建模型</h3><p>文件 -&gt;新建模型，如图2.</p>
+<p><img src="/2019/11/11/conceptual-model/2.png" alt="2"></p>
+<p><em>图2 选择建立的模型类型</em></p>
+<p>选择Conceptual Data Model 下的Conceptual Diagram ,建立概念模型，模型名称，如学生成绩管理，确定后进入如图3的设计界面。</p>
+<p><img src="/2019/11/11/conceptual-model/3.png" alt="3"></p>
+<p><em>图3 概念模型设计界面</em></p>
+<h3 id="3-建立实体"><a href="#3-建立实体" class="headerlink" title="3.建立实体"></a>3.建立实体</h3><p>通过点击“实体”图标，建立实体对象。如下图。</p>
+<p><img src="/2019/11/11/conceptual-model/4.png" alt="4"></p>
+<p><em>图4 建立空实体</em></p>
+<h4 id="3-1-建立实体描述信息"><a href="#3-1-建立实体描述信息" class="headerlink" title="3.1.建立实体描述信息"></a>3.1.建立实体描述信息</h4><p>输入实体名称、代码及相关的描述。如图5.</p>
+<p><img src="/2019/11/11/conceptual-model/5.png" alt="5"></p>
+<p><em>图5 实体描述确定后的实体界面如图6.</em></p>
+<p><img src="/2019/11/11/conceptual-model/6.png" alt="6"></p>
+<p><em>图6 命名的实体</em></p>
+<h4 id="3-2-建立实体属性"><a href="#3-2-建立实体属性" class="headerlink" title="3.2.建立实体属性"></a>3.2.建立实体属性</h4><p>双击实体-&gt;选择【Attributes】Tab页，完成属性的建立，如图7.</p>
+<p><img src="/2019/11/11/conceptual-model/7.png" alt="7"></p>
+<p><em>图7 属性的建立</em></p>
+<p><img src="/2019/11/11/conceptual-model/8.png" alt="8"></p>
+<p><em>图8 选择数据类型</em></p>
+<p><img src="/2019/11/11/conceptual-model/9.png" alt="9"></p>
+<p><em>图9 设置属性特性</em></p>
+<p><img src="/2019/11/11/conceptual-model/10.png" alt="10"></p>
+<p><em>图10 专业实体属性列表</em></p>
+<p>同理建立学生实体。</p>
+<p><img src="/2019/11/11/conceptual-model/11.png" alt="11"></p>
+<p><em>图11 学生实体属性</em></p>
+<p><img src="/2019/11/11/conceptual-model/12.png" alt="12"></p>
+<p><em>图12 性别属性的属性</em></p>
+<p>选择【Standard Checks】Tab页，如图13.</p>
+<p><img src="/2019/11/11/conceptual-model/13.png" alt="13"></p>
+<p><em>图13 设置性别的约束</em></p>
+<h3 id="4-建立联系"><a href="#4-建立联系" class="headerlink" title="4.建立联系"></a>4.建立联系</h3><p>联系包含1:1，1:n，n:n，在选中联系功能后，按住鼠标，一般从一方拖到多方。如图14.</p>
+<p><img src="/2019/11/11/conceptual-model/14.png" alt="14"></p>
+<p><em>图14 建立联系</em></p>
+<p>若需要设置联系的属性时，选中联系后双机该联系，再设置联系的属性。如图14.设置联系属相包含基本属性、联系类型等。</p>
+<p><img src="/2019/11/11/conceptual-model/15.png" alt="15"></p>
+<p><em>图15 联系的属性</em></p>
+<p><img src="/2019/11/11/conceptual-model/16.png" alt="16"></p>
+<p><em>图16 联系的属性含义</em></p>
+<p>可以选择联系的映射基数。“是否允许为空”选择后，表示在逻辑模型中外码（专业代码）在学生中不允许为空，即学生的专业代码必须填写。“存在依赖” 选中后，表示外码“专业代码”在多方为主码属性。</p>
+<h3 id="5-多对多联系的处理"><a href="#5-多对多联系的处理" class="headerlink" title="5.多对多联系的处理"></a>5.多对多联系的处理</h3><p>一般将多对多联系看作一个实体处理，这样就可增加多对多联系的属性。<br>如图17和图18.</p>
+<p><img src="/2019/11/11/conceptual-model/17.png" alt="17"></p>
+<p><em>图17 多对多联系</em></p>
+<p>如图16采用多对多联系时不能添加多对多联系的属性“成绩”。一般将多对<br>多联系看作一个实体，将多对多联系转换为两个一对多的联系，多方依赖一方，在转换为逻辑模型时，将一方的主码属性作为多方的主码属性。</p>
+<p><img src="/2019/11/11/conceptual-model/18.png" alt="18"></p>
+<p><em>图18 将多对多联系转为实体</em></p>
+<h1 id="3-实验题目"><a href="#3-实验题目" class="headerlink" title="3.实验题目"></a>3.实验题目</h1><p>某电商平台需要管理平台的商品信息，需要开发一套软件系统实现管理工作。</p>
+<h3 id="主要功能要求"><a href="#主要功能要求" class="headerlink" title="主要功能要求"></a>主要功能要求</h3><ol>
+<li>实现商品的基本管理，要求同一种商品能够由多家供货商供货，商品类别要分级。能实现对商品品牌、商品供应商、商品分类和商品基本信息的添加、删除和修改。</li>
+<li>能根据相关的查询条件完成商品品牌、商品供应商、商品分类和商品基本信息的查询。</li>
+<li>能根据商品品牌、商品供应商和商品分类进行统计。</li>
+</ol>
+<h3 id="主要数据要求"><a href="#主要数据要求" class="headerlink" title="主要数据要求"></a>主要数据要求</h3><ul>
+<li>商品品牌:包含品牌名称、品牌网址、品牌图片等。</li>
+<li>商品供应商:包含商品代码（唯一）、供货商名、联系人、联系电话、供货商简介等。</li>
+<li>商品分类：分类名称、分类图片等。</li>
+<li>商品：包含商品名称、规格、型号、计量单位、市场价、销售价、成本价、</li>
+<li>商品缩略图、商品介绍等信息。</li>
+</ul>
+<h1 id="附项目文件及概念-物理模型"><a href="#附项目文件及概念-物理模型" class="headerlink" title="附项目文件及概念/物理模型"></a>附项目文件及概念/物理模型</h1><blockquote>
+<p><a href="https://github.com/EslSuwen/Commodity" target="_blank" rel="noopener">https://github.com/EslSuwen/Commodity</a></p>
+</blockquote>
+
       
     </div><!-- .entry-content -->
 
@@ -97,7 +174,15 @@
     </time>
 </a>
     
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/TOOL/">TOOL</a>
+  </div>
+
     
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/powerdesigner/">powerdesigner</a></li></ul>
+
     </footer>
 </article>
 
@@ -122,7 +207,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/09/01/ubuntu-install/" data-id="ck2tq8ut80018sj7777dk4534" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/09/01/ubuntu-install/" data-id="ck4l31i1v0029v4770nc95hmr" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -205,29 +290,31 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/23/2017gdp-rank/" data-id="ck2tq8uqx0000sj77fq2mtp1s" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/23/2017gdp-rank/" data-id="ck4l31hxu0000v477e5kezv75" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
         <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h1><p>在过去的一年，世界各国的经济表现如何？总的来说，一片欣欣向荣，大多数国家都取得了近五年最好的经济增速，但因为与美元汇率的变化，各国经济表现各异。</p>
-<p><img src="/2019/06/23/2017gdp-rank/1.png" alt="1"><br><em>利用Tableau进行地图可视化</em></p>
-<p><img src="/2019/06/23/2017gdp-rank/2.png" alt="2"><br><em>鼠标悬停至国家所处位置点时可查看该国家16、17年GDP、人口、GDP增速等信息</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225162115323-733877505.png" alt></p>
+<p><em>利用Tableau进行地图可视化</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225162118622-107399901.png" alt></p>
+<p><em>鼠标悬停至国家所处位置点时可查看该国家16、17年GDP、人口、GDP增速等信息</em></p>
 <h1 id="1-美国-GDP-突破-19-万亿美元"><a href="#1-美国-GDP-突破-19-万亿美元" class="headerlink" title="1.美国 GDP 突破 19 万亿美元"></a>1.美国 GDP 突破 19 万亿美元</h1><p>美国 GDP 达 19.36 万亿美元，直逼 20 万亿，有望成为人类有史以来第一个突破 20 万亿美元的国家。美国名义增速为 4.27%，表现稳健，为近三年来最高增速。</p>
-<p><img src="/2019/06/23/2017gdp-rank/3.png" alt="3"></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225162123745-1470554924.png" alt></p>
 <h1 id="2-中国-GDP-突破-12-万亿美元"><a href="#2-中国-GDP-突破-12-万亿美元" class="headerlink" title="2.中国 GDP 突破 12 万亿美元"></a>2.中国 GDP 突破 12 万亿美元</h1><p>中国 2017 年 GDP 为 12.24 万亿美元，因为使用的是 2017 年平均汇率，所以比预想的低一些。现在美元对人民币已经跌至 6.3 左右，不出意外，2018 年中国美元名义 GDP 会暴增 1.5-2 万亿美元，有可能跳过 13 万亿直接到达 14 万亿美元。</p>
 <p>中国人均 GDP 达到 8800 美元，与墨西哥（9364 美元）、俄罗斯（9996 美元）、马来西亚（9938 美元）、土耳其（10515 美元）差距不大了，不出意外，中国 2018 年人均 GDP 会超过 1 万美元，达到低级发达国家水平。泰国（6358 美元）、南非（6154 美元）等中国曾经仰望的存在，现在已经被中国甩远。</p>
-<p><img src="/2019/06/23/2017gdp-rank/4.png" alt="4"></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225162132402-1785218216.png" alt></p>
 <h1 id="3-日本美元-GDP-可能会下降"><a href="#3-日本美元-GDP-可能会下降" class="headerlink" title="3.日本美元 GDP 可能会下降"></a>3.日本美元 GDP 可能会下降</h1><p>日本 GDP 今年预计为 4.88 万亿美元，比去年略有下降。日本在 4-5 万亿美元已经徘徊了 20 多年，目前还无法取得突破，似乎有点可怜。</p>
-<p><img src="/2019/06/23/2017gdp-rank/5.png" alt="5"></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225162136043-1322334569.png" alt></p>
 <h1 id="4-印度-GDP-达到-2-4-万亿美元"><a href="#4-印度-GDP-达到-2-4-万亿美元" class="headerlink" title="4.印度 GDP 达到 2.4 万亿美元"></a>4.印度 GDP 达到 2.4 万亿美元</h1><p>印度 2017 年经济增速比 2016 年略有放缓，增速被中国反超。印度经济目前的问题还是比较多的，首先是太过于依赖服务业，这对于一个发展中国家来说并非好事。印度软件业近年出现下滑趋势，据说主要问题是印度的软件工程师整体素质较低，编写的程序效率低下，雇主满意度不高，软件总收入降低。印度前几年大呼小叫的 “印度制造” 计划现在看来也是雷声大雨点小，没有达到预期。主要问题是，印度的投资环境不理想，外国资本更喜欢投向印度的互联网产业，而非制造业。</p>
 <p>不过全球主流媒体依然看好印度经济，认为今年印度经济增速会超过中国，并在 2020 年前超过英国和法国。2017 年印度和英法的 GDP 差距不到 1500 亿美元，看来印度确实很快就会成为世界第五大经济体！</p>
-<p><img src="/2019/06/23/2017gdp-rank/6.png" alt="6"></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225162141181-247279136.png" alt></p>
 <h1 id="5-韩国人均-GDP-即将突破-3-万美元"><a href="#5-韩国人均-GDP-即将突破-3-万美元" class="headerlink" title="5.韩国人均 GDP 即将突破 3 万美元"></a>5.韩国人均 GDP 即将突破 3 万美元</h1><p>作为世界最年轻的发达国家，韩国人均 GDP 近年出现了较快增长，2017 年韩国人均 GDP 可能会达到 2.98 万美元，与 3 万美元近在咫尺。3 万美元通常被看作是高度发达国家的标准线，过了这条线，就算是真正跻身世界发达国家之列了。即使是西欧的西班牙、葡萄牙目前都没达到 3 万美元，韩国确实做的不错。与之相比，曾经比韩国富裕很多的中国台湾省人均 GDP 刚达到 2.4 万美元。而且这 2.4 万美元还有很大水分，据说台湾省把许多岛外产值都计入了本省。据小编推测，台湾实际的人均 GDP 应该在 1.5 万美元左右，这从台湾和韩国的工资水平可以看出来。韩国本科毕业生起薪一般在 1.6 万人民币左右，而台湾只有 5000 人民币。</p>
-<p><img src="/2019/06/23/2017gdp-rank/7.png" alt="7"></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225162148091-1591352634.png" alt></p>
 <h1 id="6-亚洲主要国家和地区人均-GDP-排名"><a href="#6-亚洲主要国家和地区人均-GDP-排名" class="headerlink" title="6.亚洲主要国家和地区人均 GDP 排名"></a>6.亚洲主要国家和地区人均 GDP 排名</h1><p>中国澳门 8.3 万美元、卡塔尔 6.47 万美元、新加坡 5.45 万美元、中国香港 4.5 万美元、阿联酋 4.08 万美元、韩国 2.98 万美元、文莱 2.8 万美元、中国台湾 2.4 万美元、沙特 2.08 万美元、马来西亚 9900 美元、中国 8800 美元、泰国 6300 美元、印尼 3888 美元、越南 2330 美元、印度 1848 美元</p>
-<p><img src="/2019/06/23/2017gdp-rank/8.png" alt="8"></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225162152766-2065824740.png" alt></p>
 <blockquote>
 <p>原帖：<a href="https://www.sohu.com/a/220355035_100028279" target="_blank" rel="noopener">2017 世界主要国家和地区 GDP 排名，美国 GDP 达 19.36 万亿美元 </a></p>
 </blockquote>
@@ -275,7 +362,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/09/当前云平台发展现状/" data-id="ck2tq8utd001gsj77mbyj4stq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/09/当前云平台发展现状/" data-id="ck4l31i0f001vv477nil9gfk8" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -288,7 +375,8 @@
 <blockquote>
 <p>24 岁以下自动获得学生身份 || CPU 性能不限</p>
 </blockquote>
-<p><img src="/2019/06/09/当前云平台发展现状/a.png" alt="a"><br><em>可以低价购买学习技术课程和服务器。</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225160905254-779345413.png" alt></p>
+<p><em>可以低价购买学习技术课程和服务器。</em></p>
 <h5 id="相对优势："><a href="#相对优势：" class="headerlink" title="相对优势："></a>相对优势：</h5><ul>
 <li>安全稳定性较强，布局全球，行业内规模最大，针对高并发、高流量数据处理上有独特优势</li>
 <li>针对各行业业务特性，打造个性化行业解决方案，为用户提供一站式的产品与服务</li>
@@ -300,7 +388,8 @@
 <blockquote>
 <p><a href="https://cloud.tencent.com/act/campus/" target="_blank" rel="noopener">https://cloud.tencent.com/act/campus/</a></p>
 </blockquote>
-<p><img src="/2019/06/09/当前云平台发展现状/b.png" alt="b"><br><em>官网活动多样，有各种免费体验产品及特惠域名等活动</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225160916504-1124220729.png" alt></p>
+<p><em>官网活动多样，有各种免费体验产品及特惠域名等活动</em></p>
 <h5 id="相对优势：-1"><a href="#相对优势：-1" class="headerlink" title="相对优势："></a>相对优势：</h5><ul>
 <li>在游戏、视频、移动应用等行业有 “持续在线，非常稳定” 的优势</li>
 <li>在国内率先使用英特尔下一代至强 ® 处理器 Skylake，推出国内最新一代云服务器</li>
@@ -311,7 +400,8 @@
 <blockquote>
 <p><a href="https://activity.huaweicloud.com/free_test/index.html" target="_blank" rel="noopener">https://activity.huaweicloud.com/free_test/index.html</a></p>
 </blockquote>
-<p><img src="/2019/06/09/当前云平台发展现状/c.png" alt="c"><br><em>专注于云计算底层基础设施甚至有企业免费服务器</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225160924787-1231248786.png" alt></p>
+<p><em>专注于云计算底层基础设施甚至有企业免费服务器</em></p>
 <h5 id="相对优势：-2"><a href="#相对优势：-2" class="headerlink" title="相对优势："></a>相对优势：</h5><ul>
 <li>30 多年在 ICT 基础设施领域的技术积累</li>
 <li>全球基础设施，华为云全球数据中心和产品服务部署</li>
@@ -320,15 +410,16 @@
 <li>为客户提供解决方案，华为云助力客户实现业务创新</li>
 </ul>
 <h1 id="2-云计算"><a href="#2-云计算" class="headerlink" title="2.云计算"></a>2.云计算</h1><p>本次测试选用的是可以跨平台使用的 <a href="https://www.geekbench.com/" target="_blank" rel="noopener">Geekbench</a> 测试工具。<br>在测试中选用的均是 Intel 全新一代 Xeon SkyLake CPU。阿里云的 CPU 型号为 8163、华为云为 6151、腾讯云的 6133（均为 Intel 的定制型号）。<br>在云主机配置上，一致选用的是 4 核 16G 内存。</p>
-<p><img src="/2019/06/09/当前云平台发展现状/1.png" alt="1"><br><em>Geekbench 测试结果</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225160931085-1820809308.png" alt></p>
+<p><em>Geekbench 测试结果</em></p>
 <p>Geekbench 是通过一系列数据加密、数据压缩、图像压缩、图形计算、脚本处理和路径计算的方式，对 CPU 的整数类型计算能力进行测试，并通过期权价格模似、图像的生成、锐化和模糊以及物理仿真、3D 几何场景描述类的浮点计算功能对 CPU 的浮点计算能力进行测试。并将各个测试结果综合后，统一对 CPU 的整数计算和浮点计算能力进行打分。通过 CPU 综合性能对比，在单核 CPU 的整数和浮点计算能力对比中，阿里云和腾讯云的 CPU 计算能力相差不大，华为云 CPU 在整数和浮点计算能力上明显比阿里云和腾讯高出 17% 和 14.8%。而在多核 CPU 整数和浮点计算能力中，阿里云的计算能力差距与华为云和腾讯云明显加大。华为云四核整数和浮点计算性能综合打分成绩分别为 14618 和 13717，基本上接近其单核 CPU 整数和浮点计算能力的四倍，腾讯云四核计算性能其次为 12357 和 11898 基本上也接其单核 CPU 整数和浮点计算能力的四倍。但是阿里云四核的整数和浮点性能仅为 7672 和 7405，仅比单核 CPU 整数和浮点计算能力的两倍略多一些。</p>
-<p><img src="/2019/06/09/当前云平台发展现状/2.png" alt="2"><br><em>Geekbench 整数测试分类线图</em></p>
-<p><img src="/2019/06/09/当前云平台发展现状/3.png" alt="3"><br><em>Geekbench 浮点测试分类线图</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225160955656-1956961345.png" alt></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225161000373-1139725030.png" alt></p>
 <h1 id="3-内存"><a href="#3-内存" class="headerlink" title="3.内存"></a>3.内存</h1><p>总的来说，内存性能方面华为云云主机的存储带宽性能最好，腾讯云的云主机为次，双方有大约 5% 左右的性能差距。<br>但是阿里云的内存带宽性能就与其它两个云主机有着很大差距，与成绩最好的华为云相比，有着接近一倍的性能差距。<br>内存的调用和数据处理性能，是云计算处理能力的一个重要测试指标。我选用了 Stream 工具，并利用 64M 的大页面来对这三个公有云平台（依然是四核 16G 云主机的内存带宽）进行了测试。<br>Stream 在对内存带宽进行测试的时候会进行四种操作：Copy、Scale、Add、Triad。<br>Copy，先访问一个内存单元读出其中的值，再将值写入到另一个内存单元。<br>Scale，从内存单元读出其中的值，作一个乘法运算，再将结果写入到另一个内存单元。<br>Add，从内存单元读出两个值，做加法运算，再将结果写入到另一个内存单元。<br>Triad，是将上面三个操作组合起来。</p>
-<p><img src="/2019/06/09/当前云平台发展现状/4.png" alt="4"><br><em>上图是上述几项的表现</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225161007429-2097435173.png" alt></p>
 <p>从理论上讲，Add 操作简单且访问内存次数多，带宽测试成绩应最好，华为云和腾讯云的带宽性能也和理论比较符合，但是阿里云的云主机反而是运算需求最少的 Copy 操作时成绩最好，而一但有计算操作介入后的内存带宽均有显著下降。<br>是计算处理能力问题影响了内存的带宽性能还是存在着其它源因，现在还无法更多的去进行分析。<br>只能怀疑内存带宽性能偏低与多核 CPU 运算性能不足有一定相关性存在。</p>
 <h1 id="4-网络"><a href="#4-网络" class="headerlink" title="4.网络"></a>4.网络</h1><p>网络性能方面，本项测试的头筹依然被华为云所夺取。</p>
-<p><img src="/2019/06/09/当前云平台发展现状/6.png" alt="6"><br><em>公有云网络和网络应用性能测试结果</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225161023798-1546962872.png" alt></p>
 <p>从网络性能的测试成绩来看，华为云充分继承了其网络技术起家的优良传统，但是正如上次网络和网络应用测试中所分析的一样，在正常网络应用中很少会出现如此高的网络应用需求，<br>如此高的网络性能配置是否会带来云计算系统资源的浪费还有待去更深入的进行了解。通常网络应用中的数据包转发速率在每 10Mbps 带宽下提供 2KPPS 左右的数据包转发速率基本上就可以满足绝大部分的应用需求了。<br>因此阿里云和腾讯云在网络层的转发性能目前是完全可以满足正常网络的应用，并留有了一定的转发性能余量了。<br>当然对于云主机的用户而言，同样的价格区间内，更高更好的网络性能也完全是喜闻乐见的一个事情，同时随着高并发应用的增加，对网络层的转发性能的要求也在不断提升。<br>通过这次云主机基础性能测试，我们可以看到华为云可谓 “后来者居上”。但是在网络性能方面，过高的性能配置是否会造成整体资源的浪费还有待进一步了解。</p>
 
       
@@ -374,7 +465,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/03/Java-Filter/" data-id="ck2tq8ur40002sj77ux7iluyq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/03/Java-Filter/" data-id="ck4l31hy10001v477eudre140" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -397,11 +488,13 @@
 <li>然后判断登录状态，true 放行，false 强制跳转到 login.jsp</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">package login;</span><br><span class="line"></span><br><span class="line">import javax.servlet.*;</span><br><span class="line">import javax.servlet.annotation.WebFilter;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line">import javax.servlet.http.HttpSession;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.PrintWriter;</span><br><span class="line">import java.net.URLEncoder;</span><br><span class="line"></span><br><span class="line">@WebFilter(filterName = &quot;LoginFilter&quot;, urlPatterns = &quot;/*&quot;)</span><br><span class="line">public class LoginFilter implements Filter &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 需要排除的页面</span><br><span class="line">     */</span><br><span class="line">    private String excludedPages;</span><br><span class="line">    private String[] excludedPageArray = &#123;&quot;/index.jsp&quot;, &quot;/login.jsp&quot;, &quot;/login&quot;&#125;;</span><br><span class="line"></span><br><span class="line">    public void destroy() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException &#123;</span><br><span class="line">        HttpServletRequest request = (HttpServletRequest) req;</span><br><span class="line">        HttpServletResponse response = (HttpServletResponse) resp;</span><br><span class="line"></span><br><span class="line">        response.setCharacterEncoding(&quot;UTF-8&quot;);</span><br><span class="line">        response.setContentType(&quot;text/html;charset=UTF-8&quot;);</span><br><span class="line">        //使用request对象的getSession()获取session，如果session不存在则创建一个</span><br><span class="line">        HttpSession session = request.getSession();</span><br><span class="line"></span><br><span class="line">        //获取session的Id</span><br><span class="line">        String sessionId = session.getId();</span><br><span class="line">        //判断session是不是新创建的</span><br><span class="line">        if (session.isNew()) &#123;</span><br><span class="line">            //将数据存储到session中</span><br><span class="line">            session.setAttribute(&quot;isLogin&quot;, &quot;false&quot;);</span><br><span class="line">            response.getWriter().print(&quot;session generate successfully, the ID of session: &quot; + sessionId);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            response.getWriter().print(&quot;sever has existed the session, the ID of session: &quot; + sessionId);</span><br><span class="line">        &#125;</span><br><span class="line">        Object loginFlag = session.getAttribute(&quot;isLogin&quot;);     //(&quot;isLogin&quot;);</span><br><span class="line">        response.getWriter().print(&quot;  session.isLogin: &quot; + loginFlag);</span><br><span class="line"></span><br><span class="line">        boolean isExcludedPage = false;</span><br><span class="line">        response.getWriter().print(&quot;  current.url=&quot; + request.getServletPath()+&quot; current.user=&quot;+session.getAttribute(&quot;username&quot;));</span><br><span class="line">        for (</span><br><span class="line">                String page : excludedPageArray) &#123;// 判断是否在过滤 url 之外</span><br><span class="line">            if (request.getServletPath().equals(page)) &#123;</span><br><span class="line">                isExcludedPage = true;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (isExcludedPage) &#123;// 在过滤 url 之外</span><br><span class="line">            chain.doFilter(request, response);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if (loginFlag == &quot;false&quot;) &#123;</span><br><span class="line">                //没有登录</span><br><span class="line">                PrintWriter out = response.getWriter();</span><br><span class="line">                out.print(&quot;&lt;script language=&apos;javascript&apos;&gt;alert(&apos;Please login first! 请先登录！out.print&apos;);window.location.href=&apos;index.jsp&apos;;&lt;/script&gt;&quot;);</span><br><span class="line">                out.flush();</span><br><span class="line">                out.close();</span><br><span class="line">            &#125;</span><br><span class="line">            chain.doFilter(request, response);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void init(FilterConfig config) throws ServletException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="4-调试"><a href="#4-调试" class="headerlink" title="4.调试"></a>4.调试</h1><p>开户 filter 后，访问其他页面会被阻止并返回登录：<br><img src="/2019/06/03/Java-Filter/0.png" alt="0"><br><img src="/2019/06/03/Java-Filter/1.png" alt="1"></p>
-<p>成功登录：<br><img src="/2019/06/03/Java-Filter/2.png" alt="2"><br><img src="/2019/06/03/Java-Filter/3.png" alt="3"></p>
-<p>登录验证失败：<br><img src="/2019/06/03/Java-Filter/5.png" alt="5"><br><img src="/2019/06/03/Java-Filter/6.png" alt="6"></p>
-<p>注册判断用户名是否被占用：<br><img src="/2019/06/03/Java-Filter/2.png" alt="2"><br><img src="/2019/06/03/Java-Filter/4.png" alt="4"></p>
-<p>成功注册：<br><img src="/2019/06/03/Java-Filter/7.png" alt="7"><br><img src="/2019/06/03/Java-Filter/8.png" alt="8"></p>
+<h1 id="4-调试"><a href="#4-调试" class="headerlink" title="4.调试"></a>4.调试</h1><p>开启 filter 后，访问其他页面会被阻止并返回登录：<br><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225154803249-1280349090.png" alt><br><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225154818515-1926353657.png" alt></p>
+<p>成功登录：<br><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225154819549-1526053406.png" alt><br><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225154835418-1488203552.png" alt></p>
+<p>登录验证失败：<br><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225154918075-1914496604.png" alt></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225154921207-1930049348.png" alt></p>
+<p>注册判断用户名是否被占用：<br><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225154935398-380239642.png" alt></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225154938751-1196950115.png" alt></p>
+<p>成功注册：<br><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225154928165-974816889.png" alt><br><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191225154931392-1196029866.png" alt></p>
 <h1 id="5-附"><a href="#5-附" class="headerlink" title="5.附"></a>5.附</h1><p>完整项目及其他相关资源下载：</p>
 <blockquote>
 <p><a href="https://github.com/EslSuwen/JavaWeb" target="_blank" rel="noopener">https://github.com/EslSuwen/JavaWeb</a></p>
@@ -474,7 +567,7 @@
       <ul>
         
           <li>
-            <a href="/2019/11/11/conceptual-model/">conceptual-model</a>
+            <a href="/2019/11/11/conceptual-model/">概念模型的建立</a>
           </li>
         
           <li>
@@ -502,7 +595,7 @@
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CODE/">CODE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DATABASE/">DATABASE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA企业开发框架/">JAVA企业开发框架</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TEST/">TEST</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">5</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CODE/">CODE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/DATABASE/">DATABASE</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA企业开发框架/">JAVA企业开发框架</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TEST/">TEST</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">6</span></li></ul>
     </div>
   </aside>
 
@@ -511,7 +604,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloud-platforms/">cloud platforms</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eclipse/">eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tableau/">tableau</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloud-platforms/">cloud platforms</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eclipse/">eclipse</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powerdesigner/">powerdesigner</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tableau/">tableau</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/">test</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -520,7 +613,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cloud-platforms/" style="font-size: 10px;">cloud platforms</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/mysql/" style="font-size: 20px;">mysql</a> <a href="/tags/tableau/" style="font-size: 10px;">tableau</a> <a href="/tags/test/" style="font-size: 16.67px;">test</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
+      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cloud-platforms/" style="font-size: 10px;">cloud platforms</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 13.33px;">markdown</a> <a href="/tags/mysql/" style="font-size: 20px;">mysql</a> <a href="/tags/powerdesigner/" style="font-size: 10px;">powerdesigner</a> <a href="/tags/tableau/" style="font-size: 10px;">tableau</a> <a href="/tags/test/" style="font-size: 16.67px;">test</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a>
     </div>
   </aside>
 
