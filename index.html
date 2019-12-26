@@ -73,81 +73,63 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2019/11/11/conceptual-model/">概念模型的建立</a>
+      <a class="article-title" href="/2019/11/11/conceptual-model/">Power Designer 概念模型的建立</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/11/11/conceptual-model/" data-id="ck4l31hyh0006v477j38gvomc" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/11/11/conceptual-model/" data-id="ck4m49dt10017jd77oecgl7jn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h1><h3 id="学习目的"><a href="#学习目的" class="headerlink" title="学习目的"></a>学习目的</h3><p>1．根据需求分析，把现实世界中的具体事物抽象为某一概念级的数据模型，<br>即建立整个问题的概念模型，建立起数据库设计人员与用户之间的交流，为结构数据模型的建立奠定基础。<br>2．学会认识和分析现实世界，根据对用户需求，描述用户的数据要求：</p>
+        <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h2><h3 id="学习目的"><a href="#学习目的" class="headerlink" title="学习目的"></a>学习目的</h3><p>1．根据需求分析，把现实世界中的具体事物抽象为某一概念级的数据模型，<br>即建立整个问题的概念模型，建立起数据库设计人员与用户之间的交流，为结构数据模型的建立奠定基础。<br>2．学会认识和分析现实世界，根据对用户需求，描述用户的数据要求：</p>
 <ul>
 <li>（1）练习如何从中抽取实体；</li>
 <li>（2）练习如何建立各实体之间的联系；</li>
 <li>（3）从各实体和实体间的联系，抽取出数据处理的过程。</li>
 </ul>
-<h1 id="1-实验原理"><a href="#1-实验原理" class="headerlink" title="1.实验原理"></a>1.实验原理</h1><p>对于概念模型的建立，可以通过手工方法建立，也可以通过辅助设计工具建立，如Sybase公司的Power Designer等。熟悉实体、属性、练习的建立方法。</p>
+<h2 id="1-实验原理"><a href="#1-实验原理" class="headerlink" title="1.实验原理"></a>1.实验原理</h2><p>对于概念模型的建立，可以通过手工方法建立，也可以通过辅助设计工具建立，如Sybase公司的Power Designer等。熟悉实体、属性、练习的建立方法。</p>
 <ol>
 <li>手工建立<br>通过一些编辑工具如word、Visio等，建立概念模型，通过该方法可以建立直观的概念模型，但后期的利用率很低，如通过该模型来建立逻辑模型和物理模型。</li>
 <li>辅助工具<br>通过辅助工具，不仅可以建立直观的概念模型，还可以通过概念模型直接转<br>换为逻辑模型和物理模型，辅助工具可以很快速的完成，而且转换较合理。</li>
 <li>使用Power Designer练习</li>
 </ol>
-<h1 id="2-实验过程"><a href="#2-实验过程" class="headerlink" title="2.实验过程"></a>2.实验过程</h1><p>下面以Power Designer15为工具、以学生成绩为例简介建立概念模型的方<br>法及步骤。</p>
-<h3 id="1-进入Power-Designer环境中，如图1。"><a href="#1-进入Power-Designer环境中，如图1。" class="headerlink" title="1.进入Power Designer环境中，如图1。"></a>1.进入Power Designer环境中，如图1。</h3><p><img src="/2019/11/11/conceptual-model/1.png" alt="1"></p>
-<p><em>图1 打开Power Designer</em></p>
+<h2 id="2-实验过程"><a href="#2-实验过程" class="headerlink" title="2.实验过程"></a>2.实验过程</h2><p>下面以Power Designer15为工具、以学生成绩为例简介建立概念模型的方<br>法及步骤。</p>
+<h3 id="1-进入Power-Designer环境中，如图1"><a href="#1-进入Power-Designer环境中，如图1" class="headerlink" title="1.进入Power Designer环境中，如图1"></a>1.进入Power Designer环境中，如图1</h3><p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100712412-66785619.png" alt="1"><br><em>图1 打开Power Designer</em></p>
 <h3 id="2-新建模型"><a href="#2-新建模型" class="headerlink" title="2.新建模型"></a>2.新建模型</h3><p>文件 -&gt;新建模型，如图2.</p>
-<p><img src="/2019/11/11/conceptual-model/2.png" alt="2"></p>
-<p><em>图2 选择建立的模型类型</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100717184-906536562.png" alt="2"><br><em>图2 选择建立的模型类型</em></p>
 <p>选择Conceptual Data Model 下的Conceptual Diagram ,建立概念模型，模型名称，如学生成绩管理，确定后进入如图3的设计界面。</p>
-<p><img src="/2019/11/11/conceptual-model/3.png" alt="3"></p>
-<p><em>图3 概念模型设计界面</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100721705-1811429855.png" alt="3"><br><em>图3 概念模型设计界面</em></p>
 <h3 id="3-建立实体"><a href="#3-建立实体" class="headerlink" title="3.建立实体"></a>3.建立实体</h3><p>通过点击“实体”图标，建立实体对象。如下图。</p>
-<p><img src="/2019/11/11/conceptual-model/4.png" alt="4"></p>
-<p><em>图4 建立空实体</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100729508-275127070.png" alt="4"><br><em>图4 建立空实体</em></p>
 <h4 id="3-1-建立实体描述信息"><a href="#3-1-建立实体描述信息" class="headerlink" title="3.1.建立实体描述信息"></a>3.1.建立实体描述信息</h4><p>输入实体名称、代码及相关的描述。如图5.</p>
-<p><img src="/2019/11/11/conceptual-model/5.png" alt="5"></p>
-<p><em>图5 实体描述确定后的实体界面如图6.</em></p>
-<p><img src="/2019/11/11/conceptual-model/6.png" alt="6"></p>
-<p><em>图6 命名的实体</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100734269-771519239.png" alt="5"><br><em>图5 实体描述确定后的实体界面如图6.</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100742933-334464125.png" alt="6"><br><em>图6 命名的实体</em></p>
 <h4 id="3-2-建立实体属性"><a href="#3-2-建立实体属性" class="headerlink" title="3.2.建立实体属性"></a>3.2.建立实体属性</h4><p>双击实体-&gt;选择【Attributes】Tab页，完成属性的建立，如图7.</p>
-<p><img src="/2019/11/11/conceptual-model/7.png" alt="7"></p>
-<p><em>图7 属性的建立</em></p>
-<p><img src="/2019/11/11/conceptual-model/8.png" alt="8"></p>
-<p><em>图8 选择数据类型</em></p>
-<p><img src="/2019/11/11/conceptual-model/9.png" alt="9"></p>
-<p><em>图9 设置属性特性</em></p>
-<p><img src="/2019/11/11/conceptual-model/10.png" alt="10"></p>
-<p><em>图10 专业实体属性列表</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100749022-946723263.png" alt="7"><br><em>图7 属性的建立</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100756403-2033612294.png" alt="8"><br><em>图8 选择数据类型</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100800639-1233216144.png" alt="9"><br><em>图9 设置属性特性</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100807195-1992156202.png" alt="10"><br><em>图10 专业实体属性列表</em></p>
 <p>同理建立学生实体。</p>
-<p><img src="/2019/11/11/conceptual-model/11.png" alt="11"></p>
-<p><em>图11 学生实体属性</em></p>
-<p><img src="/2019/11/11/conceptual-model/12.png" alt="12"></p>
-<p><em>图12 性别属性的属性</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100811347-1991980410.png" alt="11"><br><em>图11 学生实体属性</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100816086-2090996559.png" alt="12"><br><em>图12 性别属性的属性</em></p>
 <p>选择【Standard Checks】Tab页，如图13.</p>
-<p><img src="/2019/11/11/conceptual-model/13.png" alt="13"></p>
-<p><em>图13 设置性别的约束</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100821612-132382811.png" alt="13"><br><em>图13 设置性别的约束</em></p>
 <h3 id="4-建立联系"><a href="#4-建立联系" class="headerlink" title="4.建立联系"></a>4.建立联系</h3><p>联系包含1:1，1:n，n:n，在选中联系功能后，按住鼠标，一般从一方拖到多方。如图14.</p>
-<p><img src="/2019/11/11/conceptual-model/14.png" alt="14"></p>
-<p><em>图14 建立联系</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100827090-1119520644.png" alt="14"><br><em>图14 建立联系</em></p>
 <p>若需要设置联系的属性时，选中联系后双机该联系，再设置联系的属性。如图14.设置联系属相包含基本属性、联系类型等。</p>
-<p><img src="/2019/11/11/conceptual-model/15.png" alt="15"></p>
-<p><em>图15 联系的属性</em></p>
-<p><img src="/2019/11/11/conceptual-model/16.png" alt="16"></p>
-<p><em>图16 联系的属性含义</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100831741-397078719.png" alt="15"><br><em>图15 联系的属性</em></p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100836709-386448840.png" alt="16"><br><em>图16 联系的属性含义</em></p>
 <p>可以选择联系的映射基数。“是否允许为空”选择后，表示在逻辑模型中外码（专业代码）在学生中不允许为空，即学生的专业代码必须填写。“存在依赖” 选中后，表示外码“专业代码”在多方为主码属性。</p>
 <h3 id="5-多对多联系的处理"><a href="#5-多对多联系的处理" class="headerlink" title="5.多对多联系的处理"></a>5.多对多联系的处理</h3><p>一般将多对多联系看作一个实体处理，这样就可增加多对多联系的属性。<br>如图17和图18.</p>
-<p><img src="/2019/11/11/conceptual-model/17.png" alt="17"></p>
-<p><em>图17 多对多联系</em></p>
-<p>如图16采用多对多联系时不能添加多对多联系的属性“成绩”。一般将多对<br>多联系看作一个实体，将多对多联系转换为两个一对多的联系，多方依赖一方，在转换为逻辑模型时，将一方的主码属性作为多方的主码属性。</p>
-<p><img src="/2019/11/11/conceptual-model/18.png" alt="18"></p>
-<p><em>图18 将多对多联系转为实体</em></p>
-<h1 id="3-实验题目"><a href="#3-实验题目" class="headerlink" title="3.实验题目"></a>3.实验题目</h1><p>某电商平台需要管理平台的商品信息，需要开发一套软件系统实现管理工作。</p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100849703-2066651223.png" alt="17"><br><em>图17 多对多联系</em></p>
+<p>如图17采用多对多联系时不能添加多对多联系的属性“成绩”。一般将多对<br>多联系看作一个实体，将多对多联系转换为两个一对多的联系，多方依赖一方，在转换为逻辑模型时，将一方的主码属性作为多方的主码属性。</p>
+<p><img src="https://img2018.cnblogs.com/blog/1545358/201912/1545358-20191226100855590-2038275415.png" alt="18"><br><em>图18 将多对多联系转为实体</em></p>
+<h2 id="3-实验题目"><a href="#3-实验题目" class="headerlink" title="3.实验题目"></a>3.实验题目</h2><p>某电商平台需要管理平台的商品信息，需要开发一套软件系统实现管理工作。</p>
 <h3 id="主要功能要求"><a href="#主要功能要求" class="headerlink" title="主要功能要求"></a>主要功能要求</h3><ol>
 <li>实现商品的基本管理，要求同一种商品能够由多家供货商供货，商品类别要分级。能实现对商品品牌、商品供应商、商品分类和商品基本信息的添加、删除和修改。</li>
 <li>能根据相关的查询条件完成商品品牌、商品供应商、商品分类和商品基本信息的查询。</li>
@@ -160,8 +142,8 @@
 <li>商品：包含商品名称、规格、型号、计量单位、市场价、销售价、成本价、</li>
 <li>商品缩略图、商品介绍等信息。</li>
 </ul>
-<h1 id="附项目文件及概念-物理模型"><a href="#附项目文件及概念-物理模型" class="headerlink" title="附项目文件及概念/物理模型"></a>附项目文件及概念/物理模型</h1><blockquote>
-<p><a href="https://github.com/EslSuwen/Commodity" target="_blank" rel="noopener">https://github.com/EslSuwen/Commodity</a></p>
+<h2 id="附项目文件及概念-物理模型"><a href="#附项目文件及概念-物理模型" class="headerlink" title="附项目文件及概念/物理模型"></a>附项目文件及概念/物理模型</h2><blockquote>
+<p><a href="https://github.com/EslSuwen/Commodity" target="_blank" rel="noopener">github.com/EslSuwen/Commodity</a></p>
 </blockquote>
 
       
@@ -207,7 +189,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/09/01/ubuntu-install/" data-id="ck4l31i1v0029v4770nc95hmr" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/09/01/ubuntu-install/" data-id="ck4m49dsy0010jd7787x34c2o" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -290,7 +272,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/23/2017gdp-rank/" data-id="ck4l31hxu0000v477e5kezv75" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/23/2017gdp-rank/" data-id="ck4m49dre0000jd77j5he2nmm" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -362,7 +344,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/09/当前云平台发展现状/" data-id="ck4l31i0f001vv477nil9gfk8" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/09/当前云平台发展现状/" data-id="ck4m49dtb001ejd778o6duq7c" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -465,7 +447,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/03/Java-Filter/" data-id="ck4l31hy10001v477eudre140" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/03/Java-Filter/" data-id="ck4m49drs0005jd778ogxosmj" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -567,7 +549,7 @@
       <ul>
         
           <li>
-            <a href="/2019/11/11/conceptual-model/">概念模型的建立</a>
+            <a href="/2019/11/11/conceptual-model/">Power Designer 概念模型的建立</a>
           </li>
         
           <li>
