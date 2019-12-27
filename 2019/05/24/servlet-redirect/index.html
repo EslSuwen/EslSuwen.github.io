@@ -4,6 +4,10 @@
   <meta charset="utf-8">
   
   
+  <meta name="description" content="1. Forword
+request.getRequestDispatcher (“url”).forword (request, response) 是请求转发，也就是说，一个 Servlet 向当前的
+Servlet 发出请求后，经过这个方法后，请求会继续转发到请求的 URL, 在这个过程中，只">
+  
 
   
   
@@ -11,15 +15,23 @@
   
   
   
-  <title>Suwen</title>
+  <title>Servlet 的三种跳转方式 | Suwen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Suwen">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+  <meta name="description" content="1. Forword request.getRequestDispatcher (“url”).forword (request, response) 是请求转发，也就是说，一个 Servlet 向当前的 Servlet 发出请求后，经过这个方法后，请求会继续转发到请求的 URL, 在这个过程中，只向服务器发出一次请求。效率当然也就高了.从在浏览器地址栏中显示的 URL 来看，response.s">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Servlet 的三种跳转方式">
+<meta property="og:url" content="http://yoursite.com/2019/05/24/servlet-redirect/index.html">
 <meta property="og:site_name" content="Suwen">
+<meta property="og:description" content="1. Forword request.getRequestDispatcher (“url”).forword (request, response) 是请求转发，也就是说，一个 Servlet 向当前的 Servlet 发出请求后，经过这个方法后，请求会继续转发到请求的 URL, 在这个过程中，只向服务器发出一次请求。效率当然也就高了.从在浏览器地址栏中显示的 URL 来看，response.s">
 <meta property="og:locale" content="CHS">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/27/lVZjHI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/27/lVZXDA.png">
+<meta property="og:updated_time" content="2019-12-27T03:52:20.480Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Suwen">
+<meta name="twitter:title" content="Servlet 的三种跳转方式">
+<meta name="twitter:description" content="1. Forword request.getRequestDispatcher (“url”).forword (request, response) 是请求转发，也就是说，一个 Servlet 向当前的 Servlet 发出请求后，经过这个方法后，请求会继续转发到请求的 URL, 在这个过程中，只向服务器发出一次请求。效率当然也就高了.从在浏览器地址栏中显示的 URL 来看，response.s">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/12/27/lVZjHI.png">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -63,226 +75,15 @@
 </header>
 
       <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main">
-  
-    <article id="post-Java-MySQL" class="post-Java-MySQL post type-post status-publish format-standard hentry">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-servlet-redirect" class="post-servlet-redirect post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
         
         
   
-    <h1 class="entry-title">
-      <a class="article-title" href="/2019/06/02/Java-MySQL/">Java MySQL 连接</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/02/Java-MySQL/" data-id="ck4nrf7ih0006av77ptxw657n" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h1 id="0-环境准备"><a href="#0-环境准备" class="headerlink" title="0. 环境准备"></a>0. 环境准备</h1><p>Java 连接 MySQL 需要驱动包，最新版下载地址为：<a href="http://dev.mysql.com/downloads/connector/j/" target="_blank" rel="noopener">http://dev.mysql.com/downloads/connector/j/</a>, 解压后得到 jar 库文件，然后在对应的项目中导入该库文件。<br>本实例使用的是 IDEA，导入 jar 包：</p>
-<p><img src="https://s2.ax1x.com/2019/12/27/lEjiw9.png" alt="lEjiw9.png"></p>
-<p>也可直接放到 jdk 里，路径为：</p>
-<blockquote>
-<p>*\Java\jdk1.8.0_121\jre\lib\</p>
-</blockquote>
-<h1 id="1-创建测试数据"><a href="#1-创建测试数据" class="headerlink" title="1. 创建测试数据"></a>1. 创建测试数据</h1><p>接下来我们在 MySQL 中创建 Test 数据库，并创建 websites 数据表，表结构如下：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`websites`</span> (</span><br><span class="line"><span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line"><span class="string">`name`</span> <span class="built_in">char</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">' 站点名称'</span>,</span><br><span class="line"><span class="string">`url`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line"><span class="string">`alexa`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'Alexa 排名'</span>,</span><br><span class="line"><span class="string">`country`</span> <span class="built_in">char</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">' 国家'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> ( <span class="string">`id`</span> )</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> AUTO_INCREMENT=<span class="number">10</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br></pre></td></tr></table></figure>
-<p>插入一些数据：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`websites`</span> </span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">	( <span class="string">'1'</span>, <span class="string">'Google'</span>, <span class="string">'https://www.google.cm/'</span>, <span class="string">'1'</span>, <span class="string">'USA'</span> ),</span><br><span class="line">	( <span class="string">'2'</span>, <span class="string">' 淘宝'</span>, <span class="string">'https://www.taobao.com/'</span>, <span class="string">'13'</span>, <span class="string">'CN'</span> ),</span><br><span class="line">	( <span class="string">'3'</span>, <span class="string">' 腾讯'</span>, <span class="string">'http://www.qq.com'</span>, <span class="string">'5892'</span>, <span class="string">''</span> ),</span><br><span class="line">	( <span class="string">'4'</span>, <span class="string">' 微博'</span>, <span class="string">'http://weibo.com/'</span>, <span class="string">'20'</span>, <span class="string">'CN'</span> ),</span><br><span class="line">	( <span class="string">'5'</span>, <span class="string">'Facebook'</span>, <span class="string">'https://www.facebook.com/'</span>, <span class="string">'3'</span>, <span class="string">'USA'</span> );</span><br></pre></td></tr></table></figure>
-<p>数据表显示如下：</p>
-<p><img src="https://s2.ax1x.com/2019/12/27/lEjPeJ.png" alt="lEjPeJ.png"></p>
-<h1 id="2-连接数据库"><a href="#2-连接数据库" class="headerlink" title="2. 连接数据库"></a>2. 连接数据库</h1><p>以下实例使用了 JDBC 连接 MySQL 数据库，注意一些数据如用户名，密码需要根据你的开发环境来配置：</p>
-<p>创建 JDBC 操作类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> database;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JdbcOp</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Connection conn = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> Statement statement = <span class="keyword">null</span>;</span><br><span class="line">    <span class="comment">// JDBC 驱动名及数据库 URL</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String driver=<span class="string">"com.mysql.cj.jdbc.Driver"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String jdbcUrl=<span class="string">"jdbc:mysql://localhost:3306/"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String UrlParam = <span class="string">"?useUnicode=true&amp;characterEncoding=UTF-8&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"</span>;</span><br><span class="line">    <span class="comment">// 数据库的用户名与密码，需要根据自己的设置</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String userName=<span class="string">"youraccount"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String userPwd=<span class="string">"yourpassword"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">open</span><span class="params">(String Url)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Class.forName(driver).newInstance();</span><br><span class="line">            conn = DriverManager.getConnection(jdbcUrl+Url+UrlParam, userName, userPwd);</span><br><span class="line">            statement = conn.createStatement();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">executeUpdate</span><span class="params">(String sql)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> statement.executeUpdate(sql);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultSet <span class="title">executeQuery</span><span class="params">(String sql)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> statement.executeQuery(sql);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            conn.close();</span><br><span class="line">            statement.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>创建 JDBC 测试类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> database;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JdbcTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            JdbcOp jdbc = <span class="keyword">new</span> JdbcOp();</span><br><span class="line">            jdbc.open(<span class="string">"Test"</span>);</span><br><span class="line">            <span class="comment">// 执行查询</span></span><br><span class="line">            ResultSet rs = jdbc.executeQuery(<span class="string">"SELECT id, name, url FROM websites"</span>);</span><br><span class="line">            <span class="comment">// 展开结果集数据库</span></span><br><span class="line">            <span class="keyword">while</span> (rs.next()) &#123;</span><br><span class="line">                <span class="comment">// 通过字段检索</span></span><br><span class="line">                <span class="keyword">int</span> id  = rs.getInt(<span class="string">"id"</span>);</span><br><span class="line">                String name = rs.getString(<span class="string">"name"</span>);</span><br><span class="line">                String url = rs.getString(<span class="string">"url"</span>);</span><br><span class="line">                <span class="comment">// 输出数据</span></span><br><span class="line">                 System.out.print(<span class="string">"ID: "</span> + id);</span><br><span class="line">                System.out.print(<span class="string">", 站点名称: "</span> + name);</span><br><span class="line">                System.out.print(<span class="string">", 站点 URL: "</span> + url);</span><br><span class="line">                System.out.print(<span class="string">"\n"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 完成后关闭</span></span><br><span class="line">            jdbc.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上实例执行输出结果如下：</p>
-<p><img src="https://s2.ax1x.com/2019/12/27/lEj9L4.png" alt="lEj9L4.png"></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2019/06/02/Java-MySQL/">
-    <time datetime="2019-06-02T14:04:45.000Z" class="entry-date">
-        2019-06-02
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/JAVA企业开发框架/">JAVA企业开发框架</a>
-  </div>
-
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-sakila-database" class="post-sakila-database post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2019/06/02/sakila-database/">Sakila MySQL 样例数据库解析</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/06/02/sakila-database/" data-id="ck4nrf7jb0013av77cgqr1ior" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h2><p>Sakila 可以作为数据库设计的参考，也可作为实验数据。本例是用作数据分析学习的实验数据。</p>
-<blockquote>
-<p>The Sakila sample database was developed by Mike Hillyer, a former member of the MySQL AB documentation team, and is intended to provide a standard schema that can be used for examples in books, tutorials, articles, samples, and so forth. Sakila sample database also serves to highlight the latest features of MySQL such as Views, Stored Procedures, and Triggers.</p>
-</blockquote>
-<h2 id="1-实验环境"><a href="#1-实验环境" class="headerlink" title="1. 实验环境"></a>1. 实验环境</h2><h3 id="方法一：安装-MySQL-时选择-FULL-完全安装"><a href="#方法一：安装-MySQL-时选择-FULL-完全安装" class="headerlink" title="方法一：安装 MySQL 时选择 FULL 完全安装"></a>方法一：安装 MySQL 时选择 FULL 完全安装</h3><p>安装 MySQL 时选择 FULL 完全安装，默认安装了 Sakila sample database</p>
-<p><img src="https://s2.ax1x.com/2019/12/27/lEv5Dg.png" alt="lEv5Dg.png"></p>
-<h3 id="方法二：下载后导入"><a href="#方法二：下载后导入" class="headerlink" title="方法二：下载后导入"></a>方法二：下载后导入</h3><p>下载地址：</p>
-<ul>
-<li><a href="http://downloads.mysql.com/docs/sakila-db.zip" target="_blank" rel="noopener">ZIP 格式</a></li>
-<li><a href="http://downloads.mysql.com/docs/sakila-db.tar.gz" target="_blank" rel="noopener">tar 格式</a></li>
-<li><a href="http://dev.mysql.com/doc/sakila/en/index.html" target="_blank" rel="noopener">官方文档</a></li>
-</ul>
-<p>解压后得到三个文件：</p>
-<ol>
-<li>sakila-schema.sql 文件包含创建 Sakila 数据库的结构：表、视图、存储过程和触发器</li>
-<li>sakila-data.sql 文件包含：使用 INSERT 语句填充数据及在初始数据加载后，必须创建的触发器的定义</li>
-<li>sakila.mwb 文件是一个 MySQL Workbench 数据模型，可以在 MySQL 的工作台打开查看数据库结构。</li>
-</ol>
-<blockquote>
-<p>导入参考： <a href="http://dev.mysql.com/doc/sakila/en/sakila-installation.html" target="_blank" rel="noopener">http://dev.mysql.com/doc/sakila/en/sakila-installation.html</a></p>
-</blockquote>
-<pre><code>shell&gt; mysql -u root -p
-mysql&gt; SOURCE C:/temp/sakila-db/sakila-schema.sql;
-mysql&gt; SOURCE C:/temp/sakila-db/sakila-data.sql;
-</code></pre><h2 id="2-数据结构"><a href="#2-数据结构" class="headerlink" title="2. 数据结构"></a>2. 数据结构</h2><p>Sakila 样例数据库包括 16 张表格，7 个视图，3 个 Stored Procedures，3 个 Functions，6 个 Triggers。英文描述点开相应连接即可查看。<br>总览：</p>
-<p><img src="https://s2.ax1x.com/2019/12/27/lEv4KS.png" alt="lEv4KS.png"></p>
-<p>关系图:</p>
-<p><img src="https://s2.ax1x.com/2019/12/27/lEvIbQ.png" alt="lEvIbQ.png"></p>
-<h2 id="3-视图"><a href="#3-视图" class="headerlink" title="3. 视图"></a>3. 视图</h2><p>actor_info 视图提供了所有演员的列表及所演的电影，电影按 category 分组.<br>actor → film_actor → film →  film_category → category</p>
-<ol>
-<li>actor_id: 代理主键用于唯一标识表中的每个演员</li>
-<li>first_name: 演员的名字</li>
-<li>last_name: 演员的姓氏</li>
-<li>last_update: 该行已创建或最近更新的时间</li>
-</ol>
-<p><img src="https://s2.ax1x.com/2019/12/27/lEvfv8.png" alt="lEvfv8.png"></p>
-<p>客户列表，firstname和lastname连接成fullname，将 address, city, country 集成在一个视图里<br>customer → address → city → country</p>
-<ol>
-<li>stomer_id: 代理主键用于唯一标识表中的每个客户</li>
-<li>store_id: 一个外键，确定客户所属的 store。</li>
-<li>first_name: 客户的名字</li>
-<li>last_name: 客户的姓氏</li>
-<li>email: 客户的电子邮件地址</li>
-<li>address_id: 使用在地址 表的外键来确定客户的地址</li>
-<li>active: 表示客户是否是活跃的客户</li>
-<li>create_date: 顾客被添加到系统中的日期。使用 INSERT 触发器自动设置。</li>
-<li>last_update: 该行已创建或最近更新的时间</li>
-</ol>
-<p><img src="https://s2.ax1x.com/2019/12/27/lEvR8P.png" alt="lEvR8P.png"></p>
-<p>每个电影种类的销售额<br>payment → rental → inventory → film → film_category → category</p>
-<p><img src="https://s2.ax1x.com/2019/12/27/lEvTEj.png" alt="lEvTEj.png"></p>
-<p>每个商店的 manager 及销售额。<br>payment → rental → inventory → store → staff</p>
-<p>store 表列出了系统中的所有商店 。<br>store 使用外键来标识工作人员和地址；在员工、客户、库存表被作为外键使用。</p>
-<ol>
-<li>store_id: 代理主键唯一标识的商店</li>
-<li>manager_staff_id: 使用外键来标识这家商店的经理</li>
-<li>address_id: 使用外键来确定这家店的地址</li>
-<li>last_update: 该行已创建或最近更新的时间</li>
-</ol>
-<p><img src="https://s2.ax1x.com/2019/12/27/lEv7Us.png" alt="lEv7Us.png"></p>
-<p>工作人员的列表</p>
-<p>工作人员表列出了所有的工作人员，包括电子邮件地址，登录信息和图片信息 。<br>工作人员表是指使用外键来标识存储和地址表；在出租、支付和商店表中作为外键。</p>
-<ol>
-<li>staff_id: 代理主键唯一标识的工作人员</li>
-<li>first_name: 工作人员的名字</li>
-<li>last_name: 工作人员的姓氏</li>
-<li>address_id: 工作人员的地址在地址表的外键</li>
-<li>picture: 工作人员的照片，使用了 BLOB 属性</li>
-<li>email: 工作人员的电子邮件地址</li>
-<li>store_id: 工作人员所在的商店，用外键标识</li>
-<li>active: 是否是活跃的工作人员。</li>
-<li>username: 用户名，由工作人员用来访问租赁系统</li>
-<li>password: 工作人员访问租赁系统所使用的密码。使用了 SHA1 函数</li>
-<li>last_update: 该行已创建或最近更新的时间</li>
-<li>active: 是否有效，删除时设置为 False</li>
-</ol>
-<p><img src="https://s2.ax1x.com/2019/12/27/lEvH5n.png" alt="lEvH5n.png"></p>
-<h2 id="4-数据分析"><a href="#4-数据分析" class="headerlink" title="4. 数据分析"></a>4. 数据分析</h2><p><em>最具有购买潜力的顾客</em>：</p>
-<p>从600位顾客中去发现和找出最具有购买潜力的顾客，找出他们的邮箱地址和联系方法，并给他们发送邮件进行感谢，以保持该部分用户的持续购买欲望，增加用户的满意度，以此来保持商品的销售量。</p>
-<h3 id="0-数据获取"><a href="#0-数据获取" class="headerlink" title="0. 数据获取"></a>0. 数据获取</h3><p>根据customer、payment两个表进行数据筛选，获得顾客编号：customer.customer_id 顾客编号；计算总消费金额; 最后根据顾客消费总金额降序排列。</p>
-<p><img src="https://s2.ax1x.com/2019/12/27/lEvqCq.png" alt="lEvqCq.png"></p>
-<p>具体代码：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  customer1.customer_id 顾客编号,</span><br><span class="line">	<span class="keyword">CONCAT</span>( customer1. <span class="string">`first_name`</span> , <span class="keyword">CONCAT</span>( <span class="string">" "</span>, customer1. <span class="string">`last_name`</span> ) ) <span class="keyword">AS</span> <span class="string">'顾客名'</span>,</span><br><span class="line">	<span class="keyword">FORMAT</span>(<span class="keyword">sum</span>(payment.amount),<span class="number">2</span>) <span class="keyword">AS</span> <span class="string">'消费金额'</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	customer1,</span><br><span class="line">	payment</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	customer1.customer_id = payment.customer_id</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">	<span class="keyword">CONCAT</span>( customer1. <span class="string">`first_name`</span> , <span class="keyword">CONCAT</span>( <span class="string">" "</span>, customer1. <span class="string">`last_name`</span> ) )</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">	<span class="keyword">FORMAT</span>(<span class="keyword">sum</span>(payment.amount),<span class="number">2</span>)+<span class="number">0</span> <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
-<h3 id="1-连接顾客姓名"><a href="#1-连接顾客姓名" class="headerlink" title="1. 连接顾客姓名"></a>1. 连接顾客姓名</h3><p>通过筛选address_id连接customer和address两表得到顾客的编号、地址、电话，然后通过顾客的编号升序排列。</p>
-<p><img src="https://s2.ax1x.com/2019/12/27/lEvL80.png" alt="lEvL80.png"></p>
-<p>具体代码：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line"><span class="keyword">CONCAT</span>( customer1. <span class="string">`first_name`</span> , <span class="keyword">CONCAT</span>( <span class="string">" "</span>, customer1. <span class="string">`last_name`</span> ) ) <span class="keyword">AS</span> 顾客姓名,</span><br><span class="line">customer1.customer_id 顾客编号,</span><br><span class="line">address.address 顾客地址,</span><br><span class="line">address.phone 顾客电话,</span><br><span class="line">customer1.email</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">customer1 ,</span><br><span class="line">address</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	customer1.address_id=address.address_id</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">	<span class="keyword">CONCAT</span>( customer1. <span class="string">`first_name`</span> , <span class="keyword">CONCAT</span>( <span class="string">" "</span>, customer1. <span class="string">`last_name`</span> ) )</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">  customer1.customer_id+<span class="number">0</span> <span class="keyword">ASC</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-结果分析"><a href="#2-结果分析" class="headerlink" title="2. 结果分析"></a>2. 结果分析</h3><p>通过表一得到散点图：</p>
-<p><img src="https://s2.ax1x.com/2019/12/27/lEvO2V.png" alt="lEvO2V.png"></p>
-<p>根据数据分析我们可以看到顾客KARL SEAL的消费金额221.55是600位顾客中消费总金额最高的一位，他便是最有潜力的顾客，然后我们可以通过表二去得到他的联系信息。<br>通过散点图我们可以分析到大多数的顾客消费总金额分布在120元上下，所以我们以120元为界，将消费总金额在120元以上顾客列为有购买潜力的顾客，从表二寻找他们的联系方式，批量对他们发送邮件进行感谢。</p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2019/06/02/sakila-database/">
-    <time datetime="2019-06-02T08:22:59.000Z" class="entry-date">
-        2019-06-02
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/DATABASE/">DATABASE</a>
-  </div>
-
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-servlet-redirect" class="post-servlet-redirect post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2019/05/24/servlet-redirect/">Servlet 的三种跳转方式</a>
+    <h1 class="entry-title article-title">
+      Servlet 的三种跳转方式
     </h1>
   
 
@@ -353,18 +154,22 @@ out.close();
 </article>
 
 
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2019/06/02/sakila-database/" rel="prev"><span class="meta-nav">←</span> Sakila MySQL 样例数据库解析</a></span>
+    
+    
+        <span class="nav-next"><a href="/2019/05/23/eclipse-servlet/" rel="next">Eclipse JSP/Servlet 环境搭建 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
 
 
 
 
-  
-  
-    <nav id="pagination">
-      <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
-      </nav>
-    </nav>
-  
+
+
 
 </div></div>
         <div id="secondary" class="widget-area" role="complementary">
